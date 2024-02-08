@@ -21,6 +21,7 @@ namespace BTS_Mitarbeiterverwaltung
             InitializeComponent();
         }
 
+        public int selectedRowID { get; set; }
         private void MainForm_Load(object sender, EventArgs e)
         {
             DataTable table = Mitarbeiter.getAllMitarbeiter();
@@ -34,7 +35,28 @@ namespace BTS_Mitarbeiterverwaltung
 
         private void btnHinzufügen_Click(object sender, EventArgs e)
         {
-            UpdateForm updateForm = new UpdateForm();
+            UpdateForm updateForm = new UpdateForm(this, 0);
+            updateForm.Show();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {                         
+                Mitarbeiter.deleteMitarbeiter(selectedRowID);              
+                DataTable table = Mitarbeiter.getAllMitarbeiter();
+                dataGridView1.DataSource = table;                           
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                selectedRowID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["ID"].Value);
+            }
+        }
+
+        private void btnBearbeiten_Click(object sender, EventArgs e)
+        {
+            UpdateForm updateForm = new UpdateForm(this, selectedRowID);
             updateForm.Show();
         }
     }

@@ -42,6 +42,8 @@
             this.Geburtsdatum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Alter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnHinzufügen = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnBearbeiten = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,8 +67,9 @@
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(1523, 405);
+            this.dataGridView1.Size = new System.Drawing.Size(1178, 405);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // ID
             // 
@@ -167,7 +170,7 @@
             // btnHinzufügen
             // 
             this.btnHinzufügen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHinzufügen.Location = new System.Drawing.Point(1356, 14);
+            this.btnHinzufügen.Location = new System.Drawing.Point(1011, 14);
             this.btnHinzufügen.Margin = new System.Windows.Forms.Padding(4);
             this.btnHinzufügen.Name = "btnHinzufügen";
             this.btnHinzufügen.Size = new System.Drawing.Size(183, 63);
@@ -176,11 +179,37 @@
             this.btnHinzufügen.UseVisualStyleBackColor = true;
             this.btnHinzufügen.Click += new System.EventHandler(this.btnHinzufügen_Click);
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(468, 14);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(183, 63);
+            this.btnDelete.TabIndex = 2;
+            this.btnDelete.Text = "Löschen";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnBearbeiten
+            // 
+            this.btnBearbeiten.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBearbeiten.Location = new System.Drawing.Point(737, 13);
+            this.btnBearbeiten.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBearbeiten.Name = "btnBearbeiten";
+            this.btnBearbeiten.Size = new System.Drawing.Size(183, 63);
+            this.btnBearbeiten.TabIndex = 3;
+            this.btnBearbeiten.Text = "Bearbeiten";
+            this.btnBearbeiten.UseVisualStyleBackColor = true;
+            this.btnBearbeiten.Click += new System.EventHandler(this.btnBearbeiten_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1552, 507);
+            this.ClientSize = new System.Drawing.Size(1214, 518);
+            this.Controls.Add(this.btnBearbeiten);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnHinzufügen);
             this.Controls.Add(this.dataGridView1);
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -194,8 +223,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnHinzufügen;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Vorname;
@@ -209,5 +236,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn RentenBeginn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Geburtsdatum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Alter;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnBearbeiten;
+        public System.Windows.Forms.DataGridView dataGridView1;
     }
 }

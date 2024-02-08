@@ -46,6 +46,49 @@ namespace BTS_Mitarbeiterverwaltung.Classes
             return table;
         }
 
+        public static Mitarbeiter getMitarbeiterById(int id)
+        {
+            Mitarbeiter employee = null;
+            SqlCommand commandStart = new SqlCommand("SELECT * FROM mitarbeiter WHERE ID = @id", SqlVariable.connection);
+            commandStart.Parameters.AddWithValue("@id", id);
+
+            try
+            {
+                SqlVariable.connection.Open();
+                SqlDataReader reader = commandStart.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    employee = new Mitarbeiter
+                    {
+                        ID = Convert.ToInt32(reader["ID"]),
+                        Vorname = reader["Vorname"].ToString(),
+                        Name = reader["Name"].ToString(),
+                        Position = reader["Position"].ToString(),
+                        DatumEintritt = Convert.ToDateTime(reader["EintrittDatum"]),
+                        DatumRentenBeginn = Convert.ToDateTime(reader["Rentenbeginn"]),
+                        EMail = reader["E-Mail"].ToString(),
+                        Gehalt = reader["Gehalt"].ToString(),
+                        Geburtsdatum = Convert.ToDateTime(reader["Geburtsdatum"]),
+                        Adresse = reader["Adresse"].ToString(),
+                        Telefon = reader["Telefon"].ToString()
+                    };
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                // Hata işleme
+                Console.WriteLine("Hata: " + ex.Message);
+            }
+            finally
+            {
+                SqlVariable.connection.Close();
+            }
+
+            return employee;
+        }
+
         public void updateMitarbeiter()
         {
             if (this.ID == 0)
@@ -65,13 +108,55 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                 commandUpdate.ExecuteNonQuery();
                 SqlVariable.connection.Close();
             }
-
-            
+            else
+            {
+                SqlCommand commandUpdate = new SqlCommand(
+    "UPDATE mitarbeiter " +
+    "SET " +
+    "Vorname = @Vorname, " +
+    "Name = @Name, " +
+    "Adresse = @Adresse, " +
+    "Telefon = @Telefon, " +
+    "[E-Mail] = @EMail, " +
+    "Position = @Position, " +
+    "EintrittDatum = @EintrittDatum, " +
+    "Gehalt = @Gehalt, " +
+    "Rentenbeginn = @Rentenbeginn, " +
+    "Geburtsdatum = @Geburtsdatum " +
+    "WHERE ID = @id",
+    SqlVariable.connection);
+                SqlVariable.connection.Open();
+                commandUpdate.Parameters.AddWithValue("@id", this.ID);
+                commandUpdate.Parameters.AddWithValue("@Vorname", this.Vorname);
+                commandUpdate.Parameters.AddWithValue("@Name", this.Name);
+                commandUpdate.Parameters.AddWithValue("@Adresse", this.Adresse);
+                commandUpdate.Parameters.AddWithValue("@Telefon", this.Telefon);
+                commandUpdate.Parameters.AddWithValue("@EMail", this.EMail);
+                commandUpdate.Parameters.AddWithValue("@Position", this.Position);
+                commandUpdate.Parameters.AddWithValue("@Eintrittdatum", this.DatumEintritt);
+                commandUpdate.Parameters.AddWithValue("@Gehalt", this.Gehalt);
+                commandUpdate.Parameters.AddWithValue("@Rentenbeginn", this.DatumRentenBeginn);
+                commandUpdate.Parameters.AddWithValue("@Geburtsdatum", this.Geburtsdatum);
+                commandUpdate.ExecuteNonQuery();
+                SqlVariable.connection.Close();
+            }          
         }
 
+        
 
+        public static void deleteMitarbeiter(int id)
+        {
+            SqlCommand sqlCommand = new SqlCommand("Delete from mitarbeiter where id=@id", SqlVariable.connection);
+            SqlVariable.connection.Open();
+            sqlCommand.Parameters.AddWithValue("@id", id);
+            sqlCommand.ExecuteNonQuery();
+            SqlVariable.connection.Close();
+        }
 
-
+        
+        
+   
+       
 
         #region test
         public void Topla(int a, int b)

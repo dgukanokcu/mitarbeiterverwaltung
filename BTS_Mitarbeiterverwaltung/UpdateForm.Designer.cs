@@ -248,6 +248,7 @@
             this.Controls.Add(this.btnSpeichern);
             this.Controls.Add(this.txtBoxVorname);
             this.Text = "Update";
+            this.Load += new System.EventHandler(this.UpdateForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
