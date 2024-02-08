@@ -56,10 +56,10 @@ namespace BTS_Mitarbeiterverwaltung
                 m.Adresse =             txtBoxAdresse.Text;
                 m.Telefon =             txtBoxTelefon.Text;
                 m.updateMitarbeiter();
-                this.Close();
-                DataTable table = Mitarbeiter.getAllMitarbeiter();
-                mainForm.dataGridView1.DataSource = table;
+                this.Close();                
             }
+            DataTable table = Mitarbeiter.getAllMitarbeiter();
+            mainForm.dataGridView1.DataSource = table;
         }
 
         private void UpdateForm_Load(object sender, EventArgs e)

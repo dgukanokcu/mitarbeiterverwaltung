@@ -59,5 +59,16 @@ namespace BTS_Mitarbeiterverwaltung
             UpdateForm updateForm = new UpdateForm(this, selectedRowID);
             updateForm.Show();
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = Mitarbeiter.getMitarbeiterByName(txtBoxName.Text, txtBoxName.Text);
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            DataTable table = Mitarbeiter.getAllMitarbeiter();
+            dataGridView1.DataSource = table;
+        }
     }
 }

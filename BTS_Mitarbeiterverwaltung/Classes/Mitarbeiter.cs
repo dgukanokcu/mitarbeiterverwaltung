@@ -45,13 +45,25 @@ namespace BTS_Mitarbeiterverwaltung.Classes
             SqlVariable.connection.Close();
             return table;
         }
+        public static DataTable getMitarbeiterByName(string vorname, string name)
+        {
+            SqlCommand commandStart = new SqlCommand("SELECT * FROM mitarbeiter WHERE Vorname = @Vorname OR Name = @Name", SqlVariable.connection);
+            commandStart.Parameters.AddWithValue("@Vorname", vorname);
+            commandStart.Parameters.AddWithValue("@Name", name);
 
+            SqlVariable.connection.Open();
+            SqlDataAdapter adapter = new SqlDataAdapter(commandStart);
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+            SqlVariable.connection.Close();
+
+            return table;
+        }
         public static Mitarbeiter getMitarbeiterById(int id)
         {
             Mitarbeiter employee = null;
             SqlCommand commandStart = new SqlCommand("SELECT * FROM mitarbeiter WHERE ID = @id", SqlVariable.connection);
             commandStart.Parameters.AddWithValue("@id", id);
-
             try
             {
                 SqlVariable.connection.Open();
@@ -78,17 +90,14 @@ namespace BTS_Mitarbeiterverwaltung.Classes
             }
             catch (Exception ex)
             {
-                // Hata işleme
                 Console.WriteLine("Hata: " + ex.Message);
             }
             finally
             {
                 SqlVariable.connection.Close();
             }
-
             return employee;
         }
-
         public void updateMitarbeiter()
         {
             if (this.ID == 0)
@@ -140,10 +149,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                 commandUpdate.ExecuteNonQuery();
                 SqlVariable.connection.Close();
             }          
-        }
-
-        
-
+        }    
         public static void deleteMitarbeiter(int id)
         {
             SqlCommand sqlCommand = new SqlCommand("Delete from mitarbeiter where id=@id", SqlVariable.connection);

@@ -44,6 +44,9 @@
             this.btnHinzufügen = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnBearbeiten = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.txtBoxName = new System.Windows.Forms.TextBox();
+            this.btnReset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -182,7 +185,7 @@
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(468, 14);
+            this.btnDelete.Location = new System.Drawing.Point(629, 13);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(183, 63);
@@ -194,7 +197,7 @@
             // btnBearbeiten
             // 
             this.btnBearbeiten.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBearbeiten.Location = new System.Drawing.Point(737, 13);
+            this.btnBearbeiten.Location = new System.Drawing.Point(820, 13);
             this.btnBearbeiten.Margin = new System.Windows.Forms.Padding(4);
             this.btnBearbeiten.Name = "btnBearbeiten";
             this.btnBearbeiten.Size = new System.Drawing.Size(183, 63);
@@ -203,11 +206,46 @@
             this.btnBearbeiten.UseVisualStyleBackColor = true;
             this.btnBearbeiten.Click += new System.EventHandler(this.btnBearbeiten_Click);
             // 
+            // btnSearch
+            // 
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(247, 13);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(183, 63);
+            this.btnSearch.TabIndex = 4;
+            this.btnSearch.Text = "Suchen";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // txtBoxName
+            // 
+            this.txtBoxName.Location = new System.Drawing.Point(16, 14);
+            this.txtBoxName.Multiline = true;
+            this.txtBoxName.Name = "txtBoxName";
+            this.txtBoxName.Size = new System.Drawing.Size(224, 62);
+            this.txtBoxName.TabIndex = 5;
+            // 
+            // btnReset
+            // 
+            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.Location = new System.Drawing.Point(438, 14);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(4);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(183, 63);
+            this.btnReset.TabIndex = 6;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1214, 518);
+            this.Controls.Add(this.btnReset);
+            this.Controls.Add(this.txtBoxName);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnBearbeiten);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnHinzufügen);
@@ -219,6 +257,7 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -239,5 +278,8 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnBearbeiten;
         public System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox txtBoxName;
+        private System.Windows.Forms.Button btnReset;
     }
 }
