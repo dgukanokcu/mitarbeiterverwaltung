@@ -159,10 +159,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
             SqlVariable.connection.Close();
         }
 
-        
-        
-   
-       
+              
 
         #region test
         public void Topla(int a, int b)
