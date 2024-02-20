@@ -34,3 +34,4 @@ C:\Users\dguka\Source\Repos\mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\obj\
 C:\Users\dguka\Source\Repos\mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.csproj.CoreCompileInputs.cache
 C:\Users\dguka\Source\Repos\mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.exe
 C:\Users\dguka\Source\Repos\mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.pdb
+C:\Users\dguka\source\repos\mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.RegisterForm.resources
