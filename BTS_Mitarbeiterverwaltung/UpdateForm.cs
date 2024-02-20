@@ -25,41 +25,34 @@ namespace BTS_Mitarbeiterverwaltung
 
         private void btnSpeichern_Click(object sender, EventArgs e)
         {
-            if (id == 0)
+
+            //MessageBox.Show("Mitarbeiter wurde erfolgreich hinzugefügt!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);               
+
+            Mitarbeiter m = new Mitarbeiter();
+            if (id != 0) { m.ID = id; }
+            m.Vorname = txtBoxVorname.Text;
+            m.Name = txtBoxName.Text;
+            m.Position = txtBoxPosition.Text;
+            m.DatumEintritt = dateTimePickerEintritt.Value;
+            m.DatumRentenBeginn = dateTimePickerRente.Value;
+            m.EMail = txtBoxEmailadresse.Text;
+            m.Gehalt = txtBoxGehalt.Text;
+            m.Geburtsdatum = dateTimePickerGeburtsdatum.Value;
+            m.Adresse = txtBoxAdresse.Text;
+            m.Telefon = txtBoxTelefon.Text;
+
+            if (Mitarbeiter.validation(m))
             {
-                Mitarbeiter m = new Mitarbeiter();
-                m.Vorname = txtBoxVorname.Text;
-                m.Name = txtBoxName.Text;
-                m.Position = txtBoxPosition.Text;
-                m.DatumEintritt = dateTimePickerEintritt.Value;
-                m.DatumRentenBeginn = dateTimePickerRente.Value;
-                m.EMail = txtBoxEmailadresse.Text;
-                m.Gehalt = txtBoxGehalt.Text;
-                m.Geburtsdatum = dateTimePickerGeburtsdatum.Value;
-                m.Adresse = txtBoxAdresse.Text;
-                m.Telefon = txtBoxTelefon.Text;
                 m.updateMitarbeiter();
                 this.Close();
+                MessageBox.Show("Mitarbeiter wurde erfolgreich aktualisiert!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DataTable table = Mitarbeiter.getAllMitarbeiter();
+                mainForm.dataGridView1.DataSource = table;
             }
-            else
+            else 
             {
-                Mitarbeiter m = new Mitarbeiter();
-                m.ID = id;
-                m.Vorname =             txtBoxVorname.Text;
-                m.Name =                txtBoxName.Text;
-                m.Position =            txtBoxPosition.Text;
-                m.DatumEintritt =       dateTimePickerEintritt.Value;
-                m.DatumRentenBeginn =   dateTimePickerRente.Value;
-                m.EMail =               txtBoxEmailadresse.Text;
-                m.Gehalt =              txtBoxGehalt.Text;
-                m.Geburtsdatum =        dateTimePickerGeburtsdatum.Value;
-                m.Adresse =             txtBoxAdresse.Text;
-                m.Telefon =             txtBoxTelefon.Text;
-                m.updateMitarbeiter();
-                this.Close();                
+                MessageBox.Show("Überprüfen Sie bitte Ihre Angaben!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            DataTable table = Mitarbeiter.getAllMitarbeiter();
-            mainForm.dataGridView1.DataSource = table;
         }
 
         private void UpdateForm_Load(object sender, EventArgs e)
@@ -72,7 +65,7 @@ namespace BTS_Mitarbeiterverwaltung
                 txtBoxPosition.Text = m.Position;
                 dateTimePickerEintritt.Value = m.DatumEintritt;
                 dateTimePickerRente.Value = m.DatumRentenBeginn;
-                txtBoxEmailadresse.Text = m.EMail; 
+                txtBoxEmailadresse.Text = m.EMail;
                 txtBoxGehalt.Text = m.Gehalt;
                 dateTimePickerGeburtsdatum.Value = m.Geburtsdatum;
                 txtBoxAdresse.Text = m.Adresse;

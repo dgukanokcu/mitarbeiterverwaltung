@@ -247,6 +247,7 @@
             this.Controls.Add(this.txtBoxName);
             this.Controls.Add(this.btnSpeichern);
             this.Controls.Add(this.txtBoxVorname);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Update";
             this.Load += new System.EventHandler(this.UpdateForm_Load);
             this.ResumeLayout(false);

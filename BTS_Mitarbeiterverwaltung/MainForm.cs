@@ -40,17 +40,25 @@ namespace BTS_Mitarbeiterverwaltung
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
-        {                         
-                Mitarbeiter.deleteMitarbeiter(selectedRowID);              
+        {
+            DialogResult result = MessageBox.Show("Möchten Sie wirklich löschen?", "Sicher?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                Mitarbeiter.deleteMitarbeiter(selectedRowID);
                 DataTable table = Mitarbeiter.getAllMitarbeiter();
-                dataGridView1.DataSource = table;                           
+                dataGridView1.DataSource = table;
+                MessageBox.Show("Mitarbeiter wurde erfolgreich gelöscht!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
-                selectedRowID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["ID"].Value);
+                if (dataGridView1.SelectedRows[0].Cells["ID"].Value is int)
+                {
+                    selectedRowID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["ID"].Value);
+                }
             }
         }
 
@@ -62,7 +70,7 @@ namespace BTS_Mitarbeiterverwaltung
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = Mitarbeiter.getMitarbeiterByName(txtBoxName.Text, txtBoxName.Text);
+
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -70,5 +78,11 @@ namespace BTS_Mitarbeiterverwaltung
             DataTable table = Mitarbeiter.getAllMitarbeiter();
             dataGridView1.DataSource = table;
         }
+
+        private void txtBoxName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            dataGridView1.DataSource = Mitarbeiter.getMitarbeiterByName(txtBoxName.Text, txtBoxName.Text);
+        }
+
     }
 }

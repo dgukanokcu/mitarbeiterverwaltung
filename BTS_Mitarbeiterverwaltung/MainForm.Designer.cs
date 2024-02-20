@@ -66,9 +66,10 @@
             this.RentenBeginn,
             this.Geburtsdatum,
             this.Alter});
-            this.dataGridView1.Location = new System.Drawing.Point(16, 85);
+            this.dataGridView1.Location = new System.Drawing.Point(23, 85);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(1178, 405);
             this.dataGridView1.TabIndex = 0;
@@ -80,6 +81,8 @@
             this.ID.HeaderText = "ID";
             this.ID.MinimumWidth = 6;
             this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
             this.ID.Width = 125;
             // 
             // Vorname
@@ -88,6 +91,7 @@
             this.Vorname.HeaderText = "Vorname";
             this.Vorname.MinimumWidth = 6;
             this.Vorname.Name = "Vorname";
+            this.Vorname.ReadOnly = true;
             this.Vorname.Width = 125;
             // 
             // Name
@@ -96,6 +100,7 @@
             this.Name.HeaderText = "Name";
             this.Name.MinimumWidth = 6;
             this.Name.Name = "Name";
+            this.Name.ReadOnly = true;
             this.Name.Width = 125;
             // 
             // Adresse
@@ -104,6 +109,7 @@
             this.Adresse.HeaderText = "Adresse";
             this.Adresse.MinimumWidth = 6;
             this.Adresse.Name = "Adresse";
+            this.Adresse.ReadOnly = true;
             this.Adresse.Width = 125;
             // 
             // Telefon
@@ -112,6 +118,7 @@
             this.Telefon.HeaderText = "Telefon";
             this.Telefon.MinimumWidth = 6;
             this.Telefon.Name = "Telefon";
+            this.Telefon.ReadOnly = true;
             this.Telefon.Width = 125;
             // 
             // Emailadresse
@@ -120,6 +127,7 @@
             this.Emailadresse.HeaderText = "Emailadresse";
             this.Emailadresse.MinimumWidth = 6;
             this.Emailadresse.Name = "Emailadresse";
+            this.Emailadresse.ReadOnly = true;
             this.Emailadresse.Width = 125;
             // 
             // Position
@@ -128,6 +136,7 @@
             this.Position.HeaderText = "Position";
             this.Position.MinimumWidth = 6;
             this.Position.Name = "Position";
+            this.Position.ReadOnly = true;
             this.Position.Width = 125;
             // 
             // Eintritt
@@ -136,6 +145,7 @@
             this.Eintritt.HeaderText = "Eintritt";
             this.Eintritt.MinimumWidth = 6;
             this.Eintritt.Name = "Eintritt";
+            this.Eintritt.ReadOnly = true;
             this.Eintritt.Width = 125;
             // 
             // Gehalt
@@ -144,6 +154,7 @@
             this.Gehalt.HeaderText = "Gehalt";
             this.Gehalt.MinimumWidth = 6;
             this.Gehalt.Name = "Gehalt";
+            this.Gehalt.ReadOnly = true;
             this.Gehalt.Width = 125;
             // 
             // RentenBeginn
@@ -152,6 +163,7 @@
             this.RentenBeginn.HeaderText = "Rentenbeginn";
             this.RentenBeginn.MinimumWidth = 6;
             this.RentenBeginn.Name = "RentenBeginn";
+            this.RentenBeginn.ReadOnly = true;
             this.RentenBeginn.Width = 125;
             // 
             // Geburtsdatum
@@ -160,6 +172,7 @@
             this.Geburtsdatum.HeaderText = "Geburtsdatum";
             this.Geburtsdatum.MinimumWidth = 6;
             this.Geburtsdatum.Name = "Geburtsdatum";
+            this.Geburtsdatum.ReadOnly = true;
             this.Geburtsdatum.Width = 125;
             // 
             // Alter
@@ -168,6 +181,7 @@
             this.Alter.HeaderText = "Alter";
             this.Alter.MinimumWidth = 6;
             this.Alter.Name = "Alter";
+            this.Alter.ReadOnly = true;
             this.Alter.Width = 125;
             // 
             // btnHinzufügen
@@ -225,6 +239,7 @@
             this.txtBoxName.Name = "txtBoxName";
             this.txtBoxName.Size = new System.Drawing.Size(224, 62);
             this.txtBoxName.TabIndex = 5;
+            this.txtBoxName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxName_KeyPress);
             // 
             // btnReset
             // 
@@ -263,6 +278,11 @@
 
         #endregion
         private System.Windows.Forms.Button btnHinzufügen;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnBearbeiten;
+        public System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Vorname;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name;
@@ -275,11 +295,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn RentenBeginn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Geburtsdatum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Alter;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnBearbeiten;
-        public System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.TextBox txtBoxName;
-        private System.Windows.Forms.Button btnReset;
+        public System.Windows.Forms.TextBox txtBoxName;
     }
 }

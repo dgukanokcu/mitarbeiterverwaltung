@@ -47,9 +47,9 @@ namespace BTS_Mitarbeiterverwaltung.Classes
         }
         public static DataTable getMitarbeiterByName(string vorname, string name)
         {
-            SqlCommand commandStart = new SqlCommand("SELECT * FROM mitarbeiter WHERE Vorname = @Vorname OR Name = @Name", SqlVariable.connection);
-            commandStart.Parameters.AddWithValue("@Vorname", vorname);
-            commandStart.Parameters.AddWithValue("@Name", name);
+            SqlCommand commandStart = new SqlCommand("SELECT * FROM mitarbeiter WHERE Vorname LIKE @Vorname OR Name LIKE @Name", SqlVariable.connection);
+            commandStart.Parameters.AddWithValue("@Vorname", "%" + vorname + "%");
+            commandStart.Parameters.AddWithValue("@Name", "%" + name + "%");
 
             SqlVariable.connection.Open();
             SqlDataAdapter adapter = new SqlDataAdapter(commandStart);
@@ -157,6 +157,18 @@ namespace BTS_Mitarbeiterverwaltung.Classes
             sqlCommand.Parameters.AddWithValue("@id", id);
             sqlCommand.ExecuteNonQuery();
             SqlVariable.connection.Close();
+        }
+
+        public static bool validation(Mitarbeiter m)
+        {
+            if (string.IsNullOrWhiteSpace(m.Name) || string.IsNullOrWhiteSpace(m.Vorname)) 
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
               

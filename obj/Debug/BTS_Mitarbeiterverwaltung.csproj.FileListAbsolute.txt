@@ -1,0 +1,16 @@
+C:\Users\dguka\Source\Repos\mitarbeiterverwaltung\bin\Debug\BTS_Mitarbeiterverwaltung.exe.config
+C:\Users\dguka\Source\Repos\mitarbeiterverwaltung\bin\Debug\BTS_Mitarbeiterverwaltung.exe
+C:\Users\dguka\Source\Repos\mitarbeiterverwaltung\bin\Debug\BTS_Mitarbeiterverwaltung.pdb
+C:\Users\dguka\Source\Repos\mitarbeiterverwaltung\bin\Debug\System.Memory.dll
+C:\Users\dguka\Source\Repos\mitarbeiterverwaltung\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\dguka\Source\Repos\mitarbeiterverwaltung\bin\Debug\System.Buffers.dll
+C:\Users\dguka\Source\Repos\mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.csproj.AssemblyReference.cache
+C:\Users\dguka\Source\Repos\mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.RegisterForm.resources
+C:\Users\dguka\Source\Repos\mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.LoginForm.resources
+C:\Users\dguka\Source\Repos\mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.MainForm.resources
+C:\Users\dguka\Source\Repos\mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.Properties.Resources.resources
+C:\Users\dguka\Source\Repos\mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.csproj.GenerateResource.cache
+C:\Users\dguka\Source\Repos\mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.csproj.CoreCompileInputs.cache
+C:\Users\dguka\Source\Repos\mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.csproj.CopyComplete
+C:\Users\dguka\Source\Repos\mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.exe
+C:\Users\dguka\Source\Repos\mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.pdb
