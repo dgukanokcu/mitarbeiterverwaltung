@@ -53,16 +53,18 @@
             // 
             // txtBoxVorname
             // 
-            this.txtBoxVorname.Location = new System.Drawing.Point(159, 98);
+            this.txtBoxVorname.Location = new System.Drawing.Point(119, 80);
+            this.txtBoxVorname.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtBoxVorname.Name = "txtBoxVorname";
-            this.txtBoxVorname.Size = new System.Drawing.Size(100, 22);
+            this.txtBoxVorname.Size = new System.Drawing.Size(76, 20);
             this.txtBoxVorname.TabIndex = 0;
             // 
             // btnSpeichern
             // 
-            this.btnSpeichern.Location = new System.Drawing.Point(574, 452);
+            this.btnSpeichern.Location = new System.Drawing.Point(472, 326);
+            this.btnSpeichern.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSpeichern.Name = "btnSpeichern";
-            this.btnSpeichern.Size = new System.Drawing.Size(100, 23);
+            this.btnSpeichern.Size = new System.Drawing.Size(89, 28);
             this.btnSpeichern.TabIndex = 1;
             this.btnSpeichern.Text = "Speichern";
             this.btnSpeichern.UseVisualStyleBackColor = true;
@@ -70,162 +72,184 @@
             // 
             // txtBoxName
             // 
-            this.txtBoxName.Location = new System.Drawing.Point(159, 153);
+            this.txtBoxName.Location = new System.Drawing.Point(119, 124);
+            this.txtBoxName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtBoxName.Name = "txtBoxName";
-            this.txtBoxName.Size = new System.Drawing.Size(100, 22);
+            this.txtBoxName.Size = new System.Drawing.Size(76, 20);
             this.txtBoxName.TabIndex = 2;
             // 
             // txtBoxTelefon
             // 
-            this.txtBoxTelefon.Location = new System.Drawing.Point(159, 348);
+            this.txtBoxTelefon.Location = new System.Drawing.Point(119, 283);
+            this.txtBoxTelefon.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtBoxTelefon.Name = "txtBoxTelefon";
-            this.txtBoxTelefon.Size = new System.Drawing.Size(100, 22);
+            this.txtBoxTelefon.Size = new System.Drawing.Size(76, 20);
             this.txtBoxTelefon.TabIndex = 3;
             // 
             // txtBoxEmailadresse
             // 
-            this.txtBoxEmailadresse.Location = new System.Drawing.Point(159, 284);
+            this.txtBoxEmailadresse.Location = new System.Drawing.Point(119, 231);
+            this.txtBoxEmailadresse.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtBoxEmailadresse.Name = "txtBoxEmailadresse";
-            this.txtBoxEmailadresse.Size = new System.Drawing.Size(100, 22);
+            this.txtBoxEmailadresse.Size = new System.Drawing.Size(76, 20);
             this.txtBoxEmailadresse.TabIndex = 4;
             // 
             // txtBoxAdresse
             // 
-            this.txtBoxAdresse.Location = new System.Drawing.Point(159, 210);
+            this.txtBoxAdresse.Location = new System.Drawing.Point(119, 171);
+            this.txtBoxAdresse.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtBoxAdresse.Name = "txtBoxAdresse";
-            this.txtBoxAdresse.Size = new System.Drawing.Size(100, 22);
+            this.txtBoxAdresse.Size = new System.Drawing.Size(76, 20);
             this.txtBoxAdresse.TabIndex = 5;
             // 
             // txtBoxPosition
             // 
-            this.txtBoxPosition.Location = new System.Drawing.Point(557, 98);
+            this.txtBoxPosition.Location = new System.Drawing.Point(418, 80);
+            this.txtBoxPosition.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtBoxPosition.Name = "txtBoxPosition";
-            this.txtBoxPosition.Size = new System.Drawing.Size(100, 22);
+            this.txtBoxPosition.Size = new System.Drawing.Size(76, 20);
             this.txtBoxPosition.TabIndex = 6;
             // 
             // txtBoxGehalt
             // 
-            this.txtBoxGehalt.Location = new System.Drawing.Point(547, 207);
+            this.txtBoxGehalt.Location = new System.Drawing.Point(410, 168);
+            this.txtBoxGehalt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtBoxGehalt.Name = "txtBoxGehalt";
-            this.txtBoxGehalt.Size = new System.Drawing.Size(100, 22);
+            this.txtBoxGehalt.Size = new System.Drawing.Size(76, 20);
             this.txtBoxGehalt.TabIndex = 8;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(77, 104);
+            this.label1.Location = new System.Drawing.Point(58, 84);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 16);
+            this.label1.Size = new System.Drawing.Size(49, 13);
             this.label1.TabIndex = 11;
             this.label1.Text = "Vorname";
             // 
             // Name
             // 
             this.Name.AutoSize = true;
-            this.Name.Location = new System.Drawing.Point(77, 156);
+            this.Name.Location = new System.Drawing.Point(58, 127);
+            this.Name.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Name.Name = "Name";
-            this.Name.Size = new System.Drawing.Size(44, 16);
+            this.Name.Size = new System.Drawing.Size(35, 13);
             this.Name.TabIndex = 12;
             this.Name.Text = "Name";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(77, 210);
+            this.label3.Location = new System.Drawing.Point(58, 171);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 16);
+            this.label3.Size = new System.Drawing.Size(45, 13);
             this.label3.TabIndex = 13;
             this.label3.Text = "Adresse";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(77, 354);
+            this.label4.Location = new System.Drawing.Point(58, 288);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 16);
+            this.label4.Size = new System.Drawing.Size(43, 13);
             this.label4.TabIndex = 14;
             this.label4.Text = "Telefon";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(77, 287);
+            this.label5.Location = new System.Drawing.Point(58, 233);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(45, 16);
+            this.label5.Size = new System.Drawing.Size(36, 13);
             this.label5.TabIndex = 15;
             this.label5.Text = "E-Mail";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(473, 104);
+            this.label6.Location = new System.Drawing.Point(355, 84);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 16);
+            this.label6.Size = new System.Drawing.Size(44, 13);
             this.label6.TabIndex = 16;
             this.label6.Text = "Position";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(482, 156);
+            this.label7.Location = new System.Drawing.Point(362, 127);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(42, 16);
+            this.label7.Size = new System.Drawing.Size(36, 13);
             this.label7.TabIndex = 17;
             this.label7.Text = "Eintritt";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(482, 213);
+            this.label8.Location = new System.Drawing.Point(362, 173);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(46, 16);
+            this.label8.Size = new System.Drawing.Size(38, 13);
             this.label8.TabIndex = 18;
             this.label8.Text = "Gehalt";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(450, 284);
+            this.label9.Location = new System.Drawing.Point(338, 231);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(91, 16);
+            this.label9.Size = new System.Drawing.Size(74, 13);
             this.label9.TabIndex = 19;
             this.label9.Text = "Rentenbeginn";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(450, 354);
+            this.label10.Location = new System.Drawing.Point(338, 288);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(91, 16);
+            this.label10.Size = new System.Drawing.Size(73, 13);
             this.label10.TabIndex = 20;
             this.label10.Text = "Geburtsdatum";
             // 
             // dateTimePickerEintritt
             // 
-            this.dateTimePickerEintritt.Location = new System.Drawing.Point(547, 156);
+            this.dateTimePickerEintritt.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerEintritt.Location = new System.Drawing.Point(410, 127);
+            this.dateTimePickerEintritt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTimePickerEintritt.Name = "dateTimePickerEintritt";
-            this.dateTimePickerEintritt.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePickerEintritt.Size = new System.Drawing.Size(151, 20);
             this.dateTimePickerEintritt.TabIndex = 21;
             // 
             // dateTimePickerRente
             // 
-            this.dateTimePickerRente.Location = new System.Drawing.Point(547, 281);
+            this.dateTimePickerRente.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerRente.Location = new System.Drawing.Point(410, 228);
+            this.dateTimePickerRente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTimePickerRente.Name = "dateTimePickerRente";
-            this.dateTimePickerRente.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePickerRente.Size = new System.Drawing.Size(151, 20);
             this.dateTimePickerRente.TabIndex = 22;
             // 
             // dateTimePickerGeburtsdatum
             // 
-            this.dateTimePickerGeburtsdatum.Location = new System.Drawing.Point(547, 349);
+            this.dateTimePickerGeburtsdatum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerGeburtsdatum.Location = new System.Drawing.Point(410, 284);
+            this.dateTimePickerGeburtsdatum.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTimePickerGeburtsdatum.Name = "dateTimePickerGeburtsdatum";
-            this.dateTimePickerGeburtsdatum.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePickerGeburtsdatum.Size = new System.Drawing.Size(151, 20);
             this.dateTimePickerGeburtsdatum.TabIndex = 23;
             // 
             // UpdateForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1013, 600);
+            this.ClientSize = new System.Drawing.Size(760, 488);
             this.Controls.Add(this.dateTimePickerGeburtsdatum);
             this.Controls.Add(this.dateTimePickerRente);
             this.Controls.Add(this.dateTimePickerEintritt);
@@ -247,6 +271,8 @@
             this.Controls.Add(this.txtBoxName);
             this.Controls.Add(this.btnSpeichern);
             this.Controls.Add(this.txtBoxVorname);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Name = "UpdateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Update";
             this.Load += new System.EventHandler(this.UpdateForm_Load);
