@@ -24,30 +24,34 @@ namespace BTS_Mitarbeiterverwaltung
         }
 
         private void btnSpeichern_Click(object sender, EventArgs e)
-        {
-
-            //MessageBox.Show("Mitarbeiter wurde erfolgreich hinzugefügt!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);               
-
-            Mitarbeiter m = new Mitarbeiter();
+        {           
+            Employee m = new Employee();
             if (id != 0) { m.ID = id; }
-            m.Vorname = txtBoxVorname.Text;
-            m.Name = txtBoxName.Text;
+            m.Vorname = txtBoxName.Text;
+            m.Name = txtBoxSurname.Text;
             m.Position = txtBoxPosition.Text;
-            m.DatumEintritt = dateTimePickerEintritt.Value;
-            m.DatumRentenBeginn = dateTimePickerRente.Value;
-            m.EMail = txtBoxEmailadresse.Text;
-            m.Gehalt = txtBoxGehalt.Text;
-            m.Geburtsdatum = dateTimePickerGeburtsdatum.Value;
-            m.Adresse = txtBoxAdresse.Text;
+            m.DatumEintritt = dateTimePickerEntry.Value;
+            m.DatumRentenBeginn = dateTimePickerRetirement.Value;
+            m.EMail = txtBoxEmail.Text;
+            m.Gehalt = txtBoxSalary.Text;
+            m.Geburtsdatum = dateTimePickerBirthdate.Value;
+            m.Adresse = txtBoxAdress.Text;
             m.Telefon = txtBoxTelefon.Text;
 
-            if (Mitarbeiter.validation(m))
+            if (Employee.validation(m))
             {
-                m.updateMitarbeiter();
+                m.updateEmployee();
                 this.Close();
-                MessageBox.Show("Mitarbeiter wurde erfolgreich aktualisiert!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DataTable table = Mitarbeiter.getAllMitarbeiter();
-                mainForm.dataGridView1.DataSource = table;
+                if (m.ID == 0)
+                {
+                    MessageBox.Show("Mitarbeiter wurde erfolgreich hinzugefügt!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else 
+                {
+                    MessageBox.Show("Mitarbeiter wurde erfolgreich aktualisiert!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }             
+                DataTable table = Employee.getAllEmployees();
+                mainForm.dataGridViewEmployee.DataSource = table;
             }
             else 
             {
@@ -59,16 +63,16 @@ namespace BTS_Mitarbeiterverwaltung
         {
             if (id != 0)
             {
-                Mitarbeiter m = Mitarbeiter.getMitarbeiterById(id);
-                txtBoxVorname.Text = m.Vorname;
-                txtBoxName.Text = m.Name;
+                Employee m = Employee.getEmployeeById(id);
+                txtBoxName.Text = m.Vorname;
+                txtBoxSurname.Text = m.Name;
                 txtBoxPosition.Text = m.Position;
-                dateTimePickerEintritt.Value = m.DatumEintritt;
-                dateTimePickerRente.Value = m.DatumRentenBeginn;
-                txtBoxEmailadresse.Text = m.EMail;
-                txtBoxGehalt.Text = m.Gehalt;
-                dateTimePickerGeburtsdatum.Value = m.Geburtsdatum;
-                txtBoxAdresse.Text = m.Adresse;
+                dateTimePickerEntry.Value = m.DatumEintritt;
+                dateTimePickerRetirement.Value = m.DatumRentenBeginn;
+                txtBoxEmail.Text = m.EMail;
+                txtBoxSalary.Text = m.Gehalt;
+                dateTimePickerBirthdate.Value = m.Geburtsdatum;
+                txtBoxAdress.Text = m.Adresse;
                 txtBoxTelefon.Text = m.Telefon;
             }
         }

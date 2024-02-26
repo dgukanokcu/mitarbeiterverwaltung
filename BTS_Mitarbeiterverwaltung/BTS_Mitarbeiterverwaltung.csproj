@@ -48,7 +48,7 @@
   <ItemGroup>
     <Compile Include="Classes\Account.cs" />
     <Compile Include="Classes\Function.cs" />
-    <Compile Include="Classes\Mitarbeiter.cs" />
+    <Compile Include="Classes\Employee.cs" />
     <Compile Include="Classes\PasswortUtility.cs" />
     <Compile Include="Classes\SqlVariable.cs" />
     <Compile Include="LoginForm.cs">

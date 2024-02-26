@@ -23,19 +23,22 @@ namespace BTS_Mitarbeiterverwaltung
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string benutzername = txtBoxUsername.Text;
-            string passwort = txtBoxPassword.Text;
-
-            if (Function.Validation(benutzername, passwort))
-            {
-                MainForm mainForm = new MainForm();
+            MainForm mainForm = new MainForm();
                 this.Hide();
                 mainForm.Show();
-            }
-            else
-            {
-                MessageBox.Show("Login fehlgeschlagen. Überprüfen Sie Benutzername und Passwort.");
-            }
+            //string benutzername = txtBoxUsername.Text;
+            //string passwort = txtBoxPassword.Text;
+
+            //if (Function.Validation(benutzername, passwort))
+            //{
+            //    MainForm mainForm = new MainForm();
+            //    this.Hide();
+            //    mainForm.Show();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Login fehlgeschlagen. Überprüfen Sie Benutzername und Passwort.");
+            //}
         }
         private void label4_Click(object sender, EventArgs e)
         {

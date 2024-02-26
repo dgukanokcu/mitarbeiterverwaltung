@@ -35,3 +35,16 @@ C:\Users\dguka\Source\Repos\mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\obj\
 C:\Users\dguka\Source\Repos\mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.exe
 C:\Users\dguka\Source\Repos\mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.pdb
 C:\Users\dguka\source\repos\mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.RegisterForm.resources
+C:\Users\okcdo.DO-KUP\Source\Repos\dgukanokcu\mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.csproj.AssemblyReference.cache
+C:\Users\okcdo.DO-KUP\Source\Repos\dgukanokcu\mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.LoginForm.resources
+C:\Users\okcdo.DO-KUP\Source\Repos\dgukanokcu\mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.MainForm.resources
+C:\Users\okcdo.DO-KUP\Source\Repos\dgukanokcu\mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.Properties.Resources.resources
+C:\Users\okcdo.DO-KUP\Source\Repos\dgukanokcu\mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.RegisterForm.resources
+C:\Users\okcdo.DO-KUP\Source\Repos\dgukanokcu\mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.UpdateForm.resources
+C:\Users\okcdo.DO-KUP\Source\Repos\dgukanokcu\mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.csproj.GenerateResource.cache
+C:\Users\okcdo.DO-KUP\Source\Repos\dgukanokcu\mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.csproj.CoreCompileInputs.cache
+C:\Users\okcdo.DO-KUP\Source\Repos\dgukanokcu\mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.exe
+C:\Users\okcdo.DO-KUP\Source\Repos\dgukanokcu\mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.pdb
+C:\Users\okcdo.DO-KUP\Source\Repos\dgukanokcu\mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\bin\Debug\BTS_Mitarbeiterverwaltung.exe.config
+C:\Users\okcdo.DO-KUP\Source\Repos\dgukanokcu\mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\bin\Debug\BTS_Mitarbeiterverwaltung.exe
+C:\Users\okcdo.DO-KUP\Source\Repos\dgukanokcu\mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\bin\Debug\BTS_Mitarbeiterverwaltung.pdb
