@@ -24,8 +24,8 @@ namespace BTS_Mitarbeiterverwaltung
         private void btnLogin_Click(object sender, EventArgs e)
         {
             MainForm mainForm = new MainForm();
-                this.Hide();
-                mainForm.Show();
+            this.Hide();
+            mainForm.Show();
             //string benutzername = txtBoxUsername.Text;
             //string passwort = txtBoxPassword.Text;
 

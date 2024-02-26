@@ -24,8 +24,8 @@ namespace BTS_Mitarbeiterverwaltung
         public int selectedRowID { get; set; }
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //DataTable table = Employee.getAllEmployees();
-            //dataGridViewEmployee.DataSource = table;
+            DataTable table = Employee.getAllEmployees();
+            dataGridViewEmployee.DataSource = table;
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -53,19 +53,31 @@ namespace BTS_Mitarbeiterverwaltung
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            if (dataGridViewEmployee.SelectedRows.Count > 0)
+            //if (dataGridViewEmployee.SelectedRows.Count > 0)
             {
-                if (dataGridViewEmployee.SelectedRows[0].Cells["ID"].Value is int)
+                //if (dataGridViewEmployee.SelectedRows[0].Cells["ID"].Value is int)
                 {
-                    selectedRowID = Convert.ToInt32(dataGridViewEmployee.SelectedRows[0].Cells["ID"].Value);
+                    //selectedRowID = Convert.ToInt32(dataGridViewEmployee.SelectedRows[0].Cells["ID"].Value);
+                    
+
+                    try
+                    {
+                        selectedRowID = Convert.ToInt32(dataGridViewEmployee.CurrentRow.Cells["ID"].Value);
+                    }
+                    catch (Exception)
+                    {
+                    }
                 }
             }
         }
 
         private void btnBearbeiten_Click(object sender, EventArgs e)
         {
-            UpdateForm updateForm = new UpdateForm(this, selectedRowID);
-            updateForm.Show();
+            if (selectedRowID != 0)
+            {
+                UpdateForm updateForm = new UpdateForm(this, selectedRowID);
+                updateForm.Show();
+            }
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -96,6 +108,14 @@ namespace BTS_Mitarbeiterverwaltung
             {
                 UpdateForm updateForm = new UpdateForm(this, selectedRowID);
                 updateForm.Show();
+            }
+        }
+
+        private void dataGridViewEmployee_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex != -1 && e.ColumnIndex != -1)
+            {
+                dataGridViewEmployee.ClearSelection();
             }
         }
     }

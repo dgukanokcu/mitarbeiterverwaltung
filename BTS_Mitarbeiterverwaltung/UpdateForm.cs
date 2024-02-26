@@ -37,6 +37,7 @@ namespace BTS_Mitarbeiterverwaltung
             m.Geburtsdatum = dateTimePickerBirthdate.Value;
             m.Adresse = txtBoxAdress.Text;
             m.Telefon = txtBoxTelefon.Text;
+            m.Geschlecht = comboBoxGender.Text;
 
             if (Employee.validation(m))
             {
@@ -74,6 +75,7 @@ namespace BTS_Mitarbeiterverwaltung
                 dateTimePickerBirthdate.Value = m.Geburtsdatum;
                 txtBoxAdress.Text = m.Adresse;
                 txtBoxTelefon.Text = m.Telefon;
+                comboBoxGender.Text = m.Geschlecht;
             }
         }
     }

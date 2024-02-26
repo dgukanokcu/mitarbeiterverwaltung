@@ -28,6 +28,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
         public DateTime DatumRentenBeginn { get; set; }
         public DateTime Geburtsdatum { get; set; }
         public int Alter { get; set; }
+        public string Geschlecht { get; set; }
 
         #endregion
 
@@ -83,7 +84,8 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                         Gehalt = reader["Gehalt"].ToString(),
                         Geburtsdatum = Convert.ToDateTime(reader["Geburtsdatum"]),
                         Adresse = reader["Adresse"].ToString(),
-                        Telefon = reader["Telefon"].ToString()
+                        Telefon = reader["Telefon"].ToString(),
+                        Geschlecht = reader["Geschlecht"].ToString()
                     };
                 }
                 reader.Close();
@@ -102,7 +104,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
         {
             if (this.ID == 0)
             {
-                SqlCommand commandUpdate = new SqlCommand("Insert into mitarbeiter (Vorname, Name, Adresse, Telefon, [E-Mail], Position, EintrittDatum, Gehalt, Rentenbeginn, Geburtsdatum) values (@Vorname, @Name, @Adresse, @Telefon, @EMail, @Position, @EintrittDatum, @Gehalt, @Rentenbeginn, @Geburtsdatum)", SqlVariable.connection);
+                SqlCommand commandUpdate = new SqlCommand("Insert into mitarbeiter (Vorname, Name, Adresse, Telefon, [E-Mail], Position, EintrittDatum, Gehalt, Rentenbeginn, Geburtsdatum, Geschlecht) values (@Vorname, @Name, @Adresse, @Telefon, @EMail, @Position, @EintrittDatum, @Gehalt, @Rentenbeginn, @Geburtsdatum, @Geschlecht)", SqlVariable.connection);
                 SqlVariable.connection.Open();
                 commandUpdate.Parameters.AddWithValue("@Vorname", this.Vorname);
                 commandUpdate.Parameters.AddWithValue("@Name", this.Name);
@@ -114,6 +116,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                 commandUpdate.Parameters.AddWithValue("@Gehalt", this.Gehalt);
                 commandUpdate.Parameters.AddWithValue("@Rentenbeginn", this.DatumRentenBeginn);
                 commandUpdate.Parameters.AddWithValue("@Geburtsdatum", this.Geburtsdatum);
+                commandUpdate.Parameters.AddWithValue("@Geschlecht", this.Geschlecht);
                 commandUpdate.ExecuteNonQuery();
                 SqlVariable.connection.Close();
             }
@@ -132,6 +135,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
     "Gehalt = @Gehalt, " +
     "Rentenbeginn = @Rentenbeginn, " +
     "Geburtsdatum = @Geburtsdatum " +
+    "Geschlecht = @Geschlecht " +
     "WHERE ID = @id",
     SqlVariable.connection);
                 SqlVariable.connection.Open();
@@ -146,6 +150,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                 commandUpdate.Parameters.AddWithValue("@Gehalt", this.Gehalt);
                 commandUpdate.Parameters.AddWithValue("@Rentenbeginn", this.DatumRentenBeginn);
                 commandUpdate.Parameters.AddWithValue("@Geburtsdatum", this.Geburtsdatum);
+                commandUpdate.Parameters.AddWithValue("@Geschlecht", this.Geschlecht);
                 commandUpdate.ExecuteNonQuery();
                 SqlVariable.connection.Close();
             }          
