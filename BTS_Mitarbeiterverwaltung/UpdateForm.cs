@@ -29,9 +29,8 @@ namespace BTS_Mitarbeiterverwaltung
             if (id != 0) { m.ID = id; }
             m.Vorname = txtBoxName.Text;
             m.Name = txtBoxSurname.Text;
-            m.Position = txtBoxPosition.Text;
+            m.Position = comboBoxPosition.Text;
             m.DatumEintritt = dateTimePickerEntry.Value;
-            m.DatumRentenBeginn = dateTimePickerRetirement.Value;
             m.EMail = txtBoxEmail.Text;
             m.Gehalt = txtBoxSalary.Text;
             m.Geburtsdatum = dateTimePickerBirthdate.Value;
@@ -67,9 +66,8 @@ namespace BTS_Mitarbeiterverwaltung
                 Employee m = Employee.getEmployeeById(id);
                 txtBoxName.Text = m.Vorname;
                 txtBoxSurname.Text = m.Name;
-                txtBoxPosition.Text = m.Position;
+                comboBoxPosition.Text = m.Position;
                 dateTimePickerEntry.Value = m.DatumEintritt;
-                dateTimePickerRetirement.Value = m.DatumRentenBeginn;
                 txtBoxEmail.Text = m.EMail;
                 txtBoxSalary.Text = m.Gehalt;
                 dateTimePickerBirthdate.Value = m.Geburtsdatum;

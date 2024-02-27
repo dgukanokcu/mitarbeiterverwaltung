@@ -46,11 +46,11 @@
             this.Telefon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Emailadresse = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Position = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Geburtsdatum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Alter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Eintritt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gehalt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RentenBeginn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Geburtsdatum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Alter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployee)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,11 +69,11 @@
             this.Telefon,
             this.Emailadresse,
             this.Position,
+            this.Geburtsdatum,
+            this.Alter,
             this.Eintritt,
             this.Gehalt,
-            this.RentenBeginn,
-            this.Geburtsdatum,
-            this.Alter});
+            this.RentenBeginn});
             this.dataGridViewEmployee.Location = new System.Drawing.Point(22, 66);
             this.dataGridViewEmployee.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewEmployee.Name = "dataGridViewEmployee";
@@ -93,12 +93,12 @@
             this.btnAddEmployee.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnAddEmployee.Image = ((System.Drawing.Image)(resources.GetObject("btnAddEmployee.Image")));
             this.btnAddEmployee.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAddEmployee.Location = new System.Drawing.Point(1190, 16);
+            this.btnAddEmployee.Location = new System.Drawing.Point(970, 11);
             this.btnAddEmployee.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddEmployee.Name = "btnAddEmployee";
-            this.btnAddEmployee.Size = new System.Drawing.Size(278, 42);
+            this.btnAddEmployee.Size = new System.Drawing.Size(249, 42);
             this.btnAddEmployee.TabIndex = 1;
-            this.btnAddEmployee.Text = "Neue Mitarbeiter Hinzufügen";
+            this.btnAddEmployee.Text = "Mitarbeiter hinzufügen";
             this.btnAddEmployee.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAddEmployee.UseVisualStyleBackColor = false;
             this.btnAddEmployee.Click += new System.EventHandler(this.btnHinzufügen_Click);
@@ -107,7 +107,7 @@
             // 
             this.btnDelete.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(941, 19);
+            this.btnDelete.Location = new System.Drawing.Point(1355, 13);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(113, 39);
@@ -120,7 +120,7 @@
             // 
             this.btnEdit.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(1062, 17);
+            this.btnEdit.Location = new System.Drawing.Point(1227, 13);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(4);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(120, 38);
@@ -203,7 +203,7 @@
             this.Vorname.MinimumWidth = 6;
             this.Vorname.Name = "Vorname";
             this.Vorname.ReadOnly = true;
-            this.Vorname.Width = 125;
+            this.Vorname.Width = 75;
             // 
             // Name
             // 
@@ -212,7 +212,7 @@
             this.Name.MinimumWidth = 6;
             this.Name.Name = "Name";
             this.Name.ReadOnly = true;
-            this.Name.Width = 125;
+            this.Name.Width = 75;
             // 
             // Geschlecht
             // 
@@ -221,7 +221,7 @@
             this.Geschlecht.MinimumWidth = 6;
             this.Geschlecht.Name = "Geschlecht";
             this.Geschlecht.ReadOnly = true;
-            this.Geschlecht.Width = 125;
+            this.Geschlecht.Width = 80;
             // 
             // Adresse
             // 
@@ -239,7 +239,7 @@
             this.Telefon.MinimumWidth = 6;
             this.Telefon.Name = "Telefon";
             this.Telefon.ReadOnly = true;
-            this.Telefon.Width = 125;
+            this.Telefon.Width = 80;
             // 
             // Emailadresse
             // 
@@ -259,33 +259,6 @@
             this.Position.ReadOnly = true;
             this.Position.Width = 125;
             // 
-            // Eintritt
-            // 
-            this.Eintritt.DataPropertyName = "EintrittDatum";
-            this.Eintritt.HeaderText = "Eintrittsdatum";
-            this.Eintritt.MinimumWidth = 6;
-            this.Eintritt.Name = "Eintritt";
-            this.Eintritt.ReadOnly = true;
-            this.Eintritt.Width = 125;
-            // 
-            // Gehalt
-            // 
-            this.Gehalt.DataPropertyName = "Gehalt";
-            this.Gehalt.HeaderText = "Gehalt";
-            this.Gehalt.MinimumWidth = 6;
-            this.Gehalt.Name = "Gehalt";
-            this.Gehalt.ReadOnly = true;
-            this.Gehalt.Width = 125;
-            // 
-            // RentenBeginn
-            // 
-            this.RentenBeginn.DataPropertyName = "Rentenbeginn";
-            this.RentenBeginn.HeaderText = "Rentenbeginn";
-            this.RentenBeginn.MinimumWidth = 6;
-            this.RentenBeginn.Name = "RentenBeginn";
-            this.RentenBeginn.ReadOnly = true;
-            this.RentenBeginn.Width = 125;
-            // 
             // Geburtsdatum
             // 
             this.Geburtsdatum.DataPropertyName = "Geburtsdatum";
@@ -293,7 +266,7 @@
             this.Geburtsdatum.MinimumWidth = 6;
             this.Geburtsdatum.Name = "Geburtsdatum";
             this.Geburtsdatum.ReadOnly = true;
-            this.Geburtsdatum.Width = 125;
+            this.Geburtsdatum.Width = 80;
             // 
             // Alter
             // 
@@ -302,7 +275,34 @@
             this.Alter.MinimumWidth = 6;
             this.Alter.Name = "Alter";
             this.Alter.ReadOnly = true;
-            this.Alter.Width = 125;
+            this.Alter.Width = 50;
+            // 
+            // Eintritt
+            // 
+            this.Eintritt.DataPropertyName = "EintrittDatum";
+            this.Eintritt.HeaderText = "Eintrittsdatum";
+            this.Eintritt.MinimumWidth = 6;
+            this.Eintritt.Name = "Eintritt";
+            this.Eintritt.ReadOnly = true;
+            this.Eintritt.Width = 80;
+            // 
+            // Gehalt
+            // 
+            this.Gehalt.DataPropertyName = "Gehalt";
+            this.Gehalt.HeaderText = "Gehalt";
+            this.Gehalt.MinimumWidth = 6;
+            this.Gehalt.Name = "Gehalt";
+            this.Gehalt.ReadOnly = true;
+            this.Gehalt.Width = 80;
+            // 
+            // RentenBeginn
+            // 
+            this.RentenBeginn.DataPropertyName = "Rentenbeginn";
+            this.RentenBeginn.HeaderText = "Rentenbeginn";
+            this.RentenBeginn.MinimumWidth = 6;
+            this.RentenBeginn.Name = "RentenBeginn";
+            this.RentenBeginn.ReadOnly = true;
+            this.RentenBeginn.Width = 80;
             // 
             // MainForm
             // 
@@ -347,10 +347,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefon;
         private System.Windows.Forms.DataGridViewTextBoxColumn Emailadresse;
         private System.Windows.Forms.DataGridViewTextBoxColumn Position;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Geburtsdatum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Alter;
         private System.Windows.Forms.DataGridViewTextBoxColumn Eintritt;
         private System.Windows.Forms.DataGridViewTextBoxColumn Gehalt;
         private System.Windows.Forms.DataGridViewTextBoxColumn RentenBeginn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Geburtsdatum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Alter;
     }
 }

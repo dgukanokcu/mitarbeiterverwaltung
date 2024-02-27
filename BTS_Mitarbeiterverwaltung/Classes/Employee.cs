@@ -134,7 +134,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
     "EintrittDatum = @EintrittDatum, " +
     "Gehalt = @Gehalt, " +
     "Rentenbeginn = @Rentenbeginn, " +
-    "Geburtsdatum = @Geburtsdatum " +
+    "Geburtsdatum = @Geburtsdatum, " +
     "Geschlecht = @Geschlecht " +
     "WHERE ID = @id",
     SqlVariable.connection);

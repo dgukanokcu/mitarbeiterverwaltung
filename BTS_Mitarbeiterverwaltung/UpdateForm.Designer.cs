@@ -34,7 +34,6 @@
             this.txtBoxTelefon = new System.Windows.Forms.TextBox();
             this.txtBoxEmail = new System.Windows.Forms.TextBox();
             this.txtBoxAdress = new System.Windows.Forms.TextBox();
-            this.txtBoxPosition = new System.Windows.Forms.TextBox();
             this.txtBoxSalary = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.Name = new System.Windows.Forms.Label();
@@ -44,13 +43,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.dateTimePickerEntry = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerRetirement = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerBirthdate = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBoxGender = new System.Windows.Forms.ComboBox();
+            this.comboBoxPosition = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // txtBoxName
@@ -104,14 +102,6 @@
             this.txtBoxAdress.Name = "txtBoxAdress";
             this.txtBoxAdress.Size = new System.Drawing.Size(159, 22);
             this.txtBoxAdress.TabIndex = 3;
-            // 
-            // txtBoxPosition
-            // 
-            this.txtBoxPosition.Location = new System.Drawing.Point(219, 139);
-            this.txtBoxPosition.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtBoxPosition.Name = "txtBoxPosition";
-            this.txtBoxPosition.Size = new System.Drawing.Size(159, 22);
-            this.txtBoxPosition.TabIndex = 6;
             // 
             // txtBoxSalary
             // 
@@ -169,7 +159,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(215, 121);
+            this.label6.Location = new System.Drawing.Point(408, 63);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(55, 16);
             this.label6.TabIndex = 16;
@@ -193,15 +183,6 @@
             this.label8.TabIndex = 18;
             this.label8.Text = "Gehalt";
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(407, 64);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(91, 16);
-            this.label9.TabIndex = 19;
-            this.label9.Text = "Rentenbeginn";
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -220,15 +201,6 @@
             this.dateTimePickerEntry.Size = new System.Drawing.Size(159, 22);
             this.dateTimePickerEntry.TabIndex = 7;
             // 
-            // dateTimePickerRetirement
-            // 
-            this.dateTimePickerRetirement.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerRetirement.Location = new System.Drawing.Point(411, 82);
-            this.dateTimePickerRetirement.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dateTimePickerRetirement.Name = "dateTimePickerRetirement";
-            this.dateTimePickerRetirement.Size = new System.Drawing.Size(159, 22);
-            this.dateTimePickerRetirement.TabIndex = 9;
-            // 
             // dateTimePickerBirthdate
             // 
             this.dateTimePickerBirthdate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -241,7 +213,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(215, 175);
+            this.label2.Location = new System.Drawing.Point(215, 121);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 16);
             this.label2.TabIndex = 25;
@@ -253,26 +225,37 @@
             this.comboBoxGender.Items.AddRange(new object[] {
             "Weiblich\t",
             "Männlich"});
-            this.comboBoxGender.Location = new System.Drawing.Point(219, 197);
+            this.comboBoxGender.Location = new System.Drawing.Point(219, 143);
             this.comboBoxGender.Name = "comboBoxGender";
             this.comboBoxGender.Size = new System.Drawing.Size(159, 24);
             this.comboBoxGender.TabIndex = 26;
+            // 
+            // comboBoxPosition
+            // 
+            this.comboBoxPosition.FormattingEnabled = true;
+            this.comboBoxPosition.Items.AddRange(new object[] {
+            "Abteilungsleiter\t\t",
+            "Mitarbeiter",
+            "Auszubildende"});
+            this.comboBoxPosition.Location = new System.Drawing.Point(410, 84);
+            this.comboBoxPosition.Name = "comboBoxPosition";
+            this.comboBoxPosition.Size = new System.Drawing.Size(159, 24);
+            this.comboBoxPosition.TabIndex = 27;
             // 
             // UpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(593, 309);
+            this.Controls.Add(this.comboBoxPosition);
             this.Controls.Add(this.comboBoxGender);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtBoxName);
             this.Controls.Add(this.dateTimePickerBirthdate);
             this.Controls.Add(this.txtBoxSurname);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.dateTimePickerRetirement);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtBoxTelefon);
-            this.Controls.Add(this.txtBoxPosition);
             this.Controls.Add(this.dateTimePickerEntry);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtBoxEmail);
@@ -281,7 +264,6 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtBoxAdress);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Name);
@@ -303,7 +285,6 @@
         private System.Windows.Forms.TextBox txtBoxTelefon;
         private System.Windows.Forms.TextBox txtBoxEmail;
         private System.Windows.Forms.TextBox txtBoxAdress;
-        private System.Windows.Forms.TextBox txtBoxPosition;
         private System.Windows.Forms.TextBox txtBoxSalary;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label Name;
@@ -313,12 +294,11 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DateTimePicker dateTimePickerEntry;
-        private System.Windows.Forms.DateTimePicker dateTimePickerRetirement;
         private System.Windows.Forms.DateTimePicker dateTimePickerBirthdate;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBoxGender;
+        private System.Windows.Forms.ComboBox comboBoxPosition;
     }
 }
