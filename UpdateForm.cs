@@ -22,7 +22,7 @@ namespace BTS_Mitarbeiterverwaltung
             Employee m = new Employee();
             if (id != 0) { m.ID = id; }
             m.Vorname = txtBoxName.Text;
-            m.Name = txtBoxSurname.Text;
+            m.Nachname = txtBoxSurname.Text;
             m.Position = comboBoxPosition.Text;
             m.DatumEintritt = dateTimePickerEntry.Value;
             m.EMail = txtBoxEmail.Text;
@@ -59,7 +59,7 @@ namespace BTS_Mitarbeiterverwaltung
             {
                 Employee m = Employee.getEmployeeById(id);
                 txtBoxName.Text = m.Vorname;
-                txtBoxSurname.Text = m.Name;
+                txtBoxSurname.Text = m.Nachname;
                 comboBoxPosition.Text = m.Position;
                 dateTimePickerEntry.Value = m.DatumEintritt;
                 txtBoxEmail.Text = m.EMail;

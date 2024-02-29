@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 internal class Account
 {
-    public static void CreateUser(string username, string password, string confirmPassword)
+    internal static void CreateUser(string username, string password, string confirmPassword)
     {
         try
         {
@@ -32,7 +32,7 @@ internal class Account
                 throw new Exception("Das Passwort darf keine Leerzeichen enthalten.");
             }
 
-            // Verhindere die Verwendung von Benutzerinformationen im Passwort
+            // Passwort ähnlich dem Benutzernamen gibt Fehlermeldung aus (leicht erratbares Passwort)
             if (password.ToLower().Contains(username.ToLower()))
             {
                 throw new Exception("Das Passwort darf keine Benutzerinformationen enthalten.");
@@ -46,14 +46,16 @@ internal class Account
             }
 
 
-            string salt = PasswortUtility.GeneriereZufaelligesSalt();           // Generiere zufälliges Salt
+            string salt = PasswortUtility.GenerateRandomSalt();           // zusätzliche Verschlüsselung mit Salt
 
             string insertQuery = "INSERT INTO Benutzer (Benutzername, PasswortHash, Salt) VALUES (@Benutzername, @PasswortHash, @Salt)";
 
             using (SqlCommand command = new SqlCommand(insertQuery, SqlVariable.connection))
             {
-                command.Parameters.AddWithValue("@Benutzername", username);     // Setze Parameter für Benutzername, PasswortHash und Salt
+                command.Parameters.AddWithValue("@Benutzername", username);    // Setze Parameter für Benutzername, PasswortHash und Salt
+                
                 command.Parameters.AddWithValue("@PasswortHash", PasswortUtility.HashPasswort(password, salt));
+
                 command.Parameters.AddWithValue("@Salt", salt);
 
                 command.ExecuteNonQuery();
@@ -100,10 +102,9 @@ internal class Account
         return true;
     }
 
-    private static bool IsSpecialCharacter(char c)
-    {
-        return "!@#$%^&*()-_=+[]{}|;:'\"<>,.?/~`".Contains(c);
-    }
+    internal static bool IsSpecialCharacter(char c)
+    { return "!@#$%^&*()-_=+[]{}|;:'\"<>,.?/~`".Contains(c); }
+
 
     public static bool DoUsernameExist(string benutzername)
     {
@@ -119,7 +120,7 @@ internal class Account
         }
     }
 
-    public static bool Validation(string benutzername, string passwort)
+    internal static bool Validation(string benutzername, string passwort)
     {
         try
         {

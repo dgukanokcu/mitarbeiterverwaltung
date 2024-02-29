@@ -6,11 +6,11 @@ namespace BTS_Mitarbeiterverwaltung.Utils
 {
     internal class PasswortUtility
     {
-        public static string HashPasswort(string passwort, string salt)
+        internal static string HashPasswort(string password, string salt)
         {
             using (SHA256 sha256 = SHA256.Create())
             {
-                byte[] saltedPasswortBytes = Encoding.UTF8.GetBytes(passwort + salt);
+                byte[] saltedPasswortBytes = Encoding.UTF8.GetBytes(password + salt);
                 byte[] hashedBytes = sha256.ComputeHash(saltedPasswortBytes);
 
                 StringBuilder builder = new StringBuilder();
@@ -23,20 +23,21 @@ namespace BTS_Mitarbeiterverwaltung.Utils
             }
         }
 
-        public static string GeneriereZufaelligesSalt(int length = 16)
+        internal static string GenerateRandomSalt(int length = 16)
         {
-            const string erlaubteZeichen = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-+=<>?";
+            const string allowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-+=<>?";
 
             StringBuilder saltBuilder = new StringBuilder();
             Random random = new Random();
 
             for (int i = 0; i < length; i++)
             {
-                int index = random.Next(erlaubteZeichen.Length);
-                saltBuilder.Append(erlaubteZeichen[index]);
+                int index = random.Next(allowedCharacters.Length);
+                saltBuilder.Append(allowedCharacters[index]);
             }
 
             return saltBuilder.ToString();
         }
+
     }
 }

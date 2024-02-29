@@ -7,30 +7,30 @@ namespace BTS_Mitarbeiterverwaltung
 {
     public partial class MainForm : Form
     {
-        public MainForm()
+        internal MainForm()
         {
             InitializeComponent();
         }
 
-        public int selectedRowID { get; set; }
-        private void MainForm_Load(object sender, EventArgs e)
+        internal int selectedRowID { get; set; }
+        internal void MainForm_Load(object sender, EventArgs e)
         {
             DataTable table = Employee.getAllEmployees();
             dataGridViewEmployee.DataSource = table;
         }
 
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        internal void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
 
-        private void btnHinzufügen_Click(object sender, EventArgs e)
+        internal void btnHinzufügen_Click(object sender, EventArgs e)
         {
             UpdateForm updateForm = new UpdateForm(this, 0);
             updateForm.Show();
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        internal void btnDelete_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Möchten Sie wirklich löschen?", "Sicher?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
@@ -42,7 +42,7 @@ namespace BTS_Mitarbeiterverwaltung
             }
         }
 
-        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        internal void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             if (dataGridViewEmployee.CurrentRow != null &&
                 dataGridViewEmployee.CurrentRow.Cells["ID"].Value != DBNull.Value)
@@ -52,12 +52,11 @@ namespace BTS_Mitarbeiterverwaltung
                     selectedRowID = Convert.ToInt32(dataGridViewEmployee.CurrentRow.Cells["ID"].Value);
                 }
                 catch (FormatException)
-                {
-                }
+                {}
             }
         }
 
-        private void btnBearbeiten_Click(object sender, EventArgs e)
+        internal void btnBearbeiten_Click(object sender, EventArgs e)
         {
             if (selectedRowID != 0)
             {
@@ -66,22 +65,22 @@ namespace BTS_Mitarbeiterverwaltung
             }
         }
 
-        private void btnReset_Click(object sender, EventArgs e)
+        internal void btnReset_Click(object sender, EventArgs e)
         {
             DataTable table = Employee.getAllEmployees();
             dataGridViewEmployee.DataSource = table;
         }
 
-        private void txtBoxName_KeyPress(object sender, KeyPressEventArgs e)
+        internal void txtBoxName_KeyPress(object sender, KeyPressEventArgs e)
         {
             dataGridViewEmployee.DataSource = Employee.getEmployeeByName(txtBoxName.Text, txtBoxName.Text);
         }
 
-        private void dataGridViewEmployee_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        internal void dataGridViewEmployee_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 0 /*&& e.RowIndex >= 0*/)
             {
-                DialogResult result = MessageBox.Show("Möchten Sie wirklich löschen?", "Sicher?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("Möchten Sie es wirklich löschen?", "Sicher?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
                     Employee.deleteEmployee(selectedRowID);
@@ -97,7 +96,7 @@ namespace BTS_Mitarbeiterverwaltung
             }
         }
 
-        private void dataGridViewEmployee_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        internal void dataGridViewEmployee_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex != -1 && e.ColumnIndex != -1)
             {
@@ -105,10 +104,10 @@ namespace BTS_Mitarbeiterverwaltung
             }
         }
 
-        private void btnExport_Click(object sender, EventArgs e)
+        internal void btnExport_Click(object sender, EventArgs e)
         {
-            Function function = new Function();
-            Function.TryExport(function);
+            Tools function = new Tools();
+            Tools.TryExport(function);
         }
     }
 }

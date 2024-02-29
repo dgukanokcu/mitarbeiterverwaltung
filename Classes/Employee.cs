@@ -10,7 +10,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
 
         public int ID { get; set; }
         public string Vorname { get; set; }
-        public string Name { get; set; }
+        public string Nachname { get; set; }
         public string Adresse { get; set; }
         public string Telefon { get; set; }
         public string EMail { get; set; }
@@ -28,7 +28,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
         /// Get all Mitarbeiter as DataTable
         /// </summary>
         /// <returns></returns>
-        public static DataTable getAllEmployees()
+        internal static DataTable getAllEmployees()
         {
             SqlCommand commandStart = new SqlCommand("SELECT * from mitarbeiter", SqlVariable.connection);
             SqlVariable.connection.Open();
@@ -38,11 +38,11 @@ namespace BTS_Mitarbeiterverwaltung.Classes
             SqlVariable.connection.Close();
             return table;
         }
-        public static DataTable getEmployeeByName(string vorname, string name)
+        internal static DataTable getEmployeeByName(string vorname, string nachname)
         {
-            SqlCommand commandStart = new SqlCommand("SELECT * FROM mitarbeiter WHERE Vorname LIKE @Vorname OR Name LIKE @Name", SqlVariable.connection);
+            SqlCommand commandStart = new SqlCommand("SELECT * FROM mitarbeiter WHERE Vorname LIKE @Vorname OR Nachname LIKE @Nachname", SqlVariable.connection);
             commandStart.Parameters.AddWithValue("@Vorname", "%" + vorname + "%");
-            commandStart.Parameters.AddWithValue("@Name", "%" + name + "%");
+            commandStart.Parameters.AddWithValue("@Nachname", "%" + nachname + "%");
 
             SqlVariable.connection.Open();
             SqlDataAdapter adapter = new SqlDataAdapter(commandStart);
@@ -52,7 +52,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
 
             return table;
         }
-        public static Employee getEmployeeById(int id)
+        internal static Employee getEmployeeById(int id)
         {
             Employee employee = null;
             SqlCommand commandStart = new SqlCommand("SELECT * FROM mitarbeiter WHERE ID = @id", SqlVariable.connection);
@@ -68,7 +68,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                     {
                         ID = Convert.ToInt32(reader["ID"]),
                         Vorname = reader["Vorname"].ToString(),
-                        Name = reader["Name"].ToString(),
+                        Nachname = reader["Nachname"].ToString(),
                         Position = reader["Position"].ToString(),
                         DatumEintritt = Convert.ToDateTime(reader["EintrittDatum"]),
                         DatumRentenBeginn = Convert.ToDateTime(reader["Rentenbeginn"]),
@@ -92,72 +92,78 @@ namespace BTS_Mitarbeiterverwaltung.Classes
             }
             return employee;
         }
-        public void updateEmployee()
+        internal void updateEmployee()
         {
             if (this.ID == 0)
             {
-                SqlCommand commandUpdate = new SqlCommand("Insert into mitarbeiter (Vorname, Name, Adresse, Telefon, [E-Mail], Position, EintrittDatum, Gehalt, Geburtsdatum, Geschlecht) values (@Vorname, @Name, @Adresse, @Telefon, @EMail, @Position, @EintrittDatum, @Gehalt, @Geburtsdatum, @Geschlecht)", SqlVariable.connection);
+                SqlCommand commandUpdate = new SqlCommand("INSERT INTO mitarbeiter (Vorname, Nachname, Adresse, Telefon, [E-Mail], Position, EintrittDatum, Gehalt, Geburtsdatum, Geschlecht) values (@Vorname, @Nachname, @Adresse, @Telefon, @EMail, @Position, @EintrittDatum, @Gehalt, @Geburtsdatum, @Geschlecht)", SqlVariable.connection);
                 SqlVariable.connection.Open();
-                commandUpdate.Parameters.AddWithValue("@Vorname", this.Vorname);
-                commandUpdate.Parameters.AddWithValue("@Name", this.Name);
-                commandUpdate.Parameters.AddWithValue("@Adresse", this.Adresse);
-                commandUpdate.Parameters.AddWithValue("@Telefon", this.Telefon);
-                commandUpdate.Parameters.AddWithValue("@EMail", this.EMail);
-                commandUpdate.Parameters.AddWithValue("@Position", this.Position);
-                commandUpdate.Parameters.AddWithValue("@Eintrittdatum", this.DatumEintritt);
-                commandUpdate.Parameters.AddWithValue("@Gehalt", this.Gehalt);
-                commandUpdate.Parameters.AddWithValue("@Geburtsdatum", this.Geburtsdatum);
-                commandUpdate.Parameters.AddWithValue("@Geschlecht", this.Geschlecht);
+                commandUpdate.Parameters.AddWithValue("@Vorname", Vorname);
+                commandUpdate.Parameters.AddWithValue("@Nachname", Nachname);
+                commandUpdate.Parameters.AddWithValue("@Adresse", Adresse);
+                commandUpdate.Parameters.AddWithValue("@Telefon", Telefon);
+                commandUpdate.Parameters.AddWithValue("@EMail", EMail);
+                commandUpdate.Parameters.AddWithValue("@Position", Position);
+                commandUpdate.Parameters.AddWithValue("@Eintrittdatum", DatumEintritt);
+                commandUpdate.Parameters.AddWithValue("@Gehalt", Gehalt);
+                commandUpdate.Parameters.AddWithValue("@Geburtsdatum", Geburtsdatum);
+                commandUpdate.Parameters.AddWithValue("@Geschlecht", Geschlecht);
                 commandUpdate.ExecuteNonQuery();
                 SqlVariable.connection.Close();
             }
             else
             {
                 SqlCommand commandUpdate = new SqlCommand(
-                    "UPDATE mitarbeiter " +
-                    "SET " +
-                    "Vorname = @Vorname, " +
-                    "Name = @Name, " +
-                    "Adresse = @Adresse, " +
-                    "Telefon = @Telefon, " +
-                    "[E-Mail] = @EMail, " +
-                    "Position = @Position, " +
-                    "EintrittDatum = @EintrittDatum, " +
-                    "Gehalt = @Gehalt, " +
-                    "Rentenbeginn = @Rentenbeginn, " +
-                    "Geburtsdatum = @Geburtsdatum, " +
-                    "Geschlecht = @Geschlecht " +
-                    "WHERE ID = @id",
-                    SqlVariable.connection);
-                SqlVariable.connection.Open();
-                commandUpdate.Parameters.AddWithValue("@id", this.ID);
-                commandUpdate.Parameters.AddWithValue("@Vorname", this.Vorname);
-                commandUpdate.Parameters.AddWithValue("@Name", this.Name);
-                commandUpdate.Parameters.AddWithValue("@Adresse", this.Adresse);
-                commandUpdate.Parameters.AddWithValue("@Telefon", this.Telefon);
-                commandUpdate.Parameters.AddWithValue("@EMail", this.EMail);
-                commandUpdate.Parameters.AddWithValue("@Position", this.Position);
-                commandUpdate.Parameters.AddWithValue("@Eintrittdatum", this.DatumEintritt);
-                commandUpdate.Parameters.AddWithValue("@Gehalt", this.Gehalt);
-                commandUpdate.Parameters.AddWithValue("@Rentenbeginn", this.DatumRentenBeginn);
-                commandUpdate.Parameters.AddWithValue("@Geburtsdatum", this.Geburtsdatum);
-                commandUpdate.Parameters.AddWithValue("@Geschlecht", this.Geschlecht);
-                commandUpdate.ExecuteNonQuery();
-                SqlVariable.connection.Close();
+                    
+                            "UPDATE mitarbeiter " +
+                            "SET " +
+                            "Vorname = @Vorname, " +
+                            "Nachname = @Nachname, " +
+                            "Adresse = @Adresse, " +
+                            "Telefon = @Telefon, " +
+                            "[E-Mail] = @EMail, " +
+                            "Position = @Position, " +
+                            "EintrittDatum = @EintrittDatum, " +
+                            "Gehalt = @Gehalt, " +
+                            "Rentenbeginn = @Rentenbeginn, " +
+                            "Geburtsdatum = @Geburtsdatum, " +
+                            "Geschlecht = @Geschlecht " +
+                            "WHERE ID = @id",
+
+                        SqlVariable.connection);
+
+                    SqlVariable.connection.Open();
+
+                    commandUpdate.Parameters.AddWithValue("@id", ID);
+                    commandUpdate.Parameters.AddWithValue("@Vorname", Vorname);
+                    commandUpdate.Parameters.AddWithValue("@Nachname", Nachname);
+                    commandUpdate.Parameters.AddWithValue("@Adresse", Adresse);
+                    commandUpdate.Parameters.AddWithValue("@Telefon", Telefon);
+                    commandUpdate.Parameters.AddWithValue("@EMail", EMail);
+                    commandUpdate.Parameters.AddWithValue("@Position", Position);
+                    commandUpdate.Parameters.AddWithValue("@Eintrittdatum", DatumEintritt);
+                    commandUpdate.Parameters.AddWithValue("@Gehalt", Gehalt);
+                    commandUpdate.Parameters.AddWithValue("@Rentenbeginn", DatumRentenBeginn);
+                    commandUpdate.Parameters.AddWithValue("@Geburtsdatum", Geburtsdatum);
+                    commandUpdate.Parameters.AddWithValue("@Geschlecht", Geschlecht);
+
+                    commandUpdate.ExecuteNonQuery();
+
+                    SqlVariable.connection.Close();
             }          
         }    
-        public static void deleteEmployee(int id)
+        internal static void deleteEmployee(int id)
         {
-            SqlCommand sqlCommand = new SqlCommand("Delete from mitarbeiter where id=@id", SqlVariable.connection);
+            SqlCommand sqlCommand = new SqlCommand("DELETE FROM mitarbeiter where id=@id", SqlVariable.connection);
             SqlVariable.connection.Open();
             sqlCommand.Parameters.AddWithValue("@id", id);
             sqlCommand.ExecuteNonQuery();
             SqlVariable.connection.Close();
         }
 
-        public static bool validation(Employee m)
+        internal static bool validation(Employee m)
         {
-            if (string.IsNullOrWhiteSpace(m.Name) || string.IsNullOrWhiteSpace(m.Vorname)) 
+            if (string.IsNullOrWhiteSpace(m.Nachname) || string.IsNullOrWhiteSpace(m.Vorname)) 
             {
                 return false;
             }
@@ -166,31 +172,5 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                 return true;
             }
         }
-
-              
-
-        #region test
-        public void Topla(int a, int b)
-        {
-            _ = a + b;
-        }
-
-        public static void topla2(int a, int b)
-        {
-            _ = a - b;
-        }
-
-        public int topla3(int a, int b)
-        {
-            int c = a + b;
-            return c;
-        }
-
-        public static int topla4(int a, int b)
-        {
-            int c = a + b;
-            return c;
-        }
-        #endregion
     }
 }

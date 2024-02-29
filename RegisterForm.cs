@@ -9,7 +9,7 @@ namespace BTS_Mitarbeiterverwaltung
         public string Benutzername { get; private set; }
         public string Passwort { get; private set; }
 
-        public RegisterForm()
+        internal RegisterForm()
         {
             InitializeComponent();
 
