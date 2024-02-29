@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Xml;
-using System.Xml.Linq;
 
 namespace BTS_Mitarbeiterverwaltung.Classes
 {
@@ -38,7 +30,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
         /// <returns></returns>
         public static DataTable getAllEmployees()
         {
-            SqlCommand commandStart = new SqlCommand("Select * from mitarbeiter", SqlVariable.connection);
+            SqlCommand commandStart = new SqlCommand("SELECT * from mitarbeiter", SqlVariable.connection);
             SqlVariable.connection.Open();
             SqlDataAdapter adapter = new SqlDataAdapter(commandStart);
             DataTable table = new DataTable();
@@ -107,7 +99,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
         {
             if (this.ID == 0)
             {
-                SqlCommand commandUpdate = new SqlCommand("Insert into mitarbeiter (Vorname, Name, Adresse, Telefon, [E-Mail], Position, EintrittDatum, Gehalt, Rentenbeginn, Geburtsdatum, Geschlecht) values (@Vorname, @Name, @Adresse, @Telefon, @EMail, @Position, @EintrittDatum, @Gehalt, @Rentenbeginn, @Geburtsdatum, @Geschlecht)", SqlVariable.connection);
+                SqlCommand commandUpdate = new SqlCommand("Insert into mitarbeiter (Vorname, Name, Adresse, Telefon, [E-Mail], Position, EintrittDatum, Gehalt, Geburtsdatum, Geschlecht) values (@Vorname, @Name, @Adresse, @Telefon, @EMail, @Position, @EintrittDatum, @Gehalt, @Geburtsdatum, @Geschlecht)", SqlVariable.connection);
                 SqlVariable.connection.Open();
                 commandUpdate.Parameters.AddWithValue("@Vorname", this.Vorname);
                 commandUpdate.Parameters.AddWithValue("@Name", this.Name);
@@ -117,7 +109,6 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                 commandUpdate.Parameters.AddWithValue("@Position", this.Position);
                 commandUpdate.Parameters.AddWithValue("@Eintrittdatum", this.DatumEintritt);
                 commandUpdate.Parameters.AddWithValue("@Gehalt", this.Gehalt);
-                commandUpdate.Parameters.AddWithValue("@Rentenbeginn", this.DatumRentenBeginn);
                 commandUpdate.Parameters.AddWithValue("@Geburtsdatum", this.Geburtsdatum);
                 commandUpdate.Parameters.AddWithValue("@Geschlecht", this.Geschlecht);
                 commandUpdate.ExecuteNonQuery();
@@ -126,21 +117,21 @@ namespace BTS_Mitarbeiterverwaltung.Classes
             else
             {
                 SqlCommand commandUpdate = new SqlCommand(
-    "UPDATE mitarbeiter " +
-    "SET " +
-    "Vorname = @Vorname, " +
-    "Name = @Name, " +
-    "Adresse = @Adresse, " +
-    "Telefon = @Telefon, " +
-    "[E-Mail] = @EMail, " +
-    "Position = @Position, " +
-    "EintrittDatum = @EintrittDatum, " +
-    "Gehalt = @Gehalt, " +
-    "Rentenbeginn = @Rentenbeginn, " +
-    "Geburtsdatum = @Geburtsdatum, " +
-    "Geschlecht = @Geschlecht " +
-    "WHERE ID = @id",
-    SqlVariable.connection);
+                    "UPDATE mitarbeiter " +
+                    "SET " +
+                    "Vorname = @Vorname, " +
+                    "Name = @Name, " +
+                    "Adresse = @Adresse, " +
+                    "Telefon = @Telefon, " +
+                    "[E-Mail] = @EMail, " +
+                    "Position = @Position, " +
+                    "EintrittDatum = @EintrittDatum, " +
+                    "Gehalt = @Gehalt, " +
+                    "Rentenbeginn = @Rentenbeginn, " +
+                    "Geburtsdatum = @Geburtsdatum, " +
+                    "Geschlecht = @Geschlecht " +
+                    "WHERE ID = @id",
+                    SqlVariable.connection);
                 SqlVariable.connection.Open();
                 commandUpdate.Parameters.AddWithValue("@id", this.ID);
                 commandUpdate.Parameters.AddWithValue("@Vorname", this.Vorname);

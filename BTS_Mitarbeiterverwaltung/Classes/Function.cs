@@ -1,6 +1,7 @@
 ﻿using BTS_Mitarbeiterverwaltung.Classes;
 using BTS_Mitarbeiterverwaltung.Utils;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
@@ -85,11 +86,10 @@ namespace BTS_Mitarbeiterverwaltung
 
         public void ToCSV(string filePath)
         {
-            DataTable dataTableCSV = null; // Deklaration außerhalb des try-Blocks
+            DataTable dataTableCSV = null;
 
             try
             {
-                // Öffnen Sie die Verbindung, wenn sie nicht geöffnet ist
                 if (SqlVariable.connection.State != ConnectionState.Open)
                 {
                     SqlVariable.connection.Open();
@@ -102,23 +102,20 @@ namespace BTS_Mitarbeiterverwaltung
                 {
                     using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                     {
-                        // Erstellen Sie ein DataSet, um die Daten zu speichern
-                        dataTableCSV = new DataTable(); // Instanz für CSV erstellen
+                        dataTableCSV = new DataTable();
                         adapter.Fill(dataTableCSV);
                     }
                 }
 
-                // Exportieren Sie die Daten in die CSV-Datei
+                // Exportiere die Daten in .csv
                 ExportDataTableToCSV(dataTableCSV, filePath);
             }
             catch (Exception ex)
             {
-                // Behandeln Sie Ausnahmen entsprechend Ihrer Anwendungslogik
                 Console.WriteLine($"Fehler beim Exportieren der Daten nach CSV: {ex.Message}");
             }
             finally
             {
-                // Stellen Sie sicher, dass die Verbindung geschlossen wird
                 if (SqlVariable.connection.State == ConnectionState.Open)
                 {
                     SqlVariable.connection.Close();
@@ -126,43 +123,37 @@ namespace BTS_Mitarbeiterverwaltung
             }
         }
 
-
         public void ToTXT(string filePath)
         {
             DataTable dataTableTXT = null; // Deklaration außerhalb des try-Blocks
 
             try
             {
-                // Öffnen Sie die Verbindung, wenn sie nicht geöffnet ist
                 if (SqlVariable.connection.State != ConnectionState.Open)
                 {
                     SqlVariable.connection.Open();
                 }
 
-                // SQL-Abfrage zum Abrufen aller Spalten und Zeilen
                 string query = "SELECT * FROM dbo.Mitarbeiter";
 
                 using (SqlCommand command = new SqlCommand(query, SqlVariable.connection))
                 {
                     using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                     {
-                        // Erstellen Sie ein DataSet, um die Daten zu speichern
-                        dataTableTXT = new DataTable(); // Instanz für TXT erstellen
+                        // DataSet, um die Daten zu speichern
+                        dataTableTXT = new DataTable();
                         adapter.Fill(dataTableTXT);
                     }
                 }
 
-                // Exportieren Sie die Daten in die TXT-Datei
                 ExportDataTableToTXT(dataTableTXT, filePath);
             }
             catch (Exception ex)
             {
-                // Behandeln Sie Ausnahmen entsprechend Ihrer Anwendungslogik
                 Console.WriteLine($"Fehler beim Exportieren der Daten nach TXT: {ex.Message}");
             }
             finally
             {
-                // Stellen Sie sicher, dass die Verbindung geschlossen wird
                 if (SqlVariable.connection.State == ConnectionState.Open)
                 {
                     SqlVariable.connection.Close();
@@ -172,20 +163,17 @@ namespace BTS_Mitarbeiterverwaltung
 
         public void ExportDataTableToCSV(DataTable dataTable, string filePath)
         {
-            // Implementierung der CSV-Exportlogik
-            // Verwende StreamWriter, um die Daten in die CSV-Datei zu schreiben
-            // Beachte dabei die Trennzeichen und die Formatierung der Daten
-
             using (StreamWriter writer = new StreamWriter(filePath))
             {
-                // Schreiben Sie die Headerzeile in tabellarischer Struktur
+                // Schreibe Header-Zeile mit Spaltenüberschriften
                 writer.WriteLine(string.Join(",", dataTable.Columns.Cast<DataColumn>().Select(column => column.ColumnName)));
 
-                // Schreiben Sie die Datenzeilen in tabellarischer Struktur
+                // Schreibe Datenzeilen
                 foreach (DataRow row in dataTable.Rows)
                 {
-                    // Schreiben Sie die Werte in tabellarischer Struktur
-                    writer.WriteLine(string.Join(",", dataTable.Columns.Cast<DataColumn>().Select(column => row[column])));
+                    // Schreibe die Werte der aktuellen Zeile
+                    string formattedRow = string.Join(",", row.ItemArray);
+                    writer.WriteLine(formattedRow);
                 }
             }
         }
@@ -194,19 +182,30 @@ namespace BTS_Mitarbeiterverwaltung
         {
             using (StreamWriter writer = new StreamWriter(filePath))
             {
-                // Schreibe Headerzeile mit Strichen
-                string headerLine = string.Join(" | ", dataTable.Columns.Cast<DataColumn>().Select(column => column.ColumnName));
+                // Ermittle maximale Breite für jede Spalte
+                Dictionary<string, int> columnWidths = new Dictionary<string, int>();
+                foreach (DataColumn column in dataTable.Columns)
+                {
+                    int maxLength = Math.Max(column.ColumnName.Length, dataTable.AsEnumerable().Select(r => r[column].ToString().Length).Max());
+                    columnWidths[column.ColumnName] = maxLength;
+                }
+
+                //Headerzeile mit Strichen
+                string headerLine = string.Join(" | ", dataTable.Columns.Cast<DataColumn>().Select(column => column.ColumnName.PadRight(columnWidths[column.ColumnName])));
                 writer.WriteLine(headerLine);
 
-                // Schreibe Trennlinie mit Strichen
-                string separatorLine = new string('-', headerLine.Length);
+                //Trennlinie mit Strichen
+                string separatorLine = new string('-', columnWidths.Values.Sum() + (dataTable.Columns.Count - 1) * 3); // 3 = Länge des Trennzeichens " | "
                 writer.WriteLine(separatorLine);
 
                 // Schreibe Datenzeilen
                 foreach (DataRow row in dataTable.Rows)
                 {
-                    string dataLine = string.Join(" | ", row.ItemArray);
+                    string dataLine = string.Join(" | ", dataTable.Columns.Cast<DataColumn>().Select(column => row[column].ToString().PadRight(columnWidths[column.ColumnName])));
                     writer.WriteLine(dataLine);
+
+                    // waagerechte Trennlinie zum Trennen der Datensätze
+                    writer.WriteLine(separatorLine);
                 }
             }
         }
@@ -241,7 +240,6 @@ namespace BTS_Mitarbeiterverwaltung
                             }
                         }
 
-                        // Exportiere die Daten
                         function.ToCSV(csvFilePath);
                         function.ToTXT(txtFilePath);
 
@@ -255,46 +253,45 @@ namespace BTS_Mitarbeiterverwaltung
             }
         }
 
-        public void LoadDataGridView(DataGridView dataGridView)
-        {
-            try
-            {
-                // Die Verbindung sollte bereits geöffnet sein (von außen oder vorherigen Aufrufen)
-                // Wenn nicht, öffnen Sie die Verbindung
-                if (SqlVariable.connection.State != ConnectionState.Open)
-                {
-                    SqlVariable.connection.Open();
-                }
+        //public void LoadDataGridView(DataGridView dataGridView)
+        //{
+        //    try
+        //    {
+        //        // Die Verbindung sollte bereits geöffnet sein (von außen oder vorherigen Aufrufen)
+        //        // Wenn nicht, öffnen Sie die Verbindung
+        //        if (SqlVariable.connection.State != ConnectionState.Open)
+        //        {
+        //            SqlVariable.connection.Open();
+        //        }
 
-                // SQL-Abfrage: Abrufen der Inhalte der Tabelle dbo.Mitarbeiter
-                string query = "SELECT * FROM dbo.Mitarbeiter";
+        //        // SQL-Abfrage: Abrufen der Inhalte der Tabelle dbo.Mitarbeiter
+        //        string query = "SELECT * FROM dbo.Mitarbeiter";
 
-                using (SqlCommand command = new SqlCommand(query, SqlVariable.connection))
-                {
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-                    {
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
+        //        using (SqlCommand command = new SqlCommand(query, SqlVariable.connection))
+        //        {
+        //            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+        //            {
+        //                DataTable dataTable = new DataTable();
+        //                adapter.Fill(dataTable);
 
-                        // Datasource hinzufügen, um die Daten in der DataGridView anzeigen zu lassen
-                        dataGridView.DataSource = dataTable;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Fehler beim Abrufen der Mitarbeiterdaten: {ex.Message}");
-            }
-            finally
-            {
-                // Schließen Sie die Verbindung nur, wenn Sie sie vorher geöffnet haben
-                if (SqlVariable.connection.State == ConnectionState.Open)
-                {
-                    SqlVariable.connection.Close();
-                }
-            }
-        }
-
+        //                // Datasource hinzufügen, um die Daten in der DataGridView anzeigen zu lassen
+        //                dataGridView.DataSource = dataTable;
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine($"Fehler beim Abrufen der Mitarbeiterdaten: {ex.Message}");
+        //    }
+        //    finally
+        //    {
+        //        // Schließen Sie die Verbindung nur, wenn Sie sie vorher geöffnet haben
+        //        if (SqlVariable.connection.State == ConnectionState.Open)
+        //        {
+        //            SqlVariable.connection.Close();
+        //        }
+        //    }
+        //}
         public static bool Validation(string benutzername, string passwort)
         {
             try
