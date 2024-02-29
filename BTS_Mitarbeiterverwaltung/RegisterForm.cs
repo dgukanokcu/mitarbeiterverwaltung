@@ -6,7 +6,6 @@ namespace BTS_Mitarbeiterverwaltung
 {
     public partial class RegisterForm : Form
     {
-
         public string Benutzername { get; private set; }
         public string Passwort { get; private set; }
 

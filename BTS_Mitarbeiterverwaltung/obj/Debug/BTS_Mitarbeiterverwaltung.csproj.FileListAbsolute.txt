@@ -48,3 +48,16 @@ C:\Users\okcdo.DO-KUP\Source\Repos\dgukanokcu\mitarbeiterverwaltung\BTS_Mitarbei
 C:\Users\okcdo.DO-KUP\Source\Repos\dgukanokcu\mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\bin\Debug\BTS_Mitarbeiterverwaltung.exe.config
 C:\Users\okcdo.DO-KUP\Source\Repos\dgukanokcu\mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\bin\Debug\BTS_Mitarbeiterverwaltung.exe
 C:\Users\okcdo.DO-KUP\Source\Repos\dgukanokcu\mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\bin\Debug\BTS_Mitarbeiterverwaltung.pdb
+C:\Users\Admin\source\repos\bts_mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\bin\Debug\BTS_Mitarbeiterverwaltung.exe.config
+C:\Users\Admin\source\repos\bts_mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\bin\Debug\BTS_Mitarbeiterverwaltung.exe
+C:\Users\Admin\source\repos\bts_mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\bin\Debug\BTS_Mitarbeiterverwaltung.pdb
+C:\Users\Admin\source\repos\bts_mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos\bts_mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.LoginForm.resources
+C:\Users\Admin\source\repos\bts_mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.MainForm.resources
+C:\Users\Admin\source\repos\bts_mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.Properties.Resources.resources
+C:\Users\Admin\source\repos\bts_mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.RegisterForm.resources
+C:\Users\Admin\source\repos\bts_mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.UpdateForm.resources
+C:\Users\Admin\source\repos\bts_mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.csproj.GenerateResource.cache
+C:\Users\Admin\source\repos\bts_mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\bts_mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.exe
+C:\Users\Admin\source\repos\bts_mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\BTS_Mitarbeiterverwaltung\obj\Debug\BTS_Mitarbeiterverwaltung.pdb
