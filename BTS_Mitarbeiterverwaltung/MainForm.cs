@@ -24,8 +24,8 @@ namespace BTS_Mitarbeiterverwaltung
         public int selectedRowID { get; set; }
         private void MainForm_Load(object sender, EventArgs e)
         {
-            DataTable table = Employee.getAllEmployees();
-            dataGridViewEmployee.DataSource = table;
+            //DataTable table = Employee.getAllEmployees();
+            //dataGridViewEmployee.DataSource = table;
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -41,34 +41,34 @@ namespace BTS_Mitarbeiterverwaltung
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Möchten Sie wirklich löschen?", "Sicher?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            if (selectedRowID != 0)
             {
-                Employee.deleteEmployee(selectedRowID);
-                DataTable table = Employee.getAllEmployees();
-                dataGridViewEmployee.DataSource = table;
-                MessageBox.Show("Mitarbeiter wurde erfolgreich gelöscht!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogResult result = MessageBox.Show("Möchten Sie wirklich löschen?", "Sicher?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    Employee.deleteEmployee(selectedRowID);
+                    DataTable table = Employee.getAllEmployees();
+                    dataGridViewEmployee.DataSource = table;
+                    MessageBox.Show("Mitarbeiter wurde erfolgreich gelöscht!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else 
+            {
+                MessageBox.Show("Wählen Sie bitte ein Mitarbeiter aus!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            //if (dataGridViewEmployee.SelectedRows.Count > 0)
-            {
-                //if (dataGridViewEmployee.SelectedRows[0].Cells["ID"].Value is int)
-                {
-                    //selectedRowID = Convert.ToInt32(dataGridViewEmployee.SelectedRows[0].Cells["ID"].Value);
-                    
 
-                    try
-                    {
-                        selectedRowID = Convert.ToInt32(dataGridViewEmployee.CurrentRow.Cells["ID"].Value);
-                    }
-                    catch (Exception)
-                    {
-                    }
-                }
+            try
+            {
+                selectedRowID = Convert.ToInt32(dataGridViewEmployee.CurrentRow.Cells["ID"].Value);
             }
+            catch (Exception)
+            {
+            }
+
         }
 
         private void btnBearbeiten_Click(object sender, EventArgs e)
@@ -77,6 +77,10 @@ namespace BTS_Mitarbeiterverwaltung
             {
                 UpdateForm updateForm = new UpdateForm(this, selectedRowID);
                 updateForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Wählen Sie bitte ein Mitarbeiter aus!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -88,7 +92,7 @@ namespace BTS_Mitarbeiterverwaltung
 
         private void txtBoxName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            dataGridViewEmployee.DataSource = Employee.getEmployeeByName(txtBoxName.Text, txtBoxName.Text);
+            //dataGridViewEmployee.DataSource = Employee.getEmployeeByName(txtBoxName.Text, txtBoxName.Text);
         }
 
         private void dataGridViewEmployee_CellContentClick(object sender, DataGridViewCellEventArgs e)

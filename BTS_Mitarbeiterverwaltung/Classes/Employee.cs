@@ -46,6 +46,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
             SqlVariable.connection.Close();
             return table;
         }
+
         public static DataTable getEmployeeByName(string vorname, string name)
         {
             SqlCommand commandStart = new SqlCommand("SELECT * FROM mitarbeiter WHERE Vorname LIKE @Vorname OR Name LIKE @Name", SqlVariable.connection);
@@ -60,6 +61,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
 
             return table;
         }
+
         public static Employee getEmployeeById(int id)
         {
             Employee employee = null;
@@ -100,6 +102,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
             }
             return employee;
         }
+
         public void updateEmployee()
         {
             if (this.ID == 0)
@@ -155,6 +158,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                 SqlVariable.connection.Close();
             }          
         }    
+
         public static void deleteEmployee(int id)
         {
             SqlCommand sqlCommand = new SqlCommand("Delete from mitarbeiter where id=@id", SqlVariable.connection);
@@ -166,7 +170,14 @@ namespace BTS_Mitarbeiterverwaltung.Classes
 
         public static bool validation(Employee m)
         {
-            if (string.IsNullOrWhiteSpace(m.Name) || string.IsNullOrWhiteSpace(m.Vorname)) 
+            if (string.IsNullOrWhiteSpace(m.Name) || 
+                string.IsNullOrWhiteSpace(m.Vorname) || 
+                string.IsNullOrWhiteSpace(m.EMail) || 
+                string.IsNullOrWhiteSpace(m.Adresse) ||
+                string.IsNullOrWhiteSpace(m.Geschlecht) ||
+                string.IsNullOrWhiteSpace(m.Position) ||
+                string.IsNullOrWhiteSpace(m.Gehalt) ||
+                string.IsNullOrWhiteSpace(m.Telefon))
             {
                 return false;
             }
@@ -176,30 +187,13 @@ namespace BTS_Mitarbeiterverwaltung.Classes
             }
         }
 
-              
-
-        #region test
-        public void Topla(int a, int b)
+        public static void AllowOnlyLettersAndControlCharacters(object sender, KeyPressEventArgs e)
         {
-            _ = a + b;
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; 
+            }
         }
 
-        public static void topla2(int a, int b)
-        {
-            _ = a - b;
-        }
-
-        public int topla3(int a, int b)
-        {
-            int c = a + b;
-            return c;
-        }
-
-        public static int topla4(int a, int b)
-        {
-            int c = a + b;
-            return c;
-        }
-        #endregion
     }
 }

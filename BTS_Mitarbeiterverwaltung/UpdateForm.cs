@@ -61,6 +61,8 @@ namespace BTS_Mitarbeiterverwaltung
 
         private void UpdateForm_Load(object sender, EventArgs e)
         {
+
+
             if (id != 0)
             {
                 Employee m = Employee.getEmployeeById(id);
@@ -75,6 +77,16 @@ namespace BTS_Mitarbeiterverwaltung
                 txtBoxTelefon.Text = m.Telefon;
                 comboBoxGender.Text = m.Geschlecht;
             }
+        }
+
+        private void txtBoxName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Employee.AllowOnlyLettersAndControlCharacters(sender, e);
+        }
+
+        private void txtBoxSurname_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Employee.AllowOnlyLettersAndControlCharacters(sender, e);
         }
     }
 }
