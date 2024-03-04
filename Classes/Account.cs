@@ -42,7 +42,7 @@ internal class Account
             string errorMessage;
             if (!IsPasswordSafe(password, out errorMessage))
             {
-                throw new Exception($"Das Passwort erfüllt nicht die Sicherheitsanforderungen. \n{errorMessage}");
+                throw new Exception($"Dein Passwort erfüllt nicht die Sicherheitsanforderungen. \n{errorMessage}");
             }
 
 
@@ -52,12 +52,10 @@ internal class Account
 
             using (SqlCommand command = new SqlCommand(insertQuery, SqlVariable.connection))
             {
-                command.Parameters.AddWithValue("@Benutzername", username);    // Setze Parameter für Benutzername, PasswortHash und Salt
-                
+                // Setze Parameter für Benutzername, PasswortHash und Salt
+                command.Parameters.AddWithValue("@Benutzername", username);    
                 command.Parameters.AddWithValue("@PasswortHash", PasswortUtility.HashPasswort(password, salt));
-
                 command.Parameters.AddWithValue("@Salt", salt);
-
                 command.ExecuteNonQuery();
             }
 

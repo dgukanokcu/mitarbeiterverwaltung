@@ -3,19 +3,24 @@ using System.Data;
 using System.Windows.Forms;
 using BTS_Mitarbeiterverwaltung.Classes;
 
+
 namespace BTS_Mitarbeiterverwaltung
 {
     public partial class MainForm : Form
     {
+        private Tools tools;
         internal MainForm()
         {
             InitializeComponent();
+
+            tools = new Tools();
         }
 
         internal int selectedRowID { get; set; }
+
         internal void MainForm_Load(object sender, EventArgs e)
         {
-            DataTable table = Employee.getAllEmployees();
+            DataTable table = Employee.GetAllEmployees();
             dataGridViewEmployee.DataSource = table;
         }
 
@@ -33,14 +38,25 @@ namespace BTS_Mitarbeiterverwaltung
         internal void btnDelete_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Möchten Sie wirklich löschen?", "Sicher?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
             if (result == DialogResult.Yes)
             {
-                Employee.deleteEmployee(selectedRowID);
-                DataTable table = Employee.getAllEmployees();
-                dataGridViewEmployee.DataSource = table;
-                MessageBox.Show("Mitarbeiter wurde erfolgreich gelöscht!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (dataGridViewEmployee.SelectedRows.Count > 0)
+                {
+                    foreach (DataGridViewRow selectedRow in dataGridViewEmployee.SelectedRows)
+                    {
+                        int selectedRowID = Convert.ToInt32(selectedRow.Cells["ID"].Value); // Annahme: Die ID-Spalte hat den Namen "ID"
+                        Employee.deleteEmployee(selectedRowID);
+                        dataGridViewEmployee.Rows.Remove(selectedRow);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Bitte wählen Sie mindestens eine Zeile zum Löschen aus.", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
+
 
         internal void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
@@ -67,33 +83,13 @@ namespace BTS_Mitarbeiterverwaltung
 
         internal void btnReset_Click(object sender, EventArgs e)
         {
-            DataTable table = Employee.getAllEmployees();
+            DataTable table = Employee.GetAllEmployees();
             dataGridViewEmployee.DataSource = table;
         }
 
         internal void txtBoxName_KeyPress(object sender, KeyPressEventArgs e)
         {
             dataGridViewEmployee.DataSource = Employee.getEmployeeByName(txtBoxName.Text, txtBoxName.Text);
-        }
-
-        internal void dataGridViewEmployee_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 0 /*&& e.RowIndex >= 0*/)
-            {
-                DialogResult result = MessageBox.Show("Möchten Sie es wirklich löschen?", "Sicher?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    Employee.deleteEmployee(selectedRowID);
-                    DataTable table = Employee.getAllEmployees();
-                    dataGridViewEmployee.DataSource = table;
-                    MessageBox.Show("Mitarbeiter wurde erfolgreich gelöscht!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            else if (e.ColumnIndex == 1)
-            {
-                UpdateForm updateForm = new UpdateForm(this, selectedRowID);
-                updateForm.Show();
-            }
         }
 
         internal void dataGridViewEmployee_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -107,7 +103,12 @@ namespace BTS_Mitarbeiterverwaltung
         internal void btnExport_Click(object sender, EventArgs e)
         {
             Tools function = new Tools();
-            Tools.TryExport(function);
+            tools.TryExport(function);
+        }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            tools.FileImport();
         }
     }
 }

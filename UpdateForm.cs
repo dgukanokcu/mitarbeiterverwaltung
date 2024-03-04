@@ -14,7 +14,7 @@ namespace BTS_Mitarbeiterverwaltung
         {
             InitializeComponent();
             this.mainForm = mainForm;
-            this.id = ID;
+            id = ID;
         }
 
         private void btnSpeichern_Click(object sender, EventArgs e)
@@ -44,7 +44,7 @@ namespace BTS_Mitarbeiterverwaltung
                 {
                     MessageBox.Show("Mitarbeiter wurde erfolgreich aktualisiert!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }             
-                DataTable table = Employee.getAllEmployees();
+                DataTable table = Employee.GetAllEmployees();
                 mainForm.dataGridViewEmployee.DataSource = table;
             }
             else 

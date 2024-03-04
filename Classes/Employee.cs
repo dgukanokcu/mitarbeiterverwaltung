@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace BTS_Mitarbeiterverwaltung.Classes
 {
@@ -28,14 +29,33 @@ namespace BTS_Mitarbeiterverwaltung.Classes
         /// Get all Mitarbeiter as DataTable
         /// </summary>
         /// <returns></returns>
-        internal static DataTable getAllEmployees()
+        internal static DataTable GetAllEmployees()
         {
-            SqlCommand commandStart = new SqlCommand("SELECT * from mitarbeiter", SqlVariable.connection);
-            SqlVariable.connection.Open();
-            SqlDataAdapter adapter = new SqlDataAdapter(commandStart);
             DataTable table = new DataTable();
-            adapter.Fill(table);
-            SqlVariable.connection.Close();
+
+            try
+            {
+                if (SqlVariable.connection.State != ConnectionState.Open)
+                {
+                    SqlVariable.connection.Open();
+                }
+
+                using (SqlCommand commandStart = new SqlCommand("SELECT * FROM mitarbeiter", SqlVariable.connection))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(commandStart))
+                    {
+                        adapter.Fill(table);
+                    }
+                }
+            }
+            finally
+            {
+                if (SqlVariable.connection.State == ConnectionState.Open)
+                {
+                    SqlVariable.connection.Close();
+                }
+            }
+
             return table;
         }
         internal static DataTable getEmployeeByName(string vorname, string nachname)
@@ -94,10 +114,14 @@ namespace BTS_Mitarbeiterverwaltung.Classes
         }
         internal void updateEmployee()
         {
-            if (this.ID == 0)
+            if (ID == 0)
             {
-                SqlCommand commandUpdate = new SqlCommand("INSERT INTO mitarbeiter (Vorname, Nachname, Adresse, Telefon, [E-Mail], Position, EintrittDatum, Gehalt, Geburtsdatum, Geschlecht) values (@Vorname, @Nachname, @Adresse, @Telefon, @EMail, @Position, @EintrittDatum, @Gehalt, @Geburtsdatum, @Geschlecht)", SqlVariable.connection);
+                SqlCommand commandUpdate = new SqlCommand("INSERT INTO mitarbeiter (Vorname, Nachname, Adresse, Telefon, [E-Mail], Position, " +
+                    "EintrittDatum, Gehalt, Geburtsdatum, Geschlecht) values (@Vorname, @Nachname, @Adresse, @Telefon, @EMail, @Position, " +
+                    "@EintrittDatum, @Gehalt, @Geburtsdatum, @Geschlecht)", SqlVariable.connection);
+
                 SqlVariable.connection.Open();
+
                 commandUpdate.Parameters.AddWithValue("@Vorname", Vorname);
                 commandUpdate.Parameters.AddWithValue("@Nachname", Nachname);
                 commandUpdate.Parameters.AddWithValue("@Adresse", Adresse);
@@ -109,6 +133,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                 commandUpdate.Parameters.AddWithValue("@Geburtsdatum", Geburtsdatum);
                 commandUpdate.Parameters.AddWithValue("@Geschlecht", Geschlecht);
                 commandUpdate.ExecuteNonQuery();
+
                 SqlVariable.connection.Close();
             }
             else
@@ -151,15 +176,41 @@ namespace BTS_Mitarbeiterverwaltung.Classes
 
                     SqlVariable.connection.Close();
             }          
-        }    
+        }
         internal static void deleteEmployee(int id)
         {
-            SqlCommand sqlCommand = new SqlCommand("DELETE FROM mitarbeiter where id=@id", SqlVariable.connection);
-            SqlVariable.connection.Open();
-            sqlCommand.Parameters.AddWithValue("@id", id);
-            sqlCommand.ExecuteNonQuery();
-            SqlVariable.connection.Close();
+            try
+            {
+                SqlCommand sqlCommand = new SqlCommand("DELETE FROM mitarbeiter where id=@id", SqlVariable.connection);
+                SqlVariable.connection.Open();
+                sqlCommand.Parameters.AddWithValue("@id", id);
+
+                int rowsAffected = sqlCommand.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Mitarbeiter wurde erfolgreich gelöscht!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Mitarbeiter mit ID " + id + " nicht gefunden.", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Fehler beim Löschen des Mitarbeiters: {ex.Message}", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (SqlVariable.connection.State == ConnectionState.Open)
+                {
+                    SqlVariable.connection.Close();
+                }
+            }
         }
+
+
+
 
         internal static bool validation(Employee m)
         {

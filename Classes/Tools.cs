@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -12,26 +13,9 @@ namespace BTS_Mitarbeiterverwaltung
 
     internal class Tools
     {
-        private DataTable temporaryDataTable; // DataTable zum Zwischenspeichern der importierten Daten
 
         internal Tools()
-        {
-            // Initialisiere die DataTable
-            temporaryDataTable = new DataTable();
-
-            // Füge die erforderlichen Spalten hinzu, entsprechend der Struktur deiner Datenbanktabelle
-            temporaryDataTable.Columns.Add("Vorname", typeof(string));
-            temporaryDataTable.Columns.Add("Nachname", typeof(string));
-            temporaryDataTable.Columns.Add("Adresse", typeof(string));
-            temporaryDataTable.Columns.Add("Telefon", typeof(int));
-            temporaryDataTable.Columns.Add("Email", typeof(string));
-            temporaryDataTable.Columns.Add("Position", typeof(string));
-            temporaryDataTable.Columns.Add("Eintrittsdatum", typeof(DateTime));
-            temporaryDataTable.Columns.Add("Gehalt", typeof(int));
-            temporaryDataTable.Columns.Add("Rentenbeginn", typeof(DateTime));
-            temporaryDataTable.Columns.Add("Geburtsdatum", typeof(DateTime));
-            temporaryDataTable.Columns.Add("Alter", typeof(int));
-        }
+        {}
 
         internal void FileImport()
         {
@@ -49,30 +33,14 @@ namespace BTS_Mitarbeiterverwaltung
                     {
                         using (StreamReader reader = new StreamReader(filePath))
                         {
-                            string line;
-                            while ((line = reader.ReadLine()) != null)
+                            while (!reader.EndOfStream)
                             {
-                                // Split the line into fields (assuming comma-separated values)
-                                string[] fields = line.Split(',');
-
-                                // Add the fields to the temporaryDataTable
-                                DataRow newRow = temporaryDataTable.NewRow();
-                                for (int i = 0; i < fields.Length; i++)
-                                {
-                                    // Assuming that the fields are in the format "Attribute: Value"
-                                    string[] parts = fields[i].Split(':');
-                                    if (parts.Length == 2)
-                                    {
-                                        string attribute = parts[0].Trim();
-                                        string value = parts[1].Trim();
-                                        newRow[attribute] = value;
-                                    }
-                                }
-                                temporaryDataTable.Rows.Add(newRow);
+                                string[] attributeValues = reader.ReadLine().Split(',');
+                                InsertDataIntoDatabase(attributeValues);
                             }
                         }
 
-                        MessageBox.Show("Daten erfolgreich importiert!", "Erfolg", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Daten erfolgreich aus der Datei importiert!", "Erfolg", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
@@ -82,139 +50,13 @@ namespace BTS_Mitarbeiterverwaltung
             }
         }
 
-        internal void ToCSV(string filePath)
-        {
-            DataTable dataTableCSV = null;
-
-            try
-            {
-                if (SqlVariable.connection.State != ConnectionState.Open)
-                {
-                    SqlVariable.connection.Open();
-                }
-
-                // SQL-Abfrage zum Abrufen aller Spalten und Zeilen
-                string query = "SELECT * FROM dbo.Mitarbeiter";
-
-                using (SqlCommand command = new SqlCommand(query, SqlVariable.connection))
-                {
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-                    {
-                        dataTableCSV = new DataTable();
-                        adapter.Fill(dataTableCSV);
-                    }
-                }
-
-                // Exportiere die Daten in .csv
-                ExportDataTableToCSV(dataTableCSV, filePath);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Fehler beim Exportieren der Daten nach CSV: {ex.Message}");
-            }
-            finally
-            {
-                if (SqlVariable.connection.State == ConnectionState.Open)
-                {
-                    SqlVariable.connection.Close();
-                }
-            }
-        }
-
-        internal void ToTXT(string filePath)
-        {
-            DataTable dataTableTXT = null; // Deklaration außerhalb des try-Blocks
-
-            try
-            {
-                if (SqlVariable.connection.State != ConnectionState.Open)
-                {
-                    SqlVariable.connection.Open();
-                }
-
-                string query = "SELECT * FROM dbo.Mitarbeiter";
-
-                using (SqlCommand command = new SqlCommand(query, SqlVariable.connection))
-                {
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-                    {
-                        // DataSet, um die Daten zu speichern
-                        dataTableTXT = new DataTable();
-                        adapter.Fill(dataTableTXT);
-                    }
-                }
-
-                ExportDataTableToTXT(dataTableTXT, filePath);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Fehler beim Exportieren der Daten nach TXT: {ex.Message}");
-            }
-            finally
-            {
-                if (SqlVariable.connection.State == ConnectionState.Open)
-                {
-                    SqlVariable.connection.Close();
-                }
-            }
-        }
-
-        internal void ExportDataTableToCSV(DataTable dataTable, string filePath)
-        {
-            using (StreamWriter writer = new StreamWriter(filePath))
-            {
-                // Schreibe Header-Zeile mit Spaltenüberschriften
-                writer.WriteLine(string.Join(",", dataTable.Columns.Cast<DataColumn>().Select(column => column.ColumnName)));
-
-                // Schreibe Datenzeilen
-                foreach (DataRow row in dataTable.Rows)
-                {
-                    // Schreibe die Werte der aktuellen Zeile
-                    string formattedRow = string.Join(",", row.ItemArray);
-                    writer.WriteLine(formattedRow);
-                }
-            }
-        }
-
-        internal void ExportDataTableToTXT(DataTable dataTable, string filePath)
-        {
-            using (StreamWriter writer = new StreamWriter(filePath))
-            {
-                // Ermittle maximale Breite für jede Spalte
-                Dictionary<string, int> columnWidths = new Dictionary<string, int>();
-                foreach (DataColumn column in dataTable.Columns)
-                {
-                    int maxLength = Math.Max(column.ColumnName.Length, dataTable.AsEnumerable().Select(r => r[column].ToString().Length).Max());
-                    columnWidths[column.ColumnName] = maxLength;
-                }
-
-                //Headerzeile mit Strichen
-                string headerLine = string.Join(" | ", dataTable.Columns.Cast<DataColumn>().Select(column => column.ColumnName.PadRight(columnWidths[column.ColumnName])));
-                writer.WriteLine(headerLine);
-
-                //Trennlinie mit Strichen
-                string separatorLine = new string('-', columnWidths.Values.Sum() + (dataTable.Columns.Count - 1) * 3); // 3 = Länge des Trennzeichens " | "
-                writer.WriteLine(separatorLine);
-
-                // Schreibe Datenzeilen
-                foreach (DataRow row in dataTable.Rows)
-                {
-                    string dataLine = string.Join(" | ", dataTable.Columns.Cast<DataColumn>().Select(column => row[column].ToString().PadRight(columnWidths[column.ColumnName])));
-                    writer.WriteLine(dataLine);
-
-                    // waagerechte Trennlinie zum Trennen der Datensätze
-                    writer.WriteLine(separatorLine);
-                }
-            }
-        }
-
-        internal static void TryExport(Tools function)
+        internal void TryExport(Tools function)
         {
             try
             {
                 using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
                 {
-                    // Benutzer auffordern das Zielverzeichnis auszuwählen
+                    // auffordern das Zielverzeichnis auszuwählen
                     DialogResult result = folderBrowserDialog.ShowDialog();
 
                     if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(folderBrowserDialog.SelectedPath))
@@ -237,12 +79,128 @@ namespace BTS_Mitarbeiterverwaltung
                             }
                         }
 
-                        function.ToCSV(csvFilePath);
-                        function.ToTXT(txtFilePath);
+                        DataTable dataTable = null;
+
+                        try
+                        {
+                            if (SqlVariable.connection.State != ConnectionState.Open)
+                            {
+                                SqlVariable.connection.Open();
+                            }
+
+                            string query = "SELECT * FROM dbo.Mitarbeiter";
+                            using (SqlCommand command = new SqlCommand(query, SqlVariable.connection))
+                            {
+                                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                                {
+                                    // DataSet, um die Daten zu speichern
+                                    dataTable = new DataTable();
+                                    adapter.Fill(dataTable);
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Fehler beim Laden der Daten: {ex.Message}");
+                            return;
+                        }
+                        finally
+                        {
+                            if (SqlVariable.connection.State == ConnectionState.Open)
+                            {
+                                SqlVariable.connection.Close();
+                            }
+                        }
+
+                        // Exportiere Daten in CSV und TXT
+                        ExportDataTableToFile(dataTable, csvFilePath, ",");
+                        ExportDataTableToFile(dataTable, txtFilePath, " | ");
 
                         MessageBox.Show("Daten erfolgreich exportiert!", "Erfolg", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // Öffne das Zielverzeichnis
+                        Process.Start("explorer.exe", targetFolder);
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Fehler beim Exportieren der Daten: {ex.Message}");
+            }
+        }
+
+        private bool InsertDataIntoDatabase(string[] attributeValues)
+        {
+            try
+            {
+                SqlCommand commandUpdate = new SqlCommand(
+                    "INSERT INTO mitarbeiter (ID, Vorname, Nachname, Adresse, Telefon, [E-Mail], Position, " +
+                    "EintrittDatum, Gehalt, Rentenbeginn, Geburtsdatum, Geschlecht) " +
+                    "VALUES (@ID, @Vorname, @Nachname, @Adresse, @Telefon, @EMail, @Position, " +
+                    "@EintrittDatum, @Gehalt, @Rentenbeginn, @Geburtsdatum, @Geschlecht)",
+                    SqlVariable.connection);
+
+                SqlVariable.connection.Open();
+
+                // Füge die ID als Parameter hinzu
+                commandUpdate.Parameters.AddWithValue("@ID", Convert.ToInt32(attributeValues[0].Trim()));
+                commandUpdate.Parameters.AddWithValue("@Vorname", attributeValues[1].Trim());
+                commandUpdate.Parameters.AddWithValue("@Nachname", attributeValues[2].Trim());
+                commandUpdate.Parameters.AddWithValue("@Adresse", attributeValues[3].Trim());
+                commandUpdate.Parameters.AddWithValue("@Telefon", attributeValues[4].Trim());
+                commandUpdate.Parameters.AddWithValue("@EMail", attributeValues[5].Trim());
+                commandUpdate.Parameters.AddWithValue("@Position", attributeValues[6].Trim());
+                commandUpdate.Parameters.AddWithValue("@EintrittDatum", Convert.ToDateTime(attributeValues[7]));
+                commandUpdate.Parameters.AddWithValue("@Gehalt", attributeValues[8].Trim());
+                commandUpdate.Parameters.AddWithValue("@Rentenbeginn", Convert.ToDateTime(attributeValues[9]));
+                commandUpdate.Parameters.AddWithValue("@Geburtsdatum", Convert.ToDateTime(attributeValues[10]));
+                commandUpdate.Parameters.AddWithValue("@Geschlecht", attributeValues[11].Trim());
+
+                commandUpdate.ExecuteNonQuery();
+
+                SqlVariable.connection.Close();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Fehler beim Einfügen der Daten in die Datenbank: {ex.Message}", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        internal void ExportDataTableToFile(DataTable dataTable, string filePath, string delimiter)
+        {
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(filePath))
+                {
+                    // Ermittle maximale Breite für jede Spalte
+                    Dictionary<string, int> columnWidths = new Dictionary<string, int>();
+
+                    foreach (DataColumn column in dataTable.Columns)
+                    {
+                        int maxLength = Math.Max(column.ColumnName.Length, dataTable.AsEnumerable().Select(r => r[column].ToString().Length).Max());
+                        columnWidths[column.ColumnName] = maxLength;
+                    }
+
+                    //Headerzeile mit Delimiter
+                    string headerLine = string.Join(delimiter, dataTable.Columns.Cast<DataColumn>().Select(column => column.ColumnName.PadRight(columnWidths[column.ColumnName])));
+                    writer.WriteLine(headerLine);
+
+                    //Trennlinie mit Delimiter
+                    string separatorLine = new string('-', columnWidths.Values.Sum() + (dataTable.Columns.Count - 1) * delimiter.Length); // Länge des Trennzeichens
+                    writer.WriteLine(separatorLine);
+
+                    // Schreibe Datenzeilen
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        string dataLine = string.Join(delimiter, dataTable.Columns.Cast<DataColumn>().Select(column => row[column].ToString().PadRight(columnWidths[column.ColumnName])));
+                        writer.WriteLine(dataLine);
+                    }
+                }
+
+                Console.WriteLine($"Daten erfolgreich nach {Path.GetExtension(filePath).ToUpper()} exportiert!");
             }
             catch (Exception ex)
             {
