@@ -12,7 +12,6 @@ namespace BTS_Mitarbeiterverwaltung
         internal MainForm()
         {
             InitializeComponent();
-
             tools = new Tools();
         }
 
@@ -29,34 +28,23 @@ namespace BTS_Mitarbeiterverwaltung
             Application.Exit();
         }
 
+        public void btnReset_Click(object sender, EventArgs e)
+        {
+            DataTable table = Employee.GetAllEmployees();
+            dataGridViewEmployee.DataSource = table;
+        }
+
         internal void btnHinzufügen_Click(object sender, EventArgs e)
         {
             UpdateForm updateForm = new UpdateForm(this, 0);
             updateForm.Show();
         }
 
-        internal void btnDelete_Click(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Möchten Sie wirklich löschen?", "Sicher?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-            {
-                if (dataGridViewEmployee.SelectedRows.Count > 0)
-                {
-                    foreach (DataGridViewRow selectedRow in dataGridViewEmployee.SelectedRows)
-                    {
-                        int selectedRowID = Convert.ToInt32(selectedRow.Cells["ID"].Value); // Annahme: Die ID-Spalte hat den Namen "ID"
-                        Employee.deleteEmployee(selectedRowID);
-                        dataGridViewEmployee.Rows.Remove(selectedRow);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Bitte wählen Sie mindestens eine Zeile zum Löschen aus.", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+            Tools.DeleteRows(dataGridViewEmployee);
+            btnReset.PerformClick();
         }
-
 
         internal void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
@@ -81,12 +69,6 @@ namespace BTS_Mitarbeiterverwaltung
             }
         }
 
-        internal void btnReset_Click(object sender, EventArgs e)
-        {
-            DataTable table = Employee.GetAllEmployees();
-            dataGridViewEmployee.DataSource = table;
-        }
-
         internal void txtBoxName_KeyPress(object sender, KeyPressEventArgs e)
         {
             dataGridViewEmployee.DataSource = Employee.getEmployeeByName(txtBoxName.Text, txtBoxName.Text);
@@ -109,6 +91,10 @@ namespace BTS_Mitarbeiterverwaltung
         private void btnImport_Click(object sender, EventArgs e)
         {
             tools.FileImport();
+            btnReset.PerformClick();
         }
+
+        private void dataGridViewEmployee_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {}
     }
 }

@@ -128,10 +128,12 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                 commandUpdate.Parameters.AddWithValue("@Telefon", Telefon);
                 commandUpdate.Parameters.AddWithValue("@EMail", EMail);
                 commandUpdate.Parameters.AddWithValue("@Position", Position);
-                commandUpdate.Parameters.AddWithValue("@Eintrittdatum", DatumEintritt);
+                commandUpdate.Parameters.Add("@EintrittDatum", SqlDbType.DateTime).Value = DatumEintritt;
                 commandUpdate.Parameters.AddWithValue("@Gehalt", Gehalt);
-                commandUpdate.Parameters.AddWithValue("@Geburtsdatum", Geburtsdatum);
+                commandUpdate.Parameters.Add("@Rentenbeginn", SqlDbType.DateTime).Value = DatumRentenBeginn;
+                commandUpdate.Parameters.Add("@Geburtsdatum", SqlDbType.DateTime).Value = Geburtsdatum;
                 commandUpdate.Parameters.AddWithValue("@Geschlecht", Geschlecht);
+
                 commandUpdate.ExecuteNonQuery();
 
                 SqlVariable.connection.Close();
@@ -166,13 +168,14 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                     commandUpdate.Parameters.AddWithValue("@Telefon", Telefon);
                     commandUpdate.Parameters.AddWithValue("@EMail", EMail);
                     commandUpdate.Parameters.AddWithValue("@Position", Position);
-                    commandUpdate.Parameters.AddWithValue("@Eintrittdatum", DatumEintritt);
+                    commandUpdate.Parameters.Add("@EintrittDatum", SqlDbType.DateTime).Value = DatumEintritt;
                     commandUpdate.Parameters.AddWithValue("@Gehalt", Gehalt);
-                    commandUpdate.Parameters.AddWithValue("@Rentenbeginn", DatumRentenBeginn);
-                    commandUpdate.Parameters.AddWithValue("@Geburtsdatum", Geburtsdatum);
+                    commandUpdate.Parameters.Add("@Rentenbeginn", SqlDbType.DateTime).Value = DatumRentenBeginn;
+                    commandUpdate.Parameters.Add("@Geburtsdatum", SqlDbType.DateTime).Value = Geburtsdatum;
                     commandUpdate.Parameters.AddWithValue("@Geschlecht", Geschlecht);
 
-                    commandUpdate.ExecuteNonQuery();
+
+                commandUpdate.ExecuteNonQuery();
 
                     SqlVariable.connection.Close();
             }          
@@ -181,17 +184,13 @@ namespace BTS_Mitarbeiterverwaltung.Classes
         {
             try
             {
-                SqlCommand sqlCommand = new SqlCommand("DELETE FROM mitarbeiter where id=@id", SqlVariable.connection);
+                SqlCommand sqlCommand = new SqlCommand("DELETE FROM mitarbeiter WHERE id=@id", SqlVariable.connection);
                 SqlVariable.connection.Open();
                 sqlCommand.Parameters.AddWithValue("@id", id);
 
                 int rowsAffected = sqlCommand.ExecuteNonQuery();
 
-                if (rowsAffected > 0)
-                {
-                    MessageBox.Show("Mitarbeiter wurde erfolgreich gelöscht!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
+                if (rowsAffected == 0)
                 {
                     MessageBox.Show("Mitarbeiter mit ID " + id + " nicht gefunden.", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -208,6 +207,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                 }
             }
         }
+
 
         internal static bool validation(Employee m)
         {

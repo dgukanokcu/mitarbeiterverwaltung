@@ -55,7 +55,7 @@
             // 
             this.txtBoxName.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtBoxName.Location = new System.Drawing.Point(14, 27);
-            this.txtBoxName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBoxName.Margin = new System.Windows.Forms.Padding(2);
             this.txtBoxName.Name = "txtBoxName";
             this.txtBoxName.Size = new System.Drawing.Size(120, 20);
             this.txtBoxName.TabIndex = 0;
@@ -63,7 +63,7 @@
             // btnSave
             // 
             this.btnSave.Location = new System.Drawing.Point(308, 194);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(120, 38);
             this.btnSave.TabIndex = 1;
@@ -74,7 +74,7 @@
             // txtBoxSurname
             // 
             this.txtBoxSurname.Location = new System.Drawing.Point(14, 73);
-            this.txtBoxSurname.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBoxSurname.Margin = new System.Windows.Forms.Padding(2);
             this.txtBoxSurname.Name = "txtBoxSurname";
             this.txtBoxSurname.Size = new System.Drawing.Size(120, 20);
             this.txtBoxSurname.TabIndex = 1;
@@ -82,7 +82,7 @@
             // txtBoxTelefon
             // 
             this.txtBoxTelefon.Location = new System.Drawing.Point(164, 70);
-            this.txtBoxTelefon.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBoxTelefon.Margin = new System.Windows.Forms.Padding(2);
             this.txtBoxTelefon.Name = "txtBoxTelefon";
             this.txtBoxTelefon.Size = new System.Drawing.Size(120, 20);
             this.txtBoxTelefon.TabIndex = 5;
@@ -90,7 +90,7 @@
             // txtBoxEmail
             // 
             this.txtBoxEmail.Location = new System.Drawing.Point(14, 160);
-            this.txtBoxEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBoxEmail.Margin = new System.Windows.Forms.Padding(2);
             this.txtBoxEmail.Name = "txtBoxEmail";
             this.txtBoxEmail.Size = new System.Drawing.Size(120, 20);
             this.txtBoxEmail.TabIndex = 4;
@@ -98,7 +98,7 @@
             // txtBoxAdress
             // 
             this.txtBoxAdress.Location = new System.Drawing.Point(14, 116);
-            this.txtBoxAdress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBoxAdress.Margin = new System.Windows.Forms.Padding(2);
             this.txtBoxAdress.Name = "txtBoxAdress";
             this.txtBoxAdress.Size = new System.Drawing.Size(120, 20);
             this.txtBoxAdress.TabIndex = 3;
@@ -106,7 +106,7 @@
             // txtBoxSalary
             // 
             this.txtBoxSalary.Location = new System.Drawing.Point(308, 113);
-            this.txtBoxSalary.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBoxSalary.Margin = new System.Windows.Forms.Padding(2);
             this.txtBoxSalary.Name = "txtBoxSalary";
             this.txtBoxSalary.Size = new System.Drawing.Size(120, 20);
             this.txtBoxSalary.TabIndex = 8;
@@ -205,7 +205,7 @@
             // 
             this.dateTimePickerEntry.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerEntry.Location = new System.Drawing.Point(308, 24);
-            this.dateTimePickerEntry.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePickerEntry.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerEntry.Name = "dateTimePickerEntry";
             this.dateTimePickerEntry.Size = new System.Drawing.Size(120, 20);
             this.dateTimePickerEntry.TabIndex = 7;
@@ -214,7 +214,7 @@
             // 
             this.dateTimePickerBirthdate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerBirthdate.Location = new System.Drawing.Point(164, 24);
-            this.dateTimePickerBirthdate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePickerBirthdate.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerBirthdate.Name = "dateTimePickerBirthdate";
             this.dateTimePickerBirthdate.Size = new System.Drawing.Size(120, 20);
             this.dateTimePickerBirthdate.TabIndex = 23;
@@ -236,7 +236,7 @@
             "Weiblich\t",
             "Männlich"});
             this.comboBoxGender.Location = new System.Drawing.Point(164, 116);
-            this.comboBoxGender.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxGender.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxGender.Name = "comboBoxGender";
             this.comboBoxGender.Size = new System.Drawing.Size(120, 21);
             this.comboBoxGender.TabIndex = 26;
@@ -249,7 +249,7 @@
             "Mitarbeiter",
             "Auszubildende"});
             this.comboBoxPosition.Location = new System.Drawing.Point(308, 68);
-            this.comboBoxPosition.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxPosition.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxPosition.Name = "comboBoxPosition";
             this.comboBoxPosition.Size = new System.Drawing.Size(120, 21);
             this.comboBoxPosition.TabIndex = 27;
@@ -280,7 +280,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Nachname);
             this.Controls.Add(this.label8);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UpdateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Daten bearbeiten";

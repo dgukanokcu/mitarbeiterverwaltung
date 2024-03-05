@@ -18,9 +18,16 @@ namespace BTS_Mitarbeiterverwaltung
         }
 
         private void btnSpeichern_Click(object sender, EventArgs e)
-        {           
+        {
             Employee m = new Employee();
-            if (id != 0) { m.ID = id; }
+
+            // Wenn eine ID vorhanden ist, setze sie für das Mitarbeiterobjekt
+            if (id != 0)
+            {
+                m.ID = id;
+            }
+
+            // Setze die anderen Eigenschaften basierend auf den Benutzereingaben
             m.Vorname = txtBoxName.Text;
             m.Nachname = txtBoxSurname.Text;
             m.Position = comboBoxPosition.Text;
@@ -32,22 +39,24 @@ namespace BTS_Mitarbeiterverwaltung
             m.Telefon = txtBoxTelefon.Text;
             m.Geschlecht = comboBoxGender.Text;
 
+            // Validiere die Mitarbeiterdaten
             if (Employee.validation(m))
             {
+                // Führe die Aktualisierung oder Einfügung in die Datenbank durch
                 m.updateEmployee();
+
+                // Schließe das Formular
                 this.Close();
+
+                // Zeige eine entsprechende Erfolgsmeldung an
                 if (m.ID == 0)
                 {
                     MessageBox.Show("Mitarbeiter wurde erfolgreich hinzugefügt!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                else 
-                {
-                    MessageBox.Show("Mitarbeiter wurde erfolgreich aktualisiert!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }             
                 DataTable table = Employee.GetAllEmployees();
                 mainForm.dataGridViewEmployee.DataSource = table;
             }
-            else 
+            else
             {
                 MessageBox.Show("Überprüfen Sie bitte Ihre Angaben!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

@@ -41,6 +41,7 @@ namespace BTS_Mitarbeiterverwaltung
                         }
 
                         MessageBox.Show("Daten erfolgreich aus der Datei importiert!", "Erfolg", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     }
                     catch (Exception ex)
                     {
@@ -132,15 +133,15 @@ namespace BTS_Mitarbeiterverwaltung
             try
             {
                 SqlCommand commandUpdate = new SqlCommand(
-                    "INSERT INTO mitarbeiter (ID, Vorname, Nachname, Adresse, Telefon, [E-Mail], Position, " +
+                    "INSERT INTO mitarbeiter (Vorname, Nachname, Adresse, Telefon, [E-Mail], Position, " +
                     "EintrittDatum, Gehalt, Rentenbeginn, Geburtsdatum, Geschlecht) " +
-                    "VALUES (@ID, @Vorname, @Nachname, @Adresse, @Telefon, @EMail, @Position, " +
+                    "VALUES (@Vorname, @Nachname, @Adresse, @Telefon, @EMail, @Position, " +
                     "@EintrittDatum, @Gehalt, @Rentenbeginn, @Geburtsdatum, @Geschlecht)",
                     SqlVariable.connection);
 
                 SqlVariable.connection.Open();
 
-                commandUpdate.Parameters.AddWithValue("@ID", Convert.ToInt32(attributeValues[0].Trim()));
+                //commandUpdate.Parameters.AddWithValue("@ID", Convert.ToInt32(attributeValues[0].Trim()));
                 commandUpdate.Parameters.AddWithValue("@Vorname", attributeValues[1].Trim());
                 commandUpdate.Parameters.AddWithValue("@Nachname", attributeValues[2].Trim());
                 commandUpdate.Parameters.AddWithValue("@Adresse", attributeValues[3].Trim());
@@ -204,5 +205,30 @@ namespace BTS_Mitarbeiterverwaltung
                 Console.WriteLine($"Fehler beim Exportieren der Daten: {ex.Message}");
             }
         }
+
+        internal static void DeleteRows(DataGridView dataGridView)
+        {
+            DialogResult result = MessageBox.Show("Möchten Sie wirklich löschen?", "Sicher?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                if (dataGridView.SelectedRows.Count > 0)
+                {
+                    foreach (DataGridViewRow selectedRow in dataGridView.SelectedRows)
+                    {
+                        int selectedRowID = Convert.ToInt32(selectedRow.Cells["ID"].Value); // Annahme: Die ID-Spalte hat den Namen "ID"
+                        Employee.deleteEmployee(selectedRowID);
+                    }
+                    MessageBox.Show("Datensätze erfolgreich gelöscht!", "Erfolg", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // DataGridView aktualisieren (falls notwendig)
+                }
+                else
+                {
+                    MessageBox.Show("Bitte wählen Sie mindestens eine Zeile zum Löschen aus.", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
     }
 }

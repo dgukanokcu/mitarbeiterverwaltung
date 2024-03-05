@@ -57,8 +57,8 @@
             // dataGridViewEmployee
             // 
             this.dataGridViewEmployee.AllowUserToAddRows = false;
+            this.dataGridViewEmployee.AllowUserToDeleteRows = false;
             this.dataGridViewEmployee.AllowUserToOrderColumns = true;
-            this.dataGridViewEmployee.AllowUserToResizeColumns = false;
             this.dataGridViewEmployee.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dataGridViewEmployee.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewEmployee.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
@@ -83,11 +83,11 @@
             this.dataGridViewEmployee.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.dataGridViewEmployee.Location = new System.Drawing.Point(0, 174);
             this.dataGridViewEmployee.Name = "dataGridViewEmployee";
-            this.dataGridViewEmployee.ReadOnly = true;
             this.dataGridViewEmployee.RowHeadersWidth = 51;
             this.dataGridViewEmployee.Size = new System.Drawing.Size(1084, 283);
             this.dataGridViewEmployee.StandardTab = true;
             this.dataGridViewEmployee.TabIndex = 0;
+            this.dataGridViewEmployee.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEmployee_CellContentClick);
             this.dataGridViewEmployee.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewEmployee_CellMouseClick);
             this.dataGridViewEmployee.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
@@ -193,11 +193,11 @@
             // 
             this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.ID.DataPropertyName = "ID";
+            this.ID.Frozen = true;
             this.ID.HeaderText = "ID";
             this.ID.MaxInputLength = 2000;
             this.ID.MinimumWidth = 6;
             this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
             this.ID.Width = 43;
             // 
             // Vorname
@@ -207,7 +207,6 @@
             this.Vorname.HeaderText = "Vorname";
             this.Vorname.MinimumWidth = 6;
             this.Vorname.Name = "Vorname";
-            this.Vorname.ReadOnly = true;
             this.Vorname.Width = 74;
             // 
             // Nachname
@@ -217,7 +216,6 @@
             this.Nachname.HeaderText = "Nachname";
             this.Nachname.MinimumWidth = 6;
             this.Nachname.Name = "Nachname";
-            this.Nachname.ReadOnly = true;
             this.Nachname.Width = 84;
             // 
             // Geschlecht
@@ -227,7 +225,6 @@
             this.Geschlecht.HeaderText = "Geschlecht";
             this.Geschlecht.MinimumWidth = 6;
             this.Geschlecht.Name = "Geschlecht";
-            this.Geschlecht.ReadOnly = true;
             this.Geschlecht.Width = 86;
             // 
             // Adresse
@@ -237,7 +234,6 @@
             this.Adresse.HeaderText = "Adresse";
             this.Adresse.MinimumWidth = 6;
             this.Adresse.Name = "Adresse";
-            this.Adresse.ReadOnly = true;
             this.Adresse.Width = 70;
             // 
             // Telefon
@@ -247,7 +243,6 @@
             this.Telefon.HeaderText = "Telefon";
             this.Telefon.MinimumWidth = 6;
             this.Telefon.Name = "Telefon";
-            this.Telefon.ReadOnly = true;
             this.Telefon.Width = 68;
             // 
             // Emailadresse
@@ -257,7 +252,6 @@
             this.Emailadresse.HeaderText = "Email";
             this.Emailadresse.MinimumWidth = 6;
             this.Emailadresse.Name = "Emailadresse";
-            this.Emailadresse.ReadOnly = true;
             this.Emailadresse.Width = 57;
             // 
             // Position
@@ -267,7 +261,6 @@
             this.Position.HeaderText = "Position";
             this.Position.MinimumWidth = 6;
             this.Position.Name = "Position";
-            this.Position.ReadOnly = true;
             this.Position.Width = 69;
             // 
             // Geburtsdatum
@@ -277,7 +270,6 @@
             this.Geburtsdatum.HeaderText = "Geburtsdatum";
             this.Geburtsdatum.MinimumWidth = 6;
             this.Geburtsdatum.Name = "Geburtsdatum";
-            this.Geburtsdatum.ReadOnly = true;
             this.Geburtsdatum.Width = 98;
             // 
             // Alter
@@ -287,7 +279,6 @@
             this.Alter.HeaderText = "Alter";
             this.Alter.MinimumWidth = 6;
             this.Alter.Name = "Alter";
-            this.Alter.ReadOnly = true;
             this.Alter.Width = 53;
             // 
             // Eintrittsdatum
@@ -297,7 +288,6 @@
             this.Eintrittsdatum.HeaderText = "Eintrittsdatum";
             this.Eintrittsdatum.MinimumWidth = 6;
             this.Eintrittsdatum.Name = "Eintrittsdatum";
-            this.Eintrittsdatum.ReadOnly = true;
             this.Eintrittsdatum.Width = 95;
             // 
             // Gehalt
@@ -307,7 +297,6 @@
             this.Gehalt.HeaderText = "Gehalt";
             this.Gehalt.MinimumWidth = 6;
             this.Gehalt.Name = "Gehalt";
-            this.Gehalt.ReadOnly = true;
             this.Gehalt.Width = 63;
             // 
             // RentenBeginn
@@ -317,7 +306,6 @@
             this.RentenBeginn.HeaderText = "Rentenbeginn";
             this.RentenBeginn.MinimumWidth = 6;
             this.RentenBeginn.Name = "RentenBeginn";
-            this.RentenBeginn.ReadOnly = true;
             this.RentenBeginn.Width = 99;
             // 
             // MainForm
