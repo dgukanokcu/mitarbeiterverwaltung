@@ -21,8 +21,8 @@ namespace BTS_Mitarbeiterverwaltung
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.Filter = "CSV Files (*.csv)|*.csv|Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
-                openFileDialog.FilterIndex = 2;
+                openFileDialog.Filter = "Text Files (*.txt)|*.txt";
+                //openFileDialog.FilterIndex = 2;
                 openFileDialog.RestoreDirectory = true;
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -51,13 +51,12 @@ namespace BTS_Mitarbeiterverwaltung
             }
         }
 
-        internal void TryExport(Tools function)
+        internal void FileExport(Tools function)
         {
             try
             {
                 using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
                 {
-                    // auffordern das Zielverzeichnis auszuwählen
                     DialogResult result = folderBrowserDialog.ShowDialog();
 
                     if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(folderBrowserDialog.SelectedPath))

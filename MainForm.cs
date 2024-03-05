@@ -21,17 +21,35 @@ namespace BTS_Mitarbeiterverwaltung
         {
             DataTable table = Employee.GetAllEmployees();
             dataGridViewEmployee.DataSource = table;
+
+            UpdateRowCount();
         }
 
         internal void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {   Application.Exit();     }
+
+        internal void UpdateRowCount()
         {
-            Application.Exit();
+            int totalRowCount = dataGridViewEmployee.RowCount;
+            int selectedRowsCount = dataGridViewEmployee.SelectedRows.Count;
+
+            lblTotalRows.Text = $"Anzahl Datensätze: {totalRowCount}";
+
+            if (selectedRowsCount > 0)
+            {
+                lblSelectedRows.Text = $"Selected:  {selectedRowsCount}";
+            }
+            else
+            {
+                lblSelectedRows.Text = "";
+            }
         }
 
         public void btnReset_Click(object sender, EventArgs e)
         {
             DataTable table = Employee.GetAllEmployees();
             dataGridViewEmployee.DataSource = table;
+            UpdateRowCount();
         }
 
         internal void btnHinzufügen_Click(object sender, EventArgs e)
@@ -48,15 +66,18 @@ namespace BTS_Mitarbeiterverwaltung
 
         internal void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            if (dataGridViewEmployee.CurrentRow != null &&
-                dataGridViewEmployee.CurrentRow.Cells["ID"].Value != DBNull.Value)
+            int totalRowCount = dataGridViewEmployee.RowCount;
+            int selectedRowsCount = dataGridViewEmployee.SelectedRows.Count;
+
+            lblTotalRows.Text = $"Anzahl Datensätze: {totalRowCount}";
+
+            if (selectedRowsCount > 0)
             {
-                try
-                {
-                    selectedRowID = Convert.ToInt32(dataGridViewEmployee.CurrentRow.Cells["ID"].Value);
-                }
-                catch (FormatException)
-                {}
+                lblSelectedRows.Text = $"Selected: {selectedRowsCount}";
+            }
+            else
+            {
+                lblSelectedRows.Text = "";
             }
         }
 
@@ -74,18 +95,10 @@ namespace BTS_Mitarbeiterverwaltung
             dataGridViewEmployee.DataSource = Employee.getEmployeeByName(txtBoxName.Text, txtBoxName.Text);
         }
 
-        internal void dataGridViewEmployee_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.RowIndex != -1 && e.ColumnIndex != -1)
-            {
-                dataGridViewEmployee.ClearSelection();
-            }
-        }
-
         internal void btnExport_Click(object sender, EventArgs e)
         {
             Tools function = new Tools();
-            tools.TryExport(function);
+            tools.FileExport(function);
         }
 
         private void btnImport_Click(object sender, EventArgs e)
@@ -95,6 +108,12 @@ namespace BTS_Mitarbeiterverwaltung
         }
 
         private void dataGridViewEmployee_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {}
+
+        private void lblSelectedRows_Click(object sender, EventArgs e)
+        {}
+
+        private void lblSelectedRows_Click_1(object sender, EventArgs e)
         {}
     }
 }

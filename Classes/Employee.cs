@@ -23,6 +23,8 @@ namespace BTS_Mitarbeiterverwaltung.Classes
         internal int Alter { get; set; }
         internal string Geschlecht { get; set; }
 
+        internal static int TotalRowCount { get; private set; }
+
         #endregion
 
         /// <summary>
@@ -46,6 +48,12 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                     {
                         adapter.Fill(table);
                     }
+                }
+
+                // Erfassen Anzahl Datensätze
+                using (SqlCommand countCommand = new SqlCommand("SELECT COUNT(*) FROM mitarbeiter", SqlVariable.connection))
+                {
+                    TotalRowCount = (int)countCommand.ExecuteScalar();
                 }
             }
             finally
@@ -117,7 +125,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
             if (ID == 0)
             {
                 SqlCommand commandUpdate = new SqlCommand("INSERT INTO mitarbeiter (Vorname, Nachname, Adresse, Telefon, [E-Mail], Position, " +
-                    "EintrittDatum, Gehalt, Geburtsdatum, Geschlecht) values (@Vorname, @Nachname, @Adresse, @Telefon, @EMail, @Position, " +
+                    "DatumEintritt, Gehalt, Geburtsdatum, Geschlecht) values (@Vorname, @Nachname, @Adresse, @Telefon, @EMail, @Position, " +
                     "@EintrittDatum, @Gehalt, @Geburtsdatum, @Geschlecht)", SqlVariable.connection);
 
                 SqlVariable.connection.Open();
@@ -128,10 +136,10 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                 commandUpdate.Parameters.AddWithValue("@Telefon", Telefon);
                 commandUpdate.Parameters.AddWithValue("@EMail", EMail);
                 commandUpdate.Parameters.AddWithValue("@Position", Position);
-                commandUpdate.Parameters.Add("@EintrittDatum", SqlDbType.DateTime).Value = DatumEintritt;
+                commandUpdate.Parameters.AddWithValue("@EintrittDatum", DatumEintritt);
                 commandUpdate.Parameters.AddWithValue("@Gehalt", Gehalt);
-                commandUpdate.Parameters.Add("@Rentenbeginn", SqlDbType.DateTime).Value = DatumRentenBeginn;
-                commandUpdate.Parameters.Add("@Geburtsdatum", SqlDbType.DateTime).Value = Geburtsdatum;
+                commandUpdate.Parameters.AddWithValue("@Rentenbeginn", DatumRentenBeginn);
+                commandUpdate.Parameters.AddWithValue("@Geburtsdatum", Geburtsdatum);
                 commandUpdate.Parameters.AddWithValue("@Geschlecht", Geschlecht);
 
                 commandUpdate.ExecuteNonQuery();
@@ -150,7 +158,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                             "Telefon = @Telefon, " +
                             "[E-Mail] = @EMail, " +
                             "Position = @Position, " +
-                            "EintrittDatum = @EintrittDatum, " +
+                            "DatumEintritt = @EintrittDatum, " +
                             "Gehalt = @Gehalt, " +
                             "Rentenbeginn = @Rentenbeginn, " +
                             "Geburtsdatum = @Geburtsdatum, " +
@@ -168,10 +176,10 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                     commandUpdate.Parameters.AddWithValue("@Telefon", Telefon);
                     commandUpdate.Parameters.AddWithValue("@EMail", EMail);
                     commandUpdate.Parameters.AddWithValue("@Position", Position);
-                    commandUpdate.Parameters.Add("@EintrittDatum", SqlDbType.DateTime).Value = DatumEintritt;
+                    commandUpdate.Parameters.AddWithValue("@EintrittDatum", DatumEintritt);
                     commandUpdate.Parameters.AddWithValue("@Gehalt", Gehalt);
-                    commandUpdate.Parameters.Add("@Rentenbeginn", SqlDbType.DateTime).Value = DatumRentenBeginn;
-                    commandUpdate.Parameters.Add("@Geburtsdatum", SqlDbType.DateTime).Value = Geburtsdatum;
+                    commandUpdate.Parameters.AddWithValue("@Rentenbeginn", DatumRentenBeginn);
+                    commandUpdate.Parameters.AddWithValue("@Geburtsdatum", SqlDbType.DateTime).Value = Geburtsdatum;
                     commandUpdate.Parameters.AddWithValue("@Geschlecht", Geschlecht);
 
 
