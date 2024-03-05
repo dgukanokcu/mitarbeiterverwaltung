@@ -78,7 +78,6 @@ namespace BTS_Mitarbeiterverwaltung
                                 return;
                             }
                         }
-
                         DataTable dataTable = null;
 
                         try
@@ -93,7 +92,6 @@ namespace BTS_Mitarbeiterverwaltung
                             {
                                 using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                                 {
-                                    // DataSet, um die Daten zu speichern
                                     dataTable = new DataTable();
                                     adapter.Fill(dataTable);
                                 }
@@ -142,7 +140,6 @@ namespace BTS_Mitarbeiterverwaltung
 
                 SqlVariable.connection.Open();
 
-                // Füge die ID als Parameter hinzu
                 commandUpdate.Parameters.AddWithValue("@ID", Convert.ToInt32(attributeValues[0].Trim()));
                 commandUpdate.Parameters.AddWithValue("@Vorname", attributeValues[1].Trim());
                 commandUpdate.Parameters.AddWithValue("@Nachname", attributeValues[2].Trim());

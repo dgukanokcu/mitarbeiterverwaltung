@@ -9,19 +9,19 @@ namespace BTS_Mitarbeiterverwaltung.Classes
     {
         #region Properties
 
-        public int ID { get; set; }
-        public string Vorname { get; set; }
-        public string Nachname { get; set; }
-        public string Adresse { get; set; }
-        public string Telefon { get; set; }
-        public string EMail { get; set; }
-        public string Position { get; set; }
-        public DateTime DatumEintritt { get; set; }
-        public string Gehalt { get; set; }
-        public DateTime DatumRentenBeginn { get; set; }
-        public DateTime Geburtsdatum { get; set; }
-        public int Alter { get; set; }
-        public string Geschlecht { get; set; }
+        internal int ID { get; set; }
+        internal string Vorname { get; set; }
+        internal string Nachname { get; set; }
+        internal string Adresse { get; set; }
+        internal string Telefon { get; set; }
+        internal string EMail { get; set; }
+        internal string Position { get; set; }
+        internal DateTime DatumEintritt { get; set; }
+        internal string Gehalt { get; set; }
+        internal DateTime DatumRentenBeginn { get; set; }
+        internal DateTime Geburtsdatum { get; set; }
+        internal int Alter { get; set; }
+        internal string Geschlecht { get; set; }
 
         #endregion
 
@@ -208,9 +208,6 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                 }
             }
         }
-
-
-
 
         internal static bool validation(Employee m)
         {

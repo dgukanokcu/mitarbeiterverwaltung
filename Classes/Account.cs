@@ -103,7 +103,6 @@ internal class Account
     internal static bool IsSpecialCharacter(char c)
     { return "!@#$%^&*()-_=+[]{}|;:'\"<>,.?/~`".Contains(c); }
 
-
     public static bool DoUsernameExist(string benutzername)
     {
         string query = "SELECT COUNT(*) FROM Benutzer WHERE Benutzername = @Benutzername";
