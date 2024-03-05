@@ -6,8 +6,8 @@ namespace BTS_Mitarbeiterverwaltung
 {
     internal partial class RegisterForm : Form
     {
-        public string Benutzername { get; private set; }
-        public string Passwort { get; private set; }
+        internal string Benutzername { get; private set; }
+        internal string Passwort { get; private set; }
 
         internal RegisterForm()
         {
@@ -40,5 +40,11 @@ namespace BTS_Mitarbeiterverwaltung
             }
             SqlVariable.connection.Close();
         }
+
+        private void RegisterForm_Load(object sender, EventArgs e)
+        {}
+
+        private void txtBenutzername_TextChanged(object sender, EventArgs e)
+        {}
     }
 }

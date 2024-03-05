@@ -221,7 +221,7 @@
             this.btnAddEmployee.Location = new System.Drawing.Point(12, 62);
             this.btnAddEmployee.Name = "btnAddEmployee";
             this.btnAddEmployee.Size = new System.Drawing.Size(169, 31);
-            this.btnAddEmployee.TabIndex = 1;
+            this.btnAddEmployee.TabIndex = 0;
             this.btnAddEmployee.Text = "Mitarbeiter hinzufügen";
             this.btnAddEmployee.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAddEmployee.UseVisualStyleBackColor = false;
@@ -234,7 +234,7 @@
             this.btnDelete.Location = new System.Drawing.Point(321, 62);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(90, 31);
-            this.btnDelete.TabIndex = 2;
+            this.btnDelete.TabIndex = 7;
             this.btnDelete.Text = "Löschen";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -246,7 +246,7 @@
             this.btnEdit.Location = new System.Drawing.Point(225, 62);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(90, 31);
-            this.btnEdit.TabIndex = 3;
+            this.btnEdit.TabIndex = 6;
             this.btnEdit.Text = "Bearbeiten";
             this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.btnBearbeiten_Click);
@@ -258,7 +258,7 @@
             this.btnSearch.Location = new System.Drawing.Point(225, 12);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(90, 31);
-            this.btnSearch.TabIndex = 4;
+            this.btnSearch.TabIndex = 5;
             this.btnSearch.Text = "Suchen";
             this.btnSearch.UseVisualStyleBackColor = false;
             // 
@@ -279,7 +279,7 @@
             this.btnReset.Location = new System.Drawing.Point(321, 14);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(90, 31);
-            this.btnReset.TabIndex = 6;
+            this.btnReset.TabIndex = 4;
             this.btnReset.Text = "Refresh";
             this.btnReset.UseVisualStyleBackColor = false;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
@@ -291,7 +291,7 @@
             this.btnExport.Location = new System.Drawing.Point(814, 84);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(70, 31);
-            this.btnExport.TabIndex = 7;
+            this.btnExport.TabIndex = 3;
             this.btnExport.Text = "Export";
             this.btnExport.UseVisualStyleBackColor = false;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
@@ -303,7 +303,7 @@
             this.btnImport.Location = new System.Drawing.Point(738, 84);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(70, 31);
-            this.btnImport.TabIndex = 8;
+            this.btnImport.TabIndex = 2;
             this.btnImport.Text = "Import";
             this.btnImport.UseVisualStyleBackColor = false;
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);

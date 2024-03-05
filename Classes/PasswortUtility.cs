@@ -38,6 +38,5 @@ namespace BTS_Mitarbeiterverwaltung.Utils
 
             return saltBuilder.ToString();
         }
-
     }
 }

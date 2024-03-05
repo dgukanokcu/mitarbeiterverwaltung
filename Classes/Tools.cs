@@ -13,7 +13,6 @@ namespace BTS_Mitarbeiterverwaltung
 
     internal class Tools
     {
-
         internal Tools()
         {}
 
@@ -228,6 +227,5 @@ namespace BTS_Mitarbeiterverwaltung
                 }
             }
         }
-
     }
 }

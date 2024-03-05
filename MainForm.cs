@@ -57,7 +57,6 @@ namespace BTS_Mitarbeiterverwaltung
             UpdateForm updateForm = new UpdateForm(this, 0);
             updateForm.Show();
         }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             Tools.DeleteRows(dataGridViewEmployee);
@@ -82,13 +81,7 @@ namespace BTS_Mitarbeiterverwaltung
         }
 
         internal void btnBearbeiten_Click(object sender, EventArgs e)
-        {
-            if (selectedRowID != 0)
-            {
-                UpdateForm updateForm = new UpdateForm(this, selectedRowID);
-                updateForm.Show();
-            }
-        }
+        {}
 
         internal void txtBoxName_KeyPress(object sender, KeyPressEventArgs e)
         {

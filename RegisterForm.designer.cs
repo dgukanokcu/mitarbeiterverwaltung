@@ -45,6 +45,7 @@
             this.txtBenutzername.Name = "txtBenutzername";
             this.txtBenutzername.Size = new System.Drawing.Size(100, 21);
             this.txtBenutzername.TabIndex = 0;
+            this.txtBenutzername.TextChanged += new System.EventHandler(this.txtBenutzername_TextChanged);
             // 
             // txtPasswort
             // 
@@ -80,7 +81,7 @@
             this.btnCreateUser.Location = new System.Drawing.Point(161, 137);
             this.btnCreateUser.Name = "btnCreateUser";
             this.btnCreateUser.Size = new System.Drawing.Size(101, 25);
-            this.btnCreateUser.TabIndex = 4;
+            this.btnCreateUser.TabIndex = 3;
             this.btnCreateUser.Text = "Bestätigen";
             this.btnCreateUser.UseVisualStyleBackColor = true;
             this.btnCreateUser.Click += new System.EventHandler(this.btnCreateUser_Click_1);
@@ -101,7 +102,7 @@
             this.txtVerify.Location = new System.Drawing.Point(162, 98);
             this.txtVerify.Name = "txtVerify";
             this.txtVerify.Size = new System.Drawing.Size(100, 21);
-            this.txtVerify.TabIndex = 6;
+            this.txtVerify.TabIndex = 2;
             // 
             // chkShowPasswort
             // 
@@ -115,7 +116,7 @@
             this.chkShowPasswort.UseVisualStyleBackColor = true;
             this.chkShowPasswort.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // CreateUserForm
+            // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -130,9 +131,10 @@
             this.Controls.Add(this.txtPasswort);
             this.Controls.Add(this.txtBenutzername);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "CreateUserForm";
+            this.Name = "RegisterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Profil erstellen";
+            this.Load += new System.EventHandler(this.RegisterForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

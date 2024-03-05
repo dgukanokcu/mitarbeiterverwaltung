@@ -78,7 +78,7 @@
             this.btnLogin.Location = new System.Drawing.Point(163, 180);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(100, 23);
-            this.btnLogin.TabIndex = 5;
+            this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -98,7 +98,7 @@
             this.label4.Location = new System.Drawing.Point(195, 37);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(84, 13);
-            this.label4.TabIndex = 7;
+            this.label4.TabIndex = 3;
             this.label4.Text = "Dann klicke hier";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
