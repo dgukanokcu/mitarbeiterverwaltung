@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace BTS_Mitarbeiterverwaltung.Classes
 {
@@ -12,6 +13,10 @@ namespace BTS_Mitarbeiterverwaltung.Classes
         public string Vorname { get; set; }
         public string Name { get; set; }
         public string Adresse { get; set; }
+        public string Strasse { get; set; }
+        public string Hausnummer { get; set; }
+        public string PLZ { get; set; }
+        public string Ort { get; set; }
         public string Telefon { get; set; }
         public string EMail { get; set; }
         public string Position { get; set; }
@@ -77,9 +82,12 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                         EMail = reader["E-Mail"].ToString(),
                         Gehalt = reader["Gehalt"].ToString(),
                         Geburtsdatum = Convert.ToDateTime(reader["Geburtsdatum"]),
-                        Adresse = reader["Adresse"].ToString(),
                         Telefon = reader["Telefon"].ToString(),
-                        Geschlecht = reader["Geschlecht"].ToString()
+                        Geschlecht = reader["Geschlecht"].ToString(),
+                        Strasse = reader["Strasse"].ToString(),
+                        Hausnummer = reader["Hausnummer"].ToString(),
+                        PLZ = reader["PLZ"].ToString(),
+                        Ort = reader["Ort"].ToString(),
                     };
                 }
                 reader.Close();
@@ -99,11 +107,10 @@ namespace BTS_Mitarbeiterverwaltung.Classes
         {
             if (this.ID == 0)
             {
-                SqlCommand commandUpdate = new SqlCommand("Insert into mitarbeiter (Vorname, Name, Adresse, Telefon, [E-Mail], Position, EintrittDatum, Gehalt, Geburtsdatum, Geschlecht) values (@Vorname, @Name, @Adresse, @Telefon, @EMail, @Position, @EintrittDatum, @Gehalt, @Geburtsdatum, @Geschlecht)", SqlVariable.connection);
+                SqlCommand commandUpdate = new SqlCommand("Insert into mitarbeiter (Vorname, Name, Telefon, [E-Mail], Position, EintrittDatum, Gehalt, Geburtsdatum, Geschlecht, Strasse, Hausnummer, PLZ, Ort) values (@Vorname, @Name, @Telefon, @EMail, @Position, @EintrittDatum, @Gehalt, @Geburtsdatum, @Geschlecht, @Strasse, @Hausnummer, @PLZ, @Ort)", SqlVariable.connection);
                 SqlVariable.connection.Open();
                 commandUpdate.Parameters.AddWithValue("@Vorname", this.Vorname);
                 commandUpdate.Parameters.AddWithValue("@Name", this.Name);
-                commandUpdate.Parameters.AddWithValue("@Adresse", this.Adresse);
                 commandUpdate.Parameters.AddWithValue("@Telefon", this.Telefon);
                 commandUpdate.Parameters.AddWithValue("@EMail", this.EMail);
                 commandUpdate.Parameters.AddWithValue("@Position", this.Position);
@@ -111,6 +118,10 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                 commandUpdate.Parameters.AddWithValue("@Gehalt", this.Gehalt);
                 commandUpdate.Parameters.AddWithValue("@Geburtsdatum", this.Geburtsdatum);
                 commandUpdate.Parameters.AddWithValue("@Geschlecht", this.Geschlecht);
+                commandUpdate.Parameters.AddWithValue("@Strasse", this.Strasse);
+                commandUpdate.Parameters.AddWithValue("@Hausnummer", this.Hausnummer);
+                commandUpdate.Parameters.AddWithValue("@PLZ", this.PLZ);
+                commandUpdate.Parameters.AddWithValue("@Ort", this.Ort);
                 commandUpdate.ExecuteNonQuery();
                 SqlVariable.connection.Close();
             }
@@ -127,9 +138,12 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                     "Position = @Position, " +
                     "EintrittDatum = @EintrittDatum, " +
                     "Gehalt = @Gehalt, " +
-                    "Rentenbeginn = @Rentenbeginn, " +
                     "Geburtsdatum = @Geburtsdatum, " +
-                    "Geschlecht = @Geschlecht " +
+                    "Geschlecht = @Geschlecht, " +
+                    "Strasse = @Strasse, " +
+                    "Hausnummer = @Hausnummer, " +
+                    "PLZ = @PLZ, " +
+                    "Ort = @Ort " +
                     "WHERE ID = @id",
                     SqlVariable.connection);
                 SqlVariable.connection.Open();
@@ -142,8 +156,11 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                 commandUpdate.Parameters.AddWithValue("@Position", this.Position);
                 commandUpdate.Parameters.AddWithValue("@Eintrittdatum", this.DatumEintritt);
                 commandUpdate.Parameters.AddWithValue("@Gehalt", this.Gehalt);
-                commandUpdate.Parameters.AddWithValue("@Rentenbeginn", this.DatumRentenBeginn);
                 commandUpdate.Parameters.AddWithValue("@Geburtsdatum", this.Geburtsdatum);
+                commandUpdate.Parameters.AddWithValue("@Strasse", this.Strasse);
+                commandUpdate.Parameters.AddWithValue("@Hausnummer", this.Hausnummer);
+                commandUpdate.Parameters.AddWithValue("@PLZ", this.PLZ);
+                commandUpdate.Parameters.AddWithValue("@Ort", this.Ort);
                 commandUpdate.Parameters.AddWithValue("@Geschlecht", this.Geschlecht);
                 commandUpdate.ExecuteNonQuery();
                 SqlVariable.connection.Close();
@@ -164,11 +181,14 @@ namespace BTS_Mitarbeiterverwaltung.Classes
             if (string.IsNullOrWhiteSpace(m.Name) || 
                 string.IsNullOrWhiteSpace(m.Vorname) || 
                 string.IsNullOrWhiteSpace(m.EMail) || 
-                string.IsNullOrWhiteSpace(m.Adresse) ||
                 string.IsNullOrWhiteSpace(m.Geschlecht) ||
                 string.IsNullOrWhiteSpace(m.Position) ||
                 string.IsNullOrWhiteSpace(m.Gehalt) ||
-                string.IsNullOrWhiteSpace(m.Telefon))
+                string.IsNullOrWhiteSpace(m.Telefon) ||
+                string.IsNullOrWhiteSpace(m.Strasse) ||
+                string.IsNullOrWhiteSpace(m.Hausnummer) ||
+                string.IsNullOrWhiteSpace(m.PLZ) ||
+                string.IsNullOrWhiteSpace(m.Ort))
             {
                 return false;
             }

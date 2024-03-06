@@ -15,8 +15,8 @@ namespace BTS_Mitarbeiterverwaltung
         public int selectedRowID { get; set; }
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //DataTable table = Employee.getAllEmployees();
-            //dataGridViewEmployee.DataSource = table;
+            DataTable table = Employee.getAllEmployees();
+            dataGridViewEmployee.DataSource = table;
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -83,7 +83,7 @@ namespace BTS_Mitarbeiterverwaltung
 
         private void txtBoxName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //dataGridViewEmployee.DataSource = Employee.getEmployeeByName(txtBoxName.Text, txtBoxName.Text);
+            dataGridViewEmployee.DataSource = Employee.getEmployeeByName(txtBoxName.Text, txtBoxName.Text);
         }
 
         private void dataGridViewEmployee_CellContentClick(object sender, DataGridViewCellEventArgs e)

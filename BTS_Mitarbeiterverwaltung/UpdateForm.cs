@@ -28,9 +28,12 @@ namespace BTS_Mitarbeiterverwaltung
             m.EMail = txtBoxEmail.Text;
             m.Gehalt = txtBoxSalary.Text;
             m.Geburtsdatum = dateTimePickerBirthdate.Value;
-            m.Adresse = txtBoxAdress.Text;
             m.Telefon = txtBoxTelefon.Text;
             m.Geschlecht = comboBoxGender.Text;
+            m.Strasse = textBoxStreet.Text;
+            m.Hausnummer = textBoxHouseNmbr.Text;
+            m.PLZ = textBoxZIP.Text;
+            m.Ort = textBoxCity.Text;    
 
             if (Employee.validation(m))
             {
@@ -67,9 +70,13 @@ namespace BTS_Mitarbeiterverwaltung
                 txtBoxEmail.Text = m.EMail;
                 txtBoxSalary.Text = m.Gehalt;
                 dateTimePickerBirthdate.Value = m.Geburtsdatum;
-                txtBoxAdress.Text = m.Adresse;
                 txtBoxTelefon.Text = m.Telefon;
                 comboBoxGender.Text = m.Geschlecht;
+                textBoxStreet.Text = m.Strasse;
+                textBoxHouseNmbr.Text = m.Hausnummer;
+                textBoxZIP.Text = m.PLZ;
+                textBoxCity.Text = m.Ort;
+
             }
         }
 

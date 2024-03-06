@@ -164,7 +164,16 @@
   <metadata name="Geschlecht.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="Adresse.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="Strasse.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Hausnummer.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="PLZ.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Ort.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="Telefon.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -206,7 +215,7 @@
   <data name="btnDelete.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DwAACw8BkvkDpQAAANhJREFUSEvt1cENAVEUheFJaAONUAERaypgTUIDVEAFVEAFVEAFdGBJJPhvZnsj
+        DAAACwwBP0AiyAAAANhJREFUSEvt1cENAVEUheFJaAONUAERaypgTUIDVEAFVEAFVEAFdGBJJPhvZnsj
         79wRG/MnXzIL78jM5mVlQj1088ffdsctf/x+9kY2/hLZmdDXOMAbjLCt5L75x3uUfewK79MpbEPuBG9M
         cYTcDt6YYgu5FbwxxRJyM3hjiinkBvDGFH3IteCNKZqQq8MbU9QgV8ED3mAKO1tFqAu80RRnhCtyWRS6
         HDbwRlOsEW4BbzTFHOFG8EZTDBGuA280RRvhGnjCG/7EztjZQk2g3M322zHK/rosewPRGEWDL5uJlwAA
@@ -216,7 +225,7 @@
   <data name="btnEdit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DwAACw8BkvkDpQAAAJdJREFUSEvtk0EKgzAURHPJ4kIv4B2E9j4ex4PUfQvtPHHgL7KK310eDCYR3sSo
+        DAAACwwBP0AiyAAAAJdJREFUSEvtk0EKgzAURHPJ4kIv4B2E9j4ex4PUfQvtPHHgL7KK310eDCYR3sSo
         pXOyKLsyHLNkXsrvzFeZlDQs/yhrGKc8Sdz5zIJwyfuYXSDKyaZQwu6Z806aiceCFHks434zUe5zpiRV
         zpcysiAeio/lyUIrXV6ly6vcKgckxD8RV8spv4wLIHXnxgUxaXK4Vd6pUMofVitlsfyQB3gAAAAASUVO
         RK5CYII=
