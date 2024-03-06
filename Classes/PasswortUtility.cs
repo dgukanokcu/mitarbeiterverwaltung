@@ -18,11 +18,9 @@ namespace BTS_Mitarbeiterverwaltung.Utils
                 {
                     builder.Append(b.ToString("x2"));
                 }
-
                 return builder.ToString();
             }
         }
-
         internal static string GenerateRandomSalt(int length = 16)
         {
             const string allowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-+=<>?";

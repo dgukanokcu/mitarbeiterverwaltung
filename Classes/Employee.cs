@@ -13,7 +13,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
         internal string Vorname { get; set; }
         internal string Nachname { get; set; }
         internal string Adresse { get; set; }
-        internal string Telefon { get; set; }
+        internal int Telefon { get; set; }
         internal string EMail { get; set; }
         internal string Position { get; set; }
         internal DateTime DatumEintritt { get; set; }
@@ -22,7 +22,6 @@ namespace BTS_Mitarbeiterverwaltung.Classes
         internal DateTime Geburtsdatum { get; set; }
         internal int Alter { get; set; }
         internal string Geschlecht { get; set; }
-
         internal static int TotalRowCount { get; private set; }
 
         #endregion
@@ -49,8 +48,6 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                         adapter.Fill(table);
                     }
                 }
-
-                // Erfassen Anzahl Datensätze
                 using (SqlCommand countCommand = new SqlCommand("SELECT COUNT(*) FROM mitarbeiter", SqlVariable.connection))
                 {
                     TotalRowCount = (int)countCommand.ExecuteScalar();
@@ -104,7 +101,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                         Gehalt = reader["Gehalt"].ToString(),
                         Geburtsdatum = Convert.ToDateTime(reader["Geburtsdatum"]),
                         Adresse = reader["Adresse"].ToString(),
-                        Telefon = reader["Telefon"].ToString(),
+                        Telefon = Convert.ToInt32(reader["Telefon"]),
                         Geschlecht = reader["Geschlecht"].ToString()
                     };
                 }
@@ -215,8 +212,6 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                 }
             }
         }
-
-
         internal static bool validation(Employee m)
         {
             if (string.IsNullOrWhiteSpace(m.Nachname) || string.IsNullOrWhiteSpace(m.Vorname)) 

@@ -40,10 +40,8 @@ namespace BTS_Mitarbeiterverwaltung
             }
             SqlVariable.connection.Close();
         }
-
         private void RegisterForm_Load(object sender, EventArgs e)
         {}
-
         private void txtBenutzername_TextChanged(object sender, EventArgs e)
         {}
     }

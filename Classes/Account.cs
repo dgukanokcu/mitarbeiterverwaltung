@@ -73,7 +73,6 @@ internal class Account
             }
         }
     }
-
     private static bool IsPasswordSafe(string password, out string errorMessage)
     {
         errorMessage = null;
@@ -99,10 +98,10 @@ internal class Account
         errorMessage = null;         //Passwort erfüllt alle Sicherheitsanforderungen
         return true;
     }
-
     internal static bool IsSpecialCharacter(char c)
-    { return "!@#$%^&*()-_=+[]{}|;:'\"<>,.?/~`".Contains(c); }
-
+    { 
+        return "!@#$%^&*()-_=+[]{}|;:'\"<>,.?/~`".Contains(c); 
+    }
     public static bool DoUsernameExist(string benutzername)
     {
         string query = "SELECT COUNT(*) FROM Benutzer WHERE Benutzername = @Benutzername";
@@ -116,7 +115,6 @@ internal class Account
             return benutzerCount > 0;
         }
     }
-
     internal static bool Validation(string benutzername, string passwort)
     {
         try

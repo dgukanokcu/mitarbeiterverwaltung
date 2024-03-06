@@ -36,7 +36,7 @@ namespace BTS_Mitarbeiterverwaltung
             m.Gehalt = txtBoxSalary.Text;
             m.Geburtsdatum = dateTimePickerBirthdate.Value;
             m.Adresse = txtBoxAdress.Text;
-            m.Telefon = txtBoxTelefon.Text;
+            //m.Telefon = txtBoxTelefon.Text;
             m.Geschlecht = comboBoxGender.Text;
 
             // Validiere die Mitarbeiterdaten
@@ -75,7 +75,7 @@ namespace BTS_Mitarbeiterverwaltung
                 txtBoxSalary.Text = m.Gehalt;
                 dateTimePickerBirthdate.Value = m.Geburtsdatum;
                 txtBoxAdress.Text = m.Adresse;
-                txtBoxTelefon.Text = m.Telefon;
+                //txtBoxTelefon.Text = m.Telefon;
                 comboBoxGender.Text = m.Geschlecht;
             }
         }
