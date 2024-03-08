@@ -166,13 +166,11 @@ namespace BTS_Mitarbeiterverwaltung
                 string geschlecht = attributeValues[11].Trim().ToLower();
                 if (geschlecht == "männlich" || geschlecht == "weiblich")
                 {
-                    // Geschlecht ist gültig, führe die Datenbankoperation durch.
                     commandUpdate.Parameters.AddWithValue("@Geschlecht", geschlecht);
                 }
                 else
                 {
-                    // Fehlerbehandlung für ungültiges Geschlecht.
-                    MessageBox.Show("Ungültiges Geschlecht", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Ungültige Eingabe für Geschlecht", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 commandUpdate.ExecuteNonQuery();
 
@@ -182,7 +180,7 @@ namespace BTS_Mitarbeiterverwaltung
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Fehler beim Einfügen der Daten in die Datenbank: {ex.Message}", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Fehler beim Einfügen der Daten {ex.Message}", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
