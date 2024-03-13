@@ -30,23 +30,10 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.dataGridViewEmployee = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Vorname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nachname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Geschlecht = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Adresse = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telefon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Emailadresse = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Position = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Eintrittsdatum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gehalt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RentenBeginn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Geburtsdatum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Alter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAddEmployee = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
@@ -57,6 +44,18 @@
             this.btnImport = new System.Windows.Forms.Button();
             this.lblTotalRows = new System.Windows.Forms.Label();
             this.lblSelectedRows = new System.Windows.Forms.Label();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vorname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nachname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Geschlecht = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Emailadresse = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Position = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Eintrittsdatum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gehalt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RentenBeginn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Geburtsdatum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Alter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployee)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,7 +75,6 @@
             this.Vorname,
             this.Nachname,
             this.Geschlecht,
-            this.Adresse,
             this.Telefon,
             this.Emailadresse,
             this.Position,
@@ -106,145 +104,6 @@
             this.dataGridViewEmployee.TabIndex = 0;
             this.dataGridViewEmployee.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEmployee_CellContentClick);
             this.dataGridViewEmployee.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.DarkBlue;
-            this.ID.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ID.Frozen = true;
-            this.ID.HeaderText = "ID";
-            this.ID.MaxInputLength = 4;
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.ToolTipText = "Mitarbeiterkennung";
-            this.ID.Width = 40;
-            // 
-            // Vorname
-            // 
-            this.Vorname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Vorname.DataPropertyName = "Vorname";
-            this.Vorname.HeaderText = "Vorname";
-            this.Vorname.MinimumWidth = 6;
-            this.Vorname.Name = "Vorname";
-            this.Vorname.ReadOnly = true;
-            this.Vorname.Width = 74;
-            // 
-            // Nachname
-            // 
-            this.Nachname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Nachname.DataPropertyName = "Nachname";
-            this.Nachname.HeaderText = "Nachname";
-            this.Nachname.MinimumWidth = 6;
-            this.Nachname.Name = "Nachname";
-            this.Nachname.ReadOnly = true;
-            this.Nachname.Width = 84;
-            // 
-            // Geschlecht
-            // 
-            this.Geschlecht.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Geschlecht.DataPropertyName = "Geschlecht";
-            this.Geschlecht.HeaderText = "Geschlecht";
-            this.Geschlecht.MinimumWidth = 6;
-            this.Geschlecht.Name = "Geschlecht";
-            this.Geschlecht.ReadOnly = true;
-            this.Geschlecht.Width = 86;
-            // 
-            // Adresse
-            // 
-            this.Adresse.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Adresse.DataPropertyName = "Adresse";
-            this.Adresse.HeaderText = "Adresse";
-            this.Adresse.MinimumWidth = 6;
-            this.Adresse.Name = "Adresse";
-            this.Adresse.ReadOnly = true;
-            this.Adresse.Width = 70;
-            // 
-            // Telefon
-            // 
-            this.Telefon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Telefon.DataPropertyName = "Telefon";
-            this.Telefon.HeaderText = "Telefon";
-            this.Telefon.MinimumWidth = 6;
-            this.Telefon.Name = "Telefon";
-            this.Telefon.ReadOnly = true;
-            this.Telefon.Width = 68;
-            // 
-            // Emailadresse
-            // 
-            this.Emailadresse.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Emailadresse.DataPropertyName = "E-Mail";
-            this.Emailadresse.HeaderText = "Email";
-            this.Emailadresse.MinimumWidth = 6;
-            this.Emailadresse.Name = "Emailadresse";
-            this.Emailadresse.ReadOnly = true;
-            this.Emailadresse.Width = 57;
-            // 
-            // Position
-            // 
-            this.Position.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Position.DataPropertyName = "Position";
-            this.Position.HeaderText = "Position";
-            this.Position.MinimumWidth = 6;
-            this.Position.Name = "Position";
-            this.Position.ReadOnly = true;
-            this.Position.Width = 69;
-            // 
-            // Eintrittsdatum
-            // 
-            this.Eintrittsdatum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Eintrittsdatum.DataPropertyName = "EintrittDatum";
-            this.Eintrittsdatum.HeaderText = "Eintrittsdatum";
-            this.Eintrittsdatum.MaxInputLength = 99999999;
-            this.Eintrittsdatum.MinimumWidth = 6;
-            this.Eintrittsdatum.Name = "Eintrittsdatum";
-            this.Eintrittsdatum.ReadOnly = true;
-            this.Eintrittsdatum.Width = 95;
-            // 
-            // Gehalt
-            // 
-            this.Gehalt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Gehalt.DataPropertyName = "Gehalt";
-            this.Gehalt.HeaderText = "Gehalt";
-            this.Gehalt.MinimumWidth = 6;
-            this.Gehalt.Name = "Gehalt";
-            this.Gehalt.ReadOnly = true;
-            this.Gehalt.Width = 63;
-            // 
-            // RentenBeginn
-            // 
-            this.RentenBeginn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.RentenBeginn.DataPropertyName = "Rentenbeginn";
-            this.RentenBeginn.HeaderText = "Rentenbeginn";
-            this.RentenBeginn.MinimumWidth = 6;
-            this.RentenBeginn.Name = "RentenBeginn";
-            this.RentenBeginn.ReadOnly = true;
-            this.RentenBeginn.Width = 99;
-            // 
-            // Geburtsdatum
-            // 
-            this.Geburtsdatum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Geburtsdatum.DataPropertyName = "Geburtsdatum";
-            this.Geburtsdatum.HeaderText = "Geburtsdatum";
-            this.Geburtsdatum.MinimumWidth = 6;
-            this.Geburtsdatum.Name = "Geburtsdatum";
-            this.Geburtsdatum.ReadOnly = true;
-            this.Geburtsdatum.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Geburtsdatum.Width = 79;
-            // 
-            // Alter
-            // 
-            this.Alter.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Alter.DataPropertyName = "Alter";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Alter.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Alter.HeaderText = "Alter";
-            this.Alter.Name = "Alter";
-            this.Alter.ReadOnly = true;
-            this.Alter.Width = 53;
             // 
             // btnAddEmployee
             // 
@@ -350,7 +209,7 @@
             this.lblTotalRows.AutoSize = true;
             this.lblTotalRows.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.lblTotalRows.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.lblTotalRows.Location = new System.Drawing.Point(13, 491);
+            this.lblTotalRows.Location = new System.Drawing.Point(13, 479);
             this.lblTotalRows.Name = "lblTotalRows";
             this.lblTotalRows.Size = new System.Drawing.Size(112, 18);
             this.lblTotalRows.TabIndex = 9;
@@ -370,13 +229,141 @@
             this.lblSelectedRows.UseCompatibleTextRendering = true;
             this.lblSelectedRows.Click += new System.EventHandler(this.lblSelectedRows_Click_1);
             // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.DarkBlue;
+            this.ID.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ID.Frozen = true;
+            this.ID.HeaderText = "ID";
+            this.ID.MaxInputLength = 4;
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.ToolTipText = "Mitarbeiterkennung";
+            this.ID.Width = 40;
+            // 
+            // Vorname
+            // 
+            this.Vorname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Vorname.DataPropertyName = "Vorname";
+            this.Vorname.HeaderText = "Vorname";
+            this.Vorname.MinimumWidth = 6;
+            this.Vorname.Name = "Vorname";
+            this.Vorname.ReadOnly = true;
+            this.Vorname.Width = 74;
+            // 
+            // Nachname
+            // 
+            this.Nachname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Nachname.DataPropertyName = "Nachname";
+            this.Nachname.HeaderText = "Nachname";
+            this.Nachname.MinimumWidth = 6;
+            this.Nachname.Name = "Nachname";
+            this.Nachname.ReadOnly = true;
+            this.Nachname.Width = 84;
+            // 
+            // Geschlecht
+            // 
+            this.Geschlecht.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Geschlecht.DataPropertyName = "Geschlecht";
+            this.Geschlecht.HeaderText = "Geschlecht";
+            this.Geschlecht.MinimumWidth = 6;
+            this.Geschlecht.Name = "Geschlecht";
+            this.Geschlecht.ReadOnly = true;
+            this.Geschlecht.Width = 86;
+            // 
+            // Telefon
+            // 
+            this.Telefon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Telefon.DataPropertyName = "Telefon";
+            this.Telefon.HeaderText = "Telefon";
+            this.Telefon.MinimumWidth = 6;
+            this.Telefon.Name = "Telefon";
+            this.Telefon.ReadOnly = true;
+            this.Telefon.Width = 68;
+            // 
+            // Emailadresse
+            // 
+            this.Emailadresse.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Emailadresse.DataPropertyName = "E-Mail";
+            this.Emailadresse.HeaderText = "Email";
+            this.Emailadresse.MinimumWidth = 6;
+            this.Emailadresse.Name = "Emailadresse";
+            this.Emailadresse.ReadOnly = true;
+            this.Emailadresse.Width = 57;
+            // 
+            // Position
+            // 
+            this.Position.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Position.DataPropertyName = "Position";
+            this.Position.HeaderText = "Position";
+            this.Position.MinimumWidth = 6;
+            this.Position.Name = "Position";
+            this.Position.ReadOnly = true;
+            this.Position.Width = 69;
+            // 
+            // Eintrittsdatum
+            // 
+            this.Eintrittsdatum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Eintrittsdatum.DataPropertyName = "EintrittDatum";
+            this.Eintrittsdatum.HeaderText = "Eintrittsdatum";
+            this.Eintrittsdatum.MinimumWidth = 6;
+            this.Eintrittsdatum.Name = "Eintrittsdatum";
+            this.Eintrittsdatum.ReadOnly = true;
+            this.Eintrittsdatum.Width = 95;
+            // 
+            // Gehalt
+            // 
+            this.Gehalt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Gehalt.DataPropertyName = "Gehalt";
+            this.Gehalt.HeaderText = "Gehalt";
+            this.Gehalt.MinimumWidth = 6;
+            this.Gehalt.Name = "Gehalt";
+            this.Gehalt.ReadOnly = true;
+            this.Gehalt.Width = 63;
+            // 
+            // RentenBeginn
+            // 
+            this.RentenBeginn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.RentenBeginn.DataPropertyName = "Rentenbeginn";
+            this.RentenBeginn.HeaderText = "Rentenbeginn";
+            this.RentenBeginn.MinimumWidth = 6;
+            this.RentenBeginn.Name = "RentenBeginn";
+            this.RentenBeginn.ReadOnly = true;
+            this.RentenBeginn.Width = 99;
+            // 
+            // Geburtsdatum
+            // 
+            this.Geburtsdatum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Geburtsdatum.DataPropertyName = "Geburtsdatum";
+            this.Geburtsdatum.HeaderText = "Geburtsdatum";
+            this.Geburtsdatum.MinimumWidth = 6;
+            this.Geburtsdatum.Name = "Geburtsdatum";
+            this.Geburtsdatum.ReadOnly = true;
+            this.Geburtsdatum.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Geburtsdatum.Width = 79;
+            // 
+            // Alter
+            // 
+            this.Alter.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Alter.DataPropertyName = "Alter";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Alter.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Alter.HeaderText = "Alter";
+            this.Alter.Name = "Alter";
+            this.Alter.ReadOnly = true;
+            this.Alter.Width = 53;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1133, 528);
+            this.ClientSize = new System.Drawing.Size(1133, 505);
             this.Controls.Add(this.lblSelectedRows);
             this.Controls.Add(this.lblTotalRows);
             this.Controls.Add(this.btnImport);
@@ -416,7 +403,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Vorname;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nachname;
         private System.Windows.Forms.DataGridViewTextBoxColumn Geschlecht;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Adresse;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefon;
         private System.Windows.Forms.DataGridViewTextBoxColumn Emailadresse;
         private System.Windows.Forms.DataGridViewTextBoxColumn Position;

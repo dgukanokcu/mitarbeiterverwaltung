@@ -125,27 +125,26 @@ namespace BTS_Mitarbeiterverwaltung
             try
             {
                 SqlCommand commandUpdate = new SqlCommand(
-
-                    "INSERT INTO mitarbeiter (Vorname, Nachname, Adresse, Telefon, [E-Mail], Position, " +
+                    "INSERT INTO mitarbeiter (Vorname, Nachname, Strasse, Hausnummer, PLZ, Ort, Telefon, [E-Mail], Position, " +
                     "EintrittDatum, Gehalt, Geburtsdatum, Geschlecht) " +
-                    "VALUES (@Vorname, @Nachname, @Adresse, @Telefon, @EMail, @Position, " +
+                    "VALUES (@Vorname, @Nachname, @Strasse, @Hausnummer, @PLZ, @Ort, @Telefon, @EMail, @Position, " +
                     "@Eintrittsdatum, @Gehalt, @Geburtsdatum, @Geschlecht)",
-
                     SqlVariable.connection);
 
                 SqlVariable.connection.Open();
 
-                // commandUpdate.Parameters.AddWithValue("@ID", Convert.ToInt32(attributeValues[0].Trim()));
                 commandUpdate.Parameters.AddWithValue("@Vorname", attributeValues[1].Trim());
                 commandUpdate.Parameters.AddWithValue("@Nachname", attributeValues[2].Trim());
-                commandUpdate.Parameters.AddWithValue("@Adresse", attributeValues[3].Trim());
-                commandUpdate.Parameters.AddWithValue("@Telefon", attributeValues[4].Trim());
-                commandUpdate.Parameters.AddWithValue("@EMail", attributeValues[5].Trim());
-                commandUpdate.Parameters.AddWithValue("@Position", attributeValues[6].Trim());
-
+                commandUpdate.Parameters.AddWithValue("@Strasse", attributeValues[3].Trim());
+                commandUpdate.Parameters.AddWithValue("@Hausnummer", attributeValues[4].Trim());
+                commandUpdate.Parameters.AddWithValue("@PLZ", attributeValues[5].Trim());
+                commandUpdate.Parameters.AddWithValue("@Ort", attributeValues[6].Trim());
+                commandUpdate.Parameters.AddWithValue("@Telefon", attributeValues[7].Trim());
+                commandUpdate.Parameters.AddWithValue("@EMail", attributeValues[8].Trim());
+                commandUpdate.Parameters.AddWithValue("@Position", attributeValues[9].Trim());
 
                 DateTime eintrittsdatum;
-                string rawEintrittsdatum = attributeValues[7].Trim();
+                string rawEintrittsdatum = attributeValues[10].Trim();
 
                 if (DateTime.TryParseExact(rawEintrittsdatum, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out eintrittsdatum) ||
                     DateTime.TryParseExact(rawEintrittsdatum, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out eintrittsdatum) ||
@@ -160,10 +159,10 @@ namespace BTS_Mitarbeiterverwaltung
                     return false;
                 }
 
-                commandUpdate.Parameters.AddWithValue("@Gehalt", attributeValues[8].Trim());
-                commandUpdate.Parameters.AddWithValue("@Geburtsdatum", Convert.ToDateTime(attributeValues[10]));
+                commandUpdate.Parameters.AddWithValue("@Gehalt", attributeValues[11].Trim());
+                commandUpdate.Parameters.AddWithValue("@Geburtsdatum", Convert.ToDateTime(attributeValues[12]));
 
-                string geschlecht = attributeValues[11].Trim().ToLower();
+                string geschlecht = attributeValues[13].Trim().ToLower();
                 if (geschlecht == "männlich" || geschlecht == "weiblich")
                 {
                     commandUpdate.Parameters.AddWithValue("@Geschlecht", geschlecht);
@@ -171,6 +170,7 @@ namespace BTS_Mitarbeiterverwaltung
                 else
                 {
                     MessageBox.Show("Ungültige Eingabe für Geschlecht", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
                 }
                 commandUpdate.ExecuteNonQuery();
 
@@ -199,7 +199,6 @@ namespace BTS_Mitarbeiterverwaltung
 
                         Console.WriteLine($"Spalte: {column.ColumnName}, Max-Länge: {maxLength}");
                     }
-
 
                     // Headerzeile mit Delimiter
                     string headerLine = string.Join(delimiter, dataTable.Columns.Cast<DataColumn>().Select(column => column.ColumnName.PadRight(columnHeadersWidths[column.ColumnName])));
