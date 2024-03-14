@@ -13,18 +13,25 @@ namespace BTS_Mitarbeiterverwaltung.Classes
         internal string Vorname { get; set; }
         internal string Nachname { get; set; }
         internal string Adresse { get; set; }
-        internal string Strasse { get; set; }
-        internal string Hausnummer { get; set; }
-        internal string PLZ { get; set; }
-        internal string Ort { get; set; }
+
+        //internal string Strasse { get; set; }
+
+        //internal string Nr { get; set; }
+
+        //internal string PLZ { get; set; }
+
+        //internal string Ort { get; set; }
+
         internal int Telefon { get; set; }
         internal string EMail { get; set; }
         internal string Position { get; set; }
         internal DateTime DatumEintritt { get; set; }
         internal string Gehalt { get; set; }
         internal DateTime DatumRentenBeginn { get; set; }
-        internal DateTime Geburtsdatum { get; set; }
-        internal int Alter { get; set; }
+        //internal DateTime Geburtsdatum { get; set; }
+
+        //internal int Alter { get; set; }
+
         internal string Geschlecht { get; set; }
 
         internal static int TotalRowCount { get; private set; }
@@ -104,7 +111,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                         DatumRentenBeginn = Convert.ToDateTime(reader["Rentenbeginn"]),
                         EMail = reader["E-Mail"].ToString(),
                         Gehalt = reader["Gehalt"].ToString(),
-                        Geburtsdatum = Convert.ToDateTime(reader["Geburtsdatum"]),
+                        //Geburtsdatum = Convert.ToDateTime(reader["Geburtsdatum"]),
                         Adresse = reader["Adresse"].ToString(),
                         Telefon = Convert.ToInt32(reader["Telefon"]),
                         Geschlecht = reader["Geschlecht"].ToString()
@@ -141,7 +148,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                 commandUpdate.Parameters.AddWithValue("@EintrittDatum", DatumEintritt);
                 commandUpdate.Parameters.AddWithValue("@Gehalt", Gehalt);
                 commandUpdate.Parameters.AddWithValue("@Rentenbeginn", DatumRentenBeginn);
-                commandUpdate.Parameters.AddWithValue("@Geburtsdatum", Geburtsdatum);
+                //commandUpdate.Parameters.AddWithValue("@Geburtsdatum", Geburtsdatum);
                 commandUpdate.Parameters.AddWithValue("@Geschlecht", Geschlecht);
 
                 commandUpdate.ExecuteNonQuery();
@@ -181,7 +188,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                     commandUpdate.Parameters.AddWithValue("@EintrittDatum", DatumEintritt);
                     commandUpdate.Parameters.AddWithValue("@Gehalt", Gehalt);
                     commandUpdate.Parameters.AddWithValue("@Rentenbeginn", DatumRentenBeginn);
-                    commandUpdate.Parameters.AddWithValue("@Geburtsdatum", SqlDbType.DateTime).Value = Geburtsdatum;
+                    //commandUpdate.Parameters.AddWithValue("@Geburtsdatum", SqlDbType.DateTime).Value = Geburtsdatum;
                     commandUpdate.Parameters.AddWithValue("@Geschlecht", Geschlecht);
 
 

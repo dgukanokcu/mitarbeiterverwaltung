@@ -34,7 +34,7 @@ namespace BTS_Mitarbeiterverwaltung
             m.DatumEintritt = dateTimePickerEntry.Value;
             m.EMail = txtBoxEmail.Text;
             m.Gehalt = txtBoxSalary.Text;
-            m.Geburtsdatum = dateTimePickerBirthdate.Value;
+            //m.Geburtsdatum = dateTimePickerBirthdate.Value;
             m.Adresse = txtBoxAdress.Text;
             //m.Telefon = txtBoxTelefon.Text;
             m.Geschlecht = comboBoxGender.Text;
@@ -73,7 +73,7 @@ namespace BTS_Mitarbeiterverwaltung
                 dateTimePickerEntry.Value = m.DatumEintritt;
                 txtBoxEmail.Text = m.EMail;
                 txtBoxSalary.Text = m.Gehalt;
-                dateTimePickerBirthdate.Value = m.Geburtsdatum;
+                //dateTimePickerBirthdate.Value = m.Geburtsdatum;
                 txtBoxAdress.Text = m.Adresse;
                 //txtBoxTelefon.Text = m.Telefon;
                 comboBoxGender.Text = m.Geschlecht;

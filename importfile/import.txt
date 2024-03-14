@@ -1,0 +1,5 @@
+1, Max, Mustermann, Musterstrasse, 12, 12345, Musterstadt, 123456789, max@example.com, Mitarbeiter, 01.01.2022, 3000, 01-01-1990, männlich
+2, Ahmet, Cakir, Kaulbachweg, 10, 74074, Heilbronn, 504991, ack@yahoo.com, Abteilungsleiter, 01.01.2022, 30000, 1996-06-09, männlich
+3, Peter, Klein, Musterstrasse, 12, 12345, Eberstadt, 123456789, max@example.com, Mitarbeiter, 01.01.2022, 5000, 01.01.1993, männlich
+4, Gerhard, Muster, Musterstrasse, 12, 12345, Musterstadt, 123456789, max@example.com, Mitarbeiter, 01.01.2022, 3000, 01.01.1991, männlich
+5, Dogu, Kan, Musterstrasse, 12, 12345, Musterstadt, 123456789, max@example.com, Mitarbeiter, 01.01.2022, 3000, 01.01.1992, männlich

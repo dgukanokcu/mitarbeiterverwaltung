@@ -29,10 +29,22 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewEmployee = new System.Windows.Forms.DataGridView();
             this.btnAddEmployee = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -50,6 +62,8 @@
             this.Geschlecht = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Emailadresse = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PLZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Position = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Eintrittsdatum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gehalt = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,9 +77,11 @@
             // 
             this.dataGridViewEmployee.AllowUserToAddRows = false;
             this.dataGridViewEmployee.AllowUserToDeleteRows = false;
+            this.dataGridViewEmployee.AllowUserToOrderColumns = true;
             this.dataGridViewEmployee.AllowUserToResizeColumns = false;
+            this.dataGridViewEmployee.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dataGridViewEmployee.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewEmployee.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridViewEmployee.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridViewEmployee.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridViewEmployee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewEmployee.ColumnHeadersHeight = 40;
@@ -77,6 +93,8 @@
             this.Geschlecht,
             this.Telefon,
             this.Emailadresse,
+            this.Nr,
+            this.PLZ,
             this.Position,
             this.Eintrittsdatum,
             this.Gehalt,
@@ -90,15 +108,15 @@
             this.dataGridViewEmployee.Name = "dataGridViewEmployee";
             this.dataGridViewEmployee.ReadOnly = true;
             this.dataGridViewEmployee.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dataGridViewEmployee.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewEmployee.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dataGridViewEmployee.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridViewEmployee.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewEmployee.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewEmployee.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewEmployee.ShowEditingIcon = false;
             this.dataGridViewEmployee.Size = new System.Drawing.Size(1091, 306);
             this.dataGridViewEmployee.StandardTab = true;
             this.dataGridViewEmployee.TabIndex = 0;
@@ -243,12 +261,14 @@
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
             this.ID.ToolTipText = "Mitarbeiterkennung";
-            this.ID.Width = 40;
+            this.ID.Width = 43;
             // 
             // Vorname
             // 
-            this.Vorname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Vorname.DataPropertyName = "Vorname";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.Vorname.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Vorname.Frozen = true;
             this.Vorname.HeaderText = "Vorname";
             this.Vorname.MinimumWidth = 6;
             this.Vorname.Name = "Vorname";
@@ -257,8 +277,10 @@
             // 
             // Nachname
             // 
-            this.Nachname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Nachname.DataPropertyName = "Nachname";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.Nachname.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Nachname.Frozen = true;
             this.Nachname.HeaderText = "Nachname";
             this.Nachname.MinimumWidth = 6;
             this.Nachname.Name = "Nachname";
@@ -267,18 +289,21 @@
             // 
             // Geschlecht
             // 
-            this.Geschlecht.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Geschlecht.DataPropertyName = "Geschlecht";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.Geschlecht.DefaultCellStyle = dataGridViewCellStyle5;
             this.Geschlecht.HeaderText = "Geschlecht";
             this.Geschlecht.MinimumWidth = 6;
             this.Geschlecht.Name = "Geschlecht";
             this.Geschlecht.ReadOnly = true;
-            this.Geschlecht.Width = 86;
+            this.Geschlecht.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Geschlecht.Width = 67;
             // 
             // Telefon
             // 
-            this.Telefon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Telefon.DataPropertyName = "Telefon";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.Telefon.DefaultCellStyle = dataGridViewCellStyle6;
             this.Telefon.HeaderText = "Telefon";
             this.Telefon.MinimumWidth = 6;
             this.Telefon.Name = "Telefon";
@@ -287,18 +312,40 @@
             // 
             // Emailadresse
             // 
-            this.Emailadresse.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Emailadresse.DataPropertyName = "E-Mail";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.Emailadresse.DefaultCellStyle = dataGridViewCellStyle7;
             this.Emailadresse.HeaderText = "Email";
             this.Emailadresse.MinimumWidth = 6;
             this.Emailadresse.Name = "Emailadresse";
             this.Emailadresse.ReadOnly = true;
             this.Emailadresse.Width = 57;
             // 
+            // Nr
+            // 
+            this.Nr.DataPropertyName = "Nr";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.Nr.DefaultCellStyle = dataGridViewCellStyle8;
+            this.Nr.HeaderText = "Nr";
+            this.Nr.Name = "Nr";
+            this.Nr.ReadOnly = true;
+            this.Nr.Width = 43;
+            // 
+            // PLZ
+            // 
+            this.PLZ.DataPropertyName = "PLZ";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.PLZ.DefaultCellStyle = dataGridViewCellStyle9;
+            this.PLZ.HeaderText = "PLZ";
+            this.PLZ.Name = "PLZ";
+            this.PLZ.ReadOnly = true;
+            this.PLZ.Width = 52;
+            // 
             // Position
             // 
-            this.Position.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Position.DataPropertyName = "Position";
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.Position.DefaultCellStyle = dataGridViewCellStyle10;
             this.Position.HeaderText = "Position";
             this.Position.MinimumWidth = 6;
             this.Position.Name = "Position";
@@ -307,8 +354,9 @@
             // 
             // Eintrittsdatum
             // 
-            this.Eintrittsdatum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Eintrittsdatum.DataPropertyName = "EintrittDatum";
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.Eintrittsdatum.DefaultCellStyle = dataGridViewCellStyle11;
             this.Eintrittsdatum.HeaderText = "Eintrittsdatum";
             this.Eintrittsdatum.MinimumWidth = 6;
             this.Eintrittsdatum.Name = "Eintrittsdatum";
@@ -317,8 +365,9 @@
             // 
             // Gehalt
             // 
-            this.Gehalt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Gehalt.DataPropertyName = "Gehalt";
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.Gehalt.DefaultCellStyle = dataGridViewCellStyle12;
             this.Gehalt.HeaderText = "Gehalt";
             this.Gehalt.MinimumWidth = 6;
             this.Gehalt.Name = "Gehalt";
@@ -327,8 +376,9 @@
             // 
             // RentenBeginn
             // 
-            this.RentenBeginn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.RentenBeginn.DataPropertyName = "Rentenbeginn";
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.RentenBeginn.DefaultCellStyle = dataGridViewCellStyle13;
             this.RentenBeginn.HeaderText = "Rentenbeginn";
             this.RentenBeginn.MinimumWidth = 6;
             this.RentenBeginn.Name = "RentenBeginn";
@@ -337,8 +387,9 @@
             // 
             // Geburtsdatum
             // 
-            this.Geburtsdatum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Geburtsdatum.DataPropertyName = "Geburtsdatum";
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.Geburtsdatum.DefaultCellStyle = dataGridViewCellStyle14;
             this.Geburtsdatum.HeaderText = "Geburtsdatum";
             this.Geburtsdatum.MinimumWidth = 6;
             this.Geburtsdatum.Name = "Geburtsdatum";
@@ -348,10 +399,11 @@
             // 
             // Alter
             // 
-            this.Alter.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Alter.DataPropertyName = "Alter";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Alter.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.DarkBlue;
+            this.Alter.DefaultCellStyle = dataGridViewCellStyle15;
             this.Alter.HeaderText = "Alter";
             this.Alter.Name = "Alter";
             this.Alter.ReadOnly = true;
@@ -405,6 +457,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Geschlecht;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefon;
         private System.Windows.Forms.DataGridViewTextBoxColumn Emailadresse;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nr;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PLZ;
         private System.Windows.Forms.DataGridViewTextBoxColumn Position;
         private System.Windows.Forms.DataGridViewTextBoxColumn Eintrittsdatum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Gehalt;

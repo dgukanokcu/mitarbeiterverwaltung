@@ -110,8 +110,8 @@ namespace BTS_Mitarbeiterverwaltung
 
                         MessageBox.Show("Daten erfolgreich exportiert!", "Erfolg", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        // Öffne das Zielverzeichnis
-                        Process.Start("explorer.exe", targetFolder);
+                        // Öffne Textdokument nach Export
+                        Process.Start(txtFilePath);
                     }
                 }
             }
@@ -125,9 +125,9 @@ namespace BTS_Mitarbeiterverwaltung
             try
             {
                 SqlCommand commandUpdate = new SqlCommand(
-                    "INSERT INTO mitarbeiter (Vorname, Nachname, Strasse, Hausnummer, PLZ, Ort, Telefon, [E-Mail], Position, " +
+                    "INSERT INTO mitarbeiter (Vorname, Nachname, Strasse, Nr, PLZ, Ort, Telefon, [E-Mail], Position, " +
                     "EintrittDatum, Gehalt, Geburtsdatum, Geschlecht) " +
-                    "VALUES (@Vorname, @Nachname, @Strasse, @Hausnummer, @PLZ, @Ort, @Telefon, @EMail, @Position, " +
+                    "VALUES (@Vorname, @Nachname, @Strasse, @Nr, @PLZ, @Ort, @Telefon, @EMail, @Position, " +
                     "@Eintrittsdatum, @Gehalt, @Geburtsdatum, @Geschlecht)",
                     SqlVariable.connection);
 
@@ -136,7 +136,7 @@ namespace BTS_Mitarbeiterverwaltung
                 commandUpdate.Parameters.AddWithValue("@Vorname", attributeValues[1].Trim());
                 commandUpdate.Parameters.AddWithValue("@Nachname", attributeValues[2].Trim());
                 commandUpdate.Parameters.AddWithValue("@Strasse", attributeValues[3].Trim());
-                commandUpdate.Parameters.AddWithValue("@Hausnummer", attributeValues[4].Trim());
+                commandUpdate.Parameters.AddWithValue("@Nr", attributeValues[4].Trim());
                 commandUpdate.Parameters.AddWithValue("@PLZ", attributeValues[5].Trim());
                 commandUpdate.Parameters.AddWithValue("@Ort", attributeValues[6].Trim());
                 commandUpdate.Parameters.AddWithValue("@Telefon", attributeValues[7].Trim());
@@ -205,7 +205,7 @@ namespace BTS_Mitarbeiterverwaltung
                     writer.WriteLine(headerLine);
 
                     // Trennlinie mit Delimiter
-                    string separatorLine = new string('-', columnHeadersWidths.Values.Sum() + (dataTable.Columns.Count - 1) * delimiter.Length); // Länge des Trennzeichens
+                    string separatorLine = new string('-', columnHeadersWidths.Values.Sum() + (dataTable.Columns.Count - 1) * delimiter.Length);
                     writer.WriteLine(separatorLine);
 
                     foreach (DataRow row in dataTable.Rows)
