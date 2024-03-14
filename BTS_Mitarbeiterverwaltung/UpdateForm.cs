@@ -51,15 +51,24 @@ namespace BTS_Mitarbeiterverwaltung
                 mainForm.dataGridViewEmployee.DataSource = table;
             }
             else 
-            {
+            {                
+                errName.Visible = string.IsNullOrWhiteSpace(m.Vorname);
+                errSurname.Visible = string.IsNullOrWhiteSpace(m.Name);
+                errMail.Visible = string.IsNullOrWhiteSpace(m.EMail);
+                errGndr.Visible = string.IsNullOrWhiteSpace(m.Geschlecht);
+                errPstn.Visible = string.IsNullOrWhiteSpace(m.Position);
+                errSlry.Visible = string.IsNullOrWhiteSpace(m.Gehalt);
+                errTlfn.Visible = string.IsNullOrWhiteSpace(m.Telefon);
+                errStrt.Visible = string.IsNullOrWhiteSpace(m.Strasse);
+                errHausNmbr.Visible = string.IsNullOrWhiteSpace(m.Hausnummer);
+                errZip.Visible = string.IsNullOrWhiteSpace(m.PLZ);
+                errCty.Visible = string.IsNullOrWhiteSpace(m.Ort);
                 MessageBox.Show("Überprüfen Sie bitte Ihre Angaben!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
         private void UpdateForm_Load(object sender, EventArgs e)
         {
-
-
             if (id != 0)
             {
                 Employee m = Employee.getEmployeeById(id);
@@ -76,10 +85,11 @@ namespace BTS_Mitarbeiterverwaltung
                 textBoxHouseNmbr.Text = m.Hausnummer;
                 textBoxZIP.Text = m.PLZ;
                 textBoxCity.Text = m.Ort;
-
             }
         }
 
+        #region validation
+        
         private void txtBoxName_KeyPress(object sender, KeyPressEventArgs e)
         {
             Employee.AllowOnlyLettersAndControlCharacters(sender, e);
@@ -89,5 +99,37 @@ namespace BTS_Mitarbeiterverwaltung
         {
             Employee.AllowOnlyLettersAndControlCharacters(sender, e);
         }
+
+        private void textBoxCity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Employee.AllowOnlyLettersAndControlCharacters(sender, e);
+        }
+
+        private void textBoxStreet_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Employee.AllowOnlyLettersAndControlCharacters(sender, e);
+        }
+
+        private void textBoxZIP_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Employee.AllowOnlyNumbers(sender, e);
+        }
+
+        private void textBoxHouseNmbr_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Employee.AllowOnlyNumbers(sender, e);
+        }
+
+        private void txtBoxTelefon_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Employee.AllowOnlyNumbers(sender, e);
+        }
+
+        private void txtBoxSalary_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Employee.AllowOnlyNumbers(sender, e);
+        }
+        #endregion
     }
+
 }

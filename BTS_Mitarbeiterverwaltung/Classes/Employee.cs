@@ -206,5 +206,12 @@ namespace BTS_Mitarbeiterverwaltung.Classes
             }
         }
 
+        public static void AllowOnlyNumbers(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

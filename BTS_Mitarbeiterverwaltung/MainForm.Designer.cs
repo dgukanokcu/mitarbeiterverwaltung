@@ -81,12 +81,11 @@
             this.Eintritt,
             this.Gehalt,
             this.RentenBeginn});
-            this.dataGridViewEmployee.Location = new System.Drawing.Point(19, 131);
-            this.dataGridViewEmployee.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridViewEmployee.Location = new System.Drawing.Point(14, 89);
             this.dataGridViewEmployee.Name = "dataGridViewEmployee";
             this.dataGridViewEmployee.ReadOnly = true;
             this.dataGridViewEmployee.RowHeadersWidth = 51;
-            this.dataGridViewEmployee.Size = new System.Drawing.Size(1272, 405);
+            this.dataGridViewEmployee.Size = new System.Drawing.Size(954, 329);
             this.dataGridViewEmployee.TabIndex = 0;
             this.dataGridViewEmployee.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEmployee_CellContentClick);
             this.dataGridViewEmployee.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewEmployee_CellMouseClick);
@@ -267,10 +266,9 @@
             this.btnAddEmployee.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnAddEmployee.Image = ((System.Drawing.Image)(resources.GetObject("btnAddEmployee.Image")));
             this.btnAddEmployee.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAddEmployee.Location = new System.Drawing.Point(748, 88);
-            this.btnAddEmployee.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAddEmployee.Location = new System.Drawing.Point(560, 52);
             this.btnAddEmployee.Name = "btnAddEmployee";
-            this.btnAddEmployee.Size = new System.Drawing.Size(250, 37);
+            this.btnAddEmployee.Size = new System.Drawing.Size(188, 30);
             this.btnAddEmployee.TabIndex = 1;
             this.btnAddEmployee.Text = "Mitarbeiter hinzufügen";
             this.btnAddEmployee.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -283,10 +281,9 @@
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDelete.Location = new System.Drawing.Point(1153, 85);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDelete.Location = new System.Drawing.Point(864, 49);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(139, 39);
+            this.btnDelete.Size = new System.Drawing.Size(104, 32);
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "Löschen";
             this.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -299,10 +296,9 @@
             this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
             this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEdit.Location = new System.Drawing.Point(1006, 86);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEdit.Location = new System.Drawing.Point(753, 50);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(139, 38);
+            this.btnEdit.Size = new System.Drawing.Size(104, 31);
             this.btnEdit.TabIndex = 3;
             this.btnEdit.Text = "Bearbeiten";
             this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -312,11 +308,11 @@
             // txtBoxName
             // 
             this.txtBoxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxName.Location = new System.Drawing.Point(19, 85);
-            this.txtBoxName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtBoxName.Location = new System.Drawing.Point(13, 49);
+            this.txtBoxName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtBoxName.Multiline = true;
             this.txtBoxName.Name = "txtBoxName";
-            this.txtBoxName.Size = new System.Drawing.Size(224, 38);
+            this.txtBoxName.Size = new System.Drawing.Size(169, 32);
             this.txtBoxName.TabIndex = 5;
             this.txtBoxName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxName_KeyPress);
             // 
@@ -324,10 +320,9 @@
             // 
             this.btnReset.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.Location = new System.Drawing.Point(250, 84);
-            this.btnReset.Margin = new System.Windows.Forms.Padding(4);
+            this.btnReset.Location = new System.Drawing.Point(187, 48);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(84, 39);
+            this.btnReset.Size = new System.Drawing.Size(63, 35);
             this.btnReset.TabIndex = 6;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = false;
@@ -337,10 +332,9 @@
             // 
             this.btnExport.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnExport.Location = new System.Drawing.Point(547, 88);
-            this.btnExport.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExport.Location = new System.Drawing.Point(409, 52);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(120, 38);
+            this.btnExport.Size = new System.Drawing.Size(90, 31);
             this.btnExport.TabIndex = 7;
             this.btnExport.Text = "Exportieren";
             this.btnExport.UseVisualStyleBackColor = false;
@@ -350,19 +344,18 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 39);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(9, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 31);
+            this.label1.Size = new System.Drawing.Size(85, 25);
             this.label1.TabIndex = 7;
             this.label1.Text = "Suchen";
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1309, 558);
+            this.ClientSize = new System.Drawing.Size(982, 429);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.btnReset);
@@ -372,7 +365,7 @@
             this.Controls.Add(this.btnAddEmployee);
             this.Controls.Add(this.dataGridViewEmployee);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mitarbeiterverwaltung";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
