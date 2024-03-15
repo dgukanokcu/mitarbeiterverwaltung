@@ -30,7 +30,6 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -45,17 +44,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.dataGridViewEmployee = new System.Windows.Forms.DataGridView();
-            this.btnAddEmployee = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.txtBoxName = new System.Windows.Forms.TextBox();
-            this.btnReset = new System.Windows.Forms.Button();
-            this.btnExport = new System.Windows.Forms.Button();
-            this.btnImport = new System.Windows.Forms.Button();
-            this.lblTotalRows = new System.Windows.Forms.Label();
-            this.lblSelectedRows = new System.Windows.Forms.Label();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Vorname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nachname = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,6 +60,16 @@
             this.RentenBeginn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Geburtsdatum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Alter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAddEmployee = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.txtBoxName = new System.Windows.Forms.TextBox();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.btnImport = new System.Windows.Forms.Button();
+            this.lblTotalRows = new System.Windows.Forms.Label();
+            this.lblSelectedRows = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployee)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,132 +120,7 @@
             this.dataGridViewEmployee.Size = new System.Drawing.Size(1091, 306);
             this.dataGridViewEmployee.StandardTab = true;
             this.dataGridViewEmployee.TabIndex = 0;
-            this.dataGridViewEmployee.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEmployee_CellContentClick);
             this.dataGridViewEmployee.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
-            // 
-            // btnAddEmployee
-            // 
-            this.btnAddEmployee.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnAddEmployee.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnAddEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddEmployee.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnAddEmployee.Image = ((System.Drawing.Image)(resources.GetObject("btnAddEmployee.Image")));
-            this.btnAddEmployee.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAddEmployee.Location = new System.Drawing.Point(12, 62);
-            this.btnAddEmployee.Name = "btnAddEmployee";
-            this.btnAddEmployee.Size = new System.Drawing.Size(169, 31);
-            this.btnAddEmployee.TabIndex = 0;
-            this.btnAddEmployee.Text = "Mitarbeiter hinzufügen";
-            this.btnAddEmployee.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddEmployee.UseVisualStyleBackColor = false;
-            this.btnAddEmployee.Click += new System.EventHandler(this.btnHinzufügen_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(321, 62);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(90, 31);
-            this.btnDelete.TabIndex = 7;
-            this.btnDelete.Text = "Löschen";
-            this.btnDelete.UseVisualStyleBackColor = false;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(225, 62);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(90, 31);
-            this.btnEdit.TabIndex = 6;
-            this.btnEdit.Text = "Bearbeiten";
-            this.btnEdit.UseVisualStyleBackColor = false;
-            this.btnEdit.Click += new System.EventHandler(this.btnBearbeiten_Click);
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(225, 12);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(90, 31);
-            this.btnSearch.TabIndex = 5;
-            this.btnSearch.Text = "Suchen";
-            this.btnSearch.UseVisualStyleBackColor = false;
-            // 
-            // txtBoxName
-            // 
-            this.txtBoxName.Location = new System.Drawing.Point(16, 14);
-            this.txtBoxName.Margin = new System.Windows.Forms.Padding(2);
-            this.txtBoxName.Multiline = true;
-            this.txtBoxName.Name = "txtBoxName";
-            this.txtBoxName.Size = new System.Drawing.Size(165, 32);
-            this.txtBoxName.TabIndex = 5;
-            this.txtBoxName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxName_KeyPress);
-            // 
-            // btnReset
-            // 
-            this.btnReset.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.Location = new System.Drawing.Point(321, 14);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(90, 31);
-            this.btnReset.TabIndex = 4;
-            this.btnReset.Text = "Refresh";
-            this.btnReset.UseVisualStyleBackColor = false;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
-            // btnExport
-            // 
-            this.btnExport.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnExport.Location = new System.Drawing.Point(814, 84);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(70, 31);
-            this.btnExport.TabIndex = 3;
-            this.btnExport.Text = "Export";
-            this.btnExport.UseVisualStyleBackColor = false;
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
-            // 
-            // btnImport
-            // 
-            this.btnImport.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnImport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnImport.Location = new System.Drawing.Point(738, 84);
-            this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(70, 31);
-            this.btnImport.TabIndex = 2;
-            this.btnImport.Text = "Import";
-            this.btnImport.UseVisualStyleBackColor = false;
-            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
-            // 
-            // lblTotalRows
-            // 
-            this.lblTotalRows.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lblTotalRows.AutoSize = true;
-            this.lblTotalRows.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblTotalRows.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.lblTotalRows.Location = new System.Drawing.Point(13, 479);
-            this.lblTotalRows.Name = "lblTotalRows";
-            this.lblTotalRows.Size = new System.Drawing.Size(112, 18);
-            this.lblTotalRows.TabIndex = 9;
-            this.lblTotalRows.Text = "Anzahl Datensätze:";
-            this.lblTotalRows.UseCompatibleTextRendering = true;
-            this.lblTotalRows.Click += new System.EventHandler(this.lblSelectedRows_Click);
-            // 
-            // lblSelectedRows
-            // 
-            this.lblSelectedRows.AutoSize = true;
-            this.lblSelectedRows.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelectedRows.Location = new System.Drawing.Point(13, 140);
-            this.lblSelectedRows.Name = "lblSelectedRows";
-            this.lblSelectedRows.Size = new System.Drawing.Size(51, 17);
-            this.lblSelectedRows.TabIndex = 10;
-            this.lblSelectedRows.Text = "Selected:";
-            this.lblSelectedRows.UseCompatibleTextRendering = true;
-            this.lblSelectedRows.Click += new System.EventHandler(this.lblSelectedRows_Click_1);
             // 
             // ID
             // 
@@ -408,6 +283,130 @@
             this.Alter.Name = "Alter";
             this.Alter.ReadOnly = true;
             this.Alter.Width = 53;
+            // 
+            // btnAddEmployee
+            // 
+            this.btnAddEmployee.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnAddEmployee.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnAddEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddEmployee.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnAddEmployee.Image = ((System.Drawing.Image)(resources.GetObject("btnAddEmployee.Image")));
+            this.btnAddEmployee.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddEmployee.Location = new System.Drawing.Point(12, 62);
+            this.btnAddEmployee.Name = "btnAddEmployee";
+            this.btnAddEmployee.Size = new System.Drawing.Size(169, 31);
+            this.btnAddEmployee.TabIndex = 0;
+            this.btnAddEmployee.Text = "Mitarbeiter hinzufügen";
+            this.btnAddEmployee.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddEmployee.UseVisualStyleBackColor = false;
+            this.btnAddEmployee.Click += new System.EventHandler(this.btnHinzufügen_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(321, 62);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(90, 31);
+            this.btnDelete.TabIndex = 7;
+            this.btnDelete.Text = "Löschen";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.Location = new System.Drawing.Point(225, 62);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(90, 31);
+            this.btnEdit.TabIndex = 6;
+            this.btnEdit.Text = "Bearbeiten";
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnBearbeiten_Click);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(225, 12);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(90, 31);
+            this.btnSearch.TabIndex = 5;
+            this.btnSearch.Text = "Suchen";
+            this.btnSearch.UseVisualStyleBackColor = false;
+            // 
+            // txtBoxName
+            // 
+            this.txtBoxName.Location = new System.Drawing.Point(16, 14);
+            this.txtBoxName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBoxName.Multiline = true;
+            this.txtBoxName.Name = "txtBoxName";
+            this.txtBoxName.Size = new System.Drawing.Size(165, 32);
+            this.txtBoxName.TabIndex = 5;
+            this.txtBoxName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxName_KeyPress);
+            // 
+            // btnReset
+            // 
+            this.btnReset.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.Location = new System.Drawing.Point(321, 14);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(90, 31);
+            this.btnReset.TabIndex = 4;
+            this.btnReset.Text = "Refresh";
+            this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // btnExport
+            // 
+            this.btnExport.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnExport.Location = new System.Drawing.Point(814, 84);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(70, 31);
+            this.btnExport.TabIndex = 3;
+            this.btnExport.Text = "Export";
+            this.btnExport.UseVisualStyleBackColor = false;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // btnImport
+            // 
+            this.btnImport.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnImport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnImport.Location = new System.Drawing.Point(738, 84);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(70, 31);
+            this.btnImport.TabIndex = 2;
+            this.btnImport.Text = "Import";
+            this.btnImport.UseVisualStyleBackColor = false;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+            // 
+            // lblTotalRows
+            // 
+            this.lblTotalRows.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblTotalRows.AutoSize = true;
+            this.lblTotalRows.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.lblTotalRows.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.lblTotalRows.Location = new System.Drawing.Point(13, 479);
+            this.lblTotalRows.Name = "lblTotalRows";
+            this.lblTotalRows.Size = new System.Drawing.Size(112, 18);
+            this.lblTotalRows.TabIndex = 9;
+            this.lblTotalRows.Text = "Anzahl Datensätze:";
+            this.lblTotalRows.UseCompatibleTextRendering = true;
+            this.lblTotalRows.Click += new System.EventHandler(this.lblSelectedRows_Click);
+            // 
+            // lblSelectedRows
+            // 
+            this.lblSelectedRows.AutoSize = true;
+            this.lblSelectedRows.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSelectedRows.Location = new System.Drawing.Point(13, 140);
+            this.lblSelectedRows.Name = "lblSelectedRows";
+            this.lblSelectedRows.Size = new System.Drawing.Size(66, 17);
+            this.lblSelectedRows.TabIndex = 10;
+            this.lblSelectedRows.Text = "Ausgewählt:";
+            this.lblSelectedRows.UseCompatibleTextRendering = true;
+            this.lblSelectedRows.Click += new System.EventHandler(this.lblSelectedRows_Click_1);
             // 
             // MainForm
             // 

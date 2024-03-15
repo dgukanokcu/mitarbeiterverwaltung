@@ -1,5 +1,7 @@
-﻿using System;
+﻿using BTS_Mitarbeiterverwaltung.Classes;
+using System;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace BTS_Mitarbeiterverwaltung
@@ -16,9 +18,31 @@ namespace BTS_Mitarbeiterverwaltung
             label4.Font = new Font(label4.Font, FontStyle.Bold);    // Schrift: Fett
         }
         private void LoginForm_Load(object sender, EventArgs e)
-        {}
+        { 
+        }
+        static void TimerCallback(object state)
+        {
+            MessageBox.Show("Keine Verbindung. Data Source überprüfen.");
+            Environment.Exit(1);
+        }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            System.Threading.Timer timer = new System.Threading.Timer(TimerCallback, null, 2500, Timeout.Infinite);
+
+            if (!SqlVariable.connection.State.Equals(System.Data.ConnectionState.Open))
+            {
+                try
+                {
+                    // Öffnen der Datenbankverbindung
+                    SqlVariable.connection.Open();
+
+                }
+                catch
+                {
+                    return;
+                }
+            }
             string benutzername = txtBoxUsername.Text;
             string passwort = txtBoxPassword.Text;
 

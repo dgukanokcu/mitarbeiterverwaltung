@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using BTS_Mitarbeiterverwaltung.Classes;
 
@@ -9,6 +13,8 @@ namespace BTS_Mitarbeiterverwaltung
     public partial class MainForm : Form
     {
         private Tools tools;
+        public int selectedRowID { get; set; }
+
         internal MainForm()
         {
             InitializeComponent();
@@ -23,6 +29,7 @@ namespace BTS_Mitarbeiterverwaltung
 
             SetColumnWidths(dataGridViewEmployee);
         }
+
         private void SetColumnWidths(DataGridView dataGridView)
         {
             foreach (DataGridViewColumn column in dataGridView.Columns)
@@ -36,7 +43,7 @@ namespace BTS_Mitarbeiterverwaltung
                         // Berücksichtige spezielle Breiten für die Spalten die den Datentyp "date" verwenden (Uhrzeit wird gefiltert)
                         if (column.Name == "Eintrittsdatum" || column.Name == "RentenBeginn" || column.Name == "Geburtsdatum")
                         {
-                            maxWidth = Math.Max(maxWidth, 40); // Setze Breite auf 40
+                            maxWidth = Math.Max(maxWidth, 40);
                         }
                         else
                         {
@@ -88,6 +95,9 @@ namespace BTS_Mitarbeiterverwaltung
             Tools.DeleteRows(dataGridViewEmployee);
             btnReset.PerformClick();
         }
+
+
+
         internal void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             int totalRowCount = dataGridViewEmployee.RowCount;
@@ -98,14 +108,28 @@ namespace BTS_Mitarbeiterverwaltung
             if (selectedRowsCount > 0)
             {
                 lblSelectedRows.Text = $"Ausgewählt: {selectedRowsCount}";
+                selectedRowID = Convert.ToInt32(dataGridViewEmployee.SelectedRows[0].Cells["ID"].Value);
             }
             else
             {
                 lblSelectedRows.Text = "";
+                selectedRowID = 0; // keine Zeile ausgewählt
             }
         }
-        internal void btnBearbeiten_Click(object sender, EventArgs e)
-        {}
+
+        private void btnBearbeiten_Click(object sender, EventArgs e)
+        {
+            if (selectedRowID != 0)
+            {
+                UpdateForm updateForm = new UpdateForm(this, selectedRowID);
+                updateForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Wählen Sie bitte ein Mitarbeiter aus.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
         internal void txtBoxName_KeyPress(object sender, KeyPressEventArgs e)
         {
             dataGridViewEmployee.DataSource = Employee.getEmployeeByName(txtBoxName.Text, txtBoxName.Text);
@@ -120,8 +144,6 @@ namespace BTS_Mitarbeiterverwaltung
             tools.FileImport();
             btnReset.PerformClick();
         }
-        private void dataGridViewEmployee_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {}
         private void lblSelectedRows_Click(object sender, EventArgs e)
         {}
         private void lblSelectedRows_Click_1(object sender, EventArgs e)

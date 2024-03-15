@@ -105,7 +105,7 @@ namespace BTS_Mitarbeiterverwaltung
                             }
                         }
                         // Exportiere Daten in CSV und TXT
-                        ExportDataTableToFile(dataTable, csvFilePath, ",");
+                        ExportDataTableToFile(dataTable, csvFilePath, ";");
                         ExportDataTableToFile(dataTable, txtFilePath, " | ");
 
                         MessageBox.Show("Daten erfolgreich exportiert!", "Erfolg", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -224,23 +224,31 @@ namespace BTS_Mitarbeiterverwaltung
         }
         internal static void DeleteRows(DataGridView dataGridView)
         {
-            DialogResult result = MessageBox.Show("Möchten Sie wirklich löschen?", "Sicher?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            int selectedRowsCount = dataGridView.SelectedRows.Count;
+
+            if (selectedRowsCount == 0)
+            {
+                MessageBox.Show("Keine Zeile ausgewählt.", "Hinweis", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string message = selectedRowsCount == 1 ? "Mitarbeiter" : $"{selectedRowsCount} Mitarbeiter";
+
+            DialogResult result = MessageBox.Show($"{message} löschen?", "Sicher?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
-                if (dataGridView.SelectedRows.Count > 0)
+                int deletedCount = 0;
+
+                foreach (DataGridViewRow selectedRow in dataGridView.SelectedRows)
                 {
-                    foreach (DataGridViewRow selectedRow in dataGridView.SelectedRows)
-                    {
-                        int selectedRowID = Convert.ToInt32(selectedRow.Cells["ID"].Value); // Annahme: Die ID-Spalte hat den Namen "ID"
-                        Employee.deleteEmployee(selectedRowID);
-                    }
-                    MessageBox.Show("Datensätze erfolgreich gelöscht!", "Erfolg", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    int selectedRowID = Convert.ToInt32(selectedRow.Cells["ID"].Value);
+                    Employee.deleteEmployee(selectedRowID);
+                    deletedCount++;
                 }
-                else
-                {
-                    MessageBox.Show("Bitte wählen Sie mindestens eine Zeile zum Löschen aus.", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+
+                message = deletedCount == 1 ? "Mitarbeiter erfolgreich entfernt!" : $"{deletedCount} Mitarbeiter erfolgreich entfernt!";
+                MessageBox.Show(message, "Erfolg", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

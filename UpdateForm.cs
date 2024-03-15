@@ -1,6 +1,8 @@
 ﻿using BTS_Mitarbeiterverwaltung.Classes;
 using System;
 using System.Data;
+using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BTS_Mitarbeiterverwaltung
@@ -10,6 +12,7 @@ namespace BTS_Mitarbeiterverwaltung
     {
         private MainForm mainForm;
         private int id;
+
         public UpdateForm(MainForm mainForm, int ID)
         {
             InitializeComponent();
@@ -17,42 +20,33 @@ namespace BTS_Mitarbeiterverwaltung
             id = ID;
         }
 
+
         private void btnSpeichern_Click(object sender, EventArgs e)
         {
             Employee m = new Employee();
-
-            // Wenn eine ID vorhanden ist, setze sie für das Mitarbeiterobjekt
-            if (id != 0)
-            {
-                m.ID = id;
-            }
-
-            // Setze die anderen Eigenschaften basierend auf den Benutzereingaben
+            if (id != 0) { m.ID = id; }
             m.Vorname = txtBoxName.Text;
             m.Nachname = txtBoxSurname.Text;
             m.Position = comboBoxPosition.Text;
             m.DatumEintritt = dateTimePickerEntry.Value;
             m.EMail = txtBoxEmail.Text;
             m.Gehalt = txtBoxSalary.Text;
-            //m.Geburtsdatum = dateTimePickerBirthdate.Value;
-            m.Adresse = txtBoxAdress.Text;
-            //m.Telefon = txtBoxTelefon.Text;
+            m.Geburtsdatum = dateTimePickerBirthdate.Value;
+            m.Telefon = txtBoxTelefon.Text;
             m.Geschlecht = comboBoxGender.Text;
+            m.Strasse = textBoxStreet.Text;
+            m.Nr = textBoxHouseNmbr.Text;
+            m.PLZ = textBoxZIP.Text;
+            m.Ort = textBoxCity.Text;
 
-            // Validiere die Mitarbeiterdaten
+            string oldValue = Employee.getEmployeeById(id).Vorname;
+
             if (Employee.validation(m))
             {
-                // Führe die Aktualisierung oder Einfügung in die Datenbank durch
                 m.updateEmployee();
-
-                // Schließe das Formular
+                mainForm.UpdateRowCount();
                 this.Close();
-
-                // Zeige eine entsprechende Erfolgsmeldung an
-                if (m.ID == 0)
-                {
-                    MessageBox.Show("Mitarbeiter wurde erfolgreich hinzugefügt!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                MessageBox.Show(m.ID == 0 ? "Mitarbeiter wurde erfolgreich hinzugefügt!" : "Mitarbeiter wurde erfolgreich aktualisiert!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DataTable table = Employee.GetAllEmployees();
                 mainForm.dataGridViewEmployee.DataSource = table;
             }
@@ -61,6 +55,8 @@ namespace BTS_Mitarbeiterverwaltung
                 MessageBox.Show("Überprüfen Sie bitte Ihre Angaben!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+
 
         private void UpdateForm_Load(object sender, EventArgs e)
         {
@@ -73,11 +69,68 @@ namespace BTS_Mitarbeiterverwaltung
                 dateTimePickerEntry.Value = m.DatumEintritt;
                 txtBoxEmail.Text = m.EMail;
                 txtBoxSalary.Text = m.Gehalt;
-                //dateTimePickerBirthdate.Value = m.Geburtsdatum;
-                txtBoxAdress.Text = m.Adresse;
-                //txtBoxTelefon.Text = m.Telefon;
+                dateTimePickerBirthdate.Value = m.Geburtsdatum;
+                txtBoxTelefon.Text = m.Telefon;
                 comboBoxGender.Text = m.Geschlecht;
+                textBoxStreet.Text = m.Strasse;
+                textBoxHouseNmbr.Text = m.Nr;
+                textBoxZIP.Text = m.PLZ;
+                textBoxCity.Text = m.Ort;
             }
         }
+
+        #region validation
+
+        private void txtBoxName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+        private void txtBoxSurname_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Employee.AllowOnlyNumbersAndControlCharacters(sender, e);
+        }
+
+        private void textBoxCity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Employee.AllowOnlyNumbersAndControlCharacters(sender, e);
+        }
+
+        private void textBoxStreet_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Employee.AllowOnlyNumbersAndControlCharacters(sender, e);
+        }
+
+        private void textBoxZIP_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Employee.AllowOnlyNumbersAndControlCharacters(sender, e);
+        }
+
+        private void textBoxHouseNmbr_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Employee.AllowOnlyNumbersAndControlCharacters(sender, e);
+        }
+
+        private void txtBoxTelefon_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Employee.AllowOnlyNumbersAndControlCharacters(sender, e);
+        }
+
+        private void txtBoxSalary_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Employee.AllowOnlyNumbersAndControlCharacters(sender, e);
+        }
+        #endregion
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {}
+
+        private void txtBoxName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
+
 }
