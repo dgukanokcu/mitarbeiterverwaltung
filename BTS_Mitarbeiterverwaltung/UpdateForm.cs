@@ -22,7 +22,7 @@ namespace BTS_Mitarbeiterverwaltung
             Employee m = new Employee();
             if (id != 0) { m.ID = id; }
             m.Vorname = txtBoxName.Text;
-            m.Name = txtBoxSurname.Text;
+            m.Nachname = txtBoxSurname.Text;
             m.Position = comboBoxPosition.Text;
             m.DatumEintritt = dateTimePickerEntry.Value;
             m.EMail = txtBoxEmail.Text;
@@ -51,9 +51,9 @@ namespace BTS_Mitarbeiterverwaltung
                 mainForm.dataGridViewEmployee.DataSource = table;
             }
             else 
-            {                
+            {
                 errName.Visible = string.IsNullOrWhiteSpace(m.Vorname);
-                errSurname.Visible = string.IsNullOrWhiteSpace(m.Name);
+                errSurname.Visible = string.IsNullOrWhiteSpace(m.Nachname);
                 errMail.Visible = string.IsNullOrWhiteSpace(m.EMail);
                 errGndr.Visible = string.IsNullOrWhiteSpace(m.Geschlecht);
                 errPstn.Visible = string.IsNullOrWhiteSpace(m.Position);
@@ -73,7 +73,7 @@ namespace BTS_Mitarbeiterverwaltung
             {
                 Employee m = Employee.getEmployeeById(id);
                 txtBoxName.Text = m.Vorname;
-                txtBoxSurname.Text = m.Name;
+                txtBoxSurname.Text = m.Nachname;
                 comboBoxPosition.Text = m.Position;
                 dateTimePickerEntry.Value = m.DatumEintritt;
                 txtBoxEmail.Text = m.EMail;
@@ -112,22 +112,22 @@ namespace BTS_Mitarbeiterverwaltung
 
         private void textBoxZIP_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Employee.AllowOnlyNumbers(sender, e);
+            Employee.AllowOnlyNumbersAndControlCharacters(sender, e);
         }
 
         private void textBoxHouseNmbr_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Employee.AllowOnlyNumbers(sender, e);
+            Employee.AllowOnlyNumbersAndControlCharacters(sender, e);
         }
 
         private void txtBoxTelefon_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Employee.AllowOnlyNumbers(sender, e);
+            Employee.AllowOnlyNumbersAndControlCharacters(sender, e);
         }
 
         private void txtBoxSalary_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Employee.AllowOnlyNumbers(sender, e);
+            Employee.AllowOnlyNumbersAndControlCharacters(sender, e);
         }
         #endregion
     }

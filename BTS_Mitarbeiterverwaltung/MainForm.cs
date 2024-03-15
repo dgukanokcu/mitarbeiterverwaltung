@@ -15,8 +15,8 @@ namespace BTS_Mitarbeiterverwaltung
         public int selectedRowID { get; set; }
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //DataTable table = Employee.getAllEmployees();
-            //dataGridViewEmployee.DataSource = table;
+            DataTable table = Employee.getAllEmployees();
+            dataGridViewEmployee.DataSource = table;
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -77,6 +77,7 @@ namespace BTS_Mitarbeiterverwaltung
 
         private void btnReset_Click(object sender, EventArgs e)
         {
+            txtBoxName.Text = string.Empty;
             DataTable table = Employee.getAllEmployees();
             dataGridViewEmployee.DataSource = table;
         }
@@ -119,5 +120,6 @@ namespace BTS_Mitarbeiterverwaltung
             Function function = new Function();
             Function.TryExport(function);
         }
+
     }
 }

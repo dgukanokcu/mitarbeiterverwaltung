@@ -11,7 +11,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
 
         public int ID { get; set; }
         public string Vorname { get; set; }
-        public string Name { get; set; }
+        public string Nachname { get; set; }
         public string Adresse { get; set; }
         public string Strasse { get; set; }
         public string Hausnummer { get; set; }
@@ -46,9 +46,9 @@ namespace BTS_Mitarbeiterverwaltung.Classes
 
         public static DataTable getEmployeeByName(string vorname, string name)
         {
-            SqlCommand commandStart = new SqlCommand("SELECT * FROM mitarbeiter WHERE Vorname LIKE @Vorname OR Name LIKE @Name", SqlVariable.connection);
+            SqlCommand commandStart = new SqlCommand("SELECT * FROM mitarbeiter WHERE Vorname LIKE @Vorname OR Nachname LIKE @Nachname", SqlVariable.connection);
             commandStart.Parameters.AddWithValue("@Vorname", "%" + vorname + "%");
-            commandStart.Parameters.AddWithValue("@Name", "%" + name + "%");
+            commandStart.Parameters.AddWithValue("@Nachname", "%" + name + "%");
 
             SqlVariable.connection.Open();
             SqlDataAdapter adapter = new SqlDataAdapter(commandStart);
@@ -75,7 +75,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                     {
                         ID = Convert.ToInt32(reader["ID"]),
                         Vorname = reader["Vorname"].ToString(),
-                        Name = reader["Name"].ToString(),
+                        Nachname = reader["Nachname"].ToString(),
                         Position = reader["Position"].ToString(),
                         DatumEintritt = Convert.ToDateTime(reader["EintrittDatum"]),
                         DatumRentenBeginn = Convert.ToDateTime(reader["Rentenbeginn"]),
@@ -107,10 +107,10 @@ namespace BTS_Mitarbeiterverwaltung.Classes
         {
             if (this.ID == 0)
             {
-                SqlCommand commandUpdate = new SqlCommand("Insert into mitarbeiter (Vorname, Name, Telefon, [E-Mail], Position, EintrittDatum, Gehalt, Geburtsdatum, Geschlecht, Strasse, Hausnummer, PLZ, Ort) values (@Vorname, @Name, @Telefon, @EMail, @Position, @EintrittDatum, @Gehalt, @Geburtsdatum, @Geschlecht, @Strasse, @Hausnummer, @PLZ, @Ort)", SqlVariable.connection);
+                SqlCommand commandUpdate = new SqlCommand("Insert into mitarbeiter (Vorname, Nachname, Telefon, [E-Mail], Position, EintrittDatum, Gehalt, Geburtsdatum, Geschlecht, Strasse, Nr, PLZ, Ort) values (@Vorname, @Nachname, @Telefon, @EMail, @Position, @EintrittDatum, @Gehalt, @Geburtsdatum, @Geschlecht, @Strasse, @Nr, @PLZ, @Ort)", SqlVariable.connection);
                 SqlVariable.connection.Open();
                 commandUpdate.Parameters.AddWithValue("@Vorname", this.Vorname);
-                commandUpdate.Parameters.AddWithValue("@Name", this.Name);
+                commandUpdate.Parameters.AddWithValue("@Nachname", this.Nachname);
                 commandUpdate.Parameters.AddWithValue("@Telefon", this.Telefon);
                 commandUpdate.Parameters.AddWithValue("@EMail", this.EMail);
                 commandUpdate.Parameters.AddWithValue("@Position", this.Position);
@@ -119,7 +119,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                 commandUpdate.Parameters.AddWithValue("@Geburtsdatum", this.Geburtsdatum);
                 commandUpdate.Parameters.AddWithValue("@Geschlecht", this.Geschlecht);
                 commandUpdate.Parameters.AddWithValue("@Strasse", this.Strasse);
-                commandUpdate.Parameters.AddWithValue("@Hausnummer", this.Hausnummer);
+                commandUpdate.Parameters.AddWithValue("@Nr", this.Hausnummer);
                 commandUpdate.Parameters.AddWithValue("@PLZ", this.PLZ);
                 commandUpdate.Parameters.AddWithValue("@Ort", this.Ort);
                 commandUpdate.ExecuteNonQuery();
@@ -131,7 +131,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                     "UPDATE mitarbeiter " +
                     "SET " +
                     "Vorname = @Vorname, " +
-                    "Name = @Name, " +
+                    "Nachname = @Nachname, " +
                     "Adresse = @Adresse, " +
                     "Telefon = @Telefon, " +
                     "[E-Mail] = @EMail, " +
@@ -141,7 +141,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                     "Geburtsdatum = @Geburtsdatum, " +
                     "Geschlecht = @Geschlecht, " +
                     "Strasse = @Strasse, " +
-                    "Hausnummer = @Hausnummer, " +
+                    "Nr = @Nr, " +
                     "PLZ = @PLZ, " +
                     "Ort = @Ort " +
                     "WHERE ID = @id",
@@ -149,7 +149,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                 SqlVariable.connection.Open();
                 commandUpdate.Parameters.AddWithValue("@id", this.ID);
                 commandUpdate.Parameters.AddWithValue("@Vorname", this.Vorname);
-                commandUpdate.Parameters.AddWithValue("@Name", this.Name);
+                commandUpdate.Parameters.AddWithValue("@Nachname", this.Nachname);
                 commandUpdate.Parameters.AddWithValue("@Adresse", this.Adresse);
                 commandUpdate.Parameters.AddWithValue("@Telefon", this.Telefon);
                 commandUpdate.Parameters.AddWithValue("@EMail", this.EMail);
@@ -158,7 +158,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                 commandUpdate.Parameters.AddWithValue("@Gehalt", this.Gehalt);
                 commandUpdate.Parameters.AddWithValue("@Geburtsdatum", this.Geburtsdatum);
                 commandUpdate.Parameters.AddWithValue("@Strasse", this.Strasse);
-                commandUpdate.Parameters.AddWithValue("@Hausnummer", this.Hausnummer);
+                commandUpdate.Parameters.AddWithValue("@Nr", this.Hausnummer);
                 commandUpdate.Parameters.AddWithValue("@PLZ", this.PLZ);
                 commandUpdate.Parameters.AddWithValue("@Ort", this.Ort);
                 commandUpdate.Parameters.AddWithValue("@Geschlecht", this.Geschlecht);
@@ -178,21 +178,21 @@ namespace BTS_Mitarbeiterverwaltung.Classes
 
         public static bool validation(Employee m)
         {
-            if (string.IsNullOrWhiteSpace(m.Name) || 
-                string.IsNullOrWhiteSpace(m.Vorname) || 
-                string.IsNullOrWhiteSpace(m.EMail) || 
-                string.IsNullOrWhiteSpace(m.Geschlecht) ||
-                string.IsNullOrWhiteSpace(m.Position) ||
-                string.IsNullOrWhiteSpace(m.Gehalt) ||
-                string.IsNullOrWhiteSpace(m.Telefon) ||
-                string.IsNullOrWhiteSpace(m.Strasse) ||
-                string.IsNullOrWhiteSpace(m.Hausnummer) ||
-                string.IsNullOrWhiteSpace(m.PLZ) ||
-                string.IsNullOrWhiteSpace(m.Ort))
-            {
-                return false;
-            }
-            else
+            //if (string.IsNullOrWhiteSpace(m.Nachname) || 
+            //    string.IsNullOrWhiteSpace(m.Vorname) || 
+            //    string.IsNullOrWhiteSpace(m.EMail) || 
+            //    string.IsNullOrWhiteSpace(m.Geschlecht) ||
+            //    string.IsNullOrWhiteSpace(m.Position) ||
+            //    string.IsNullOrWhiteSpace(m.Gehalt) ||
+            //    string.IsNullOrWhiteSpace(m.Telefon) ||
+            //    string.IsNullOrWhiteSpace(m.Strasse) ||
+            //    string.IsNullOrWhiteSpace(m.Hausnummer) ||
+            //    string.IsNullOrWhiteSpace(m.PLZ) ||
+            //    string.IsNullOrWhiteSpace(m.Ort))
+            //{
+            //    return false;
+            //}
+            //else
             {
                 return true;
             }
@@ -206,9 +206,9 @@ namespace BTS_Mitarbeiterverwaltung.Classes
             }
         }
 
-        public static void AllowOnlyNumbers(object sender, KeyPressEventArgs e)
+        public static void AllowOnlyNumbersAndControlCharacters(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsNumber(e.KeyChar))
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
             }
