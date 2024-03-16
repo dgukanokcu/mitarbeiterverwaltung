@@ -234,7 +234,7 @@ namespace BTS_Mitarbeiterverwaltung
 
             string message = selectedRowsCount == 1 ? "Mitarbeiter" : $"{selectedRowsCount} Mitarbeiter";
 
-            DialogResult result = MessageBox.Show($"{message} löschen?", "Sicher?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show($"{message} entfernen?", "Sicher?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
@@ -247,7 +247,7 @@ namespace BTS_Mitarbeiterverwaltung
                     deletedCount++;
                 }
 
-                message = deletedCount == 1 ? "Mitarbeiter erfolgreich entfernt!" : $"{deletedCount} Mitarbeiter erfolgreich entfernt!";
+                message = deletedCount == 1 ? "Mitarbeiter wurde erfolgreich entfernt!" : $"{deletedCount} Mitarbeiter wurde erfolgreich entfernt!";
                 MessageBox.Show(message, "Erfolg", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
