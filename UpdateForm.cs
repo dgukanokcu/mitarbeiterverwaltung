@@ -22,8 +22,6 @@ namespace BTS_Mitarbeiterverwaltung
             Employee m = new Employee();
             if (id != 0) { m.SetData(id, txtBoxName.Text, txtBoxSurname.Text, textBoxStreet.Text, textBoxHouseNmbr.Text, textBoxZIP.Text, textBoxCity.Text, txtBoxTelefon.Text, txtBoxEmail.Text, comboBoxPosition.Text, dateTimePickerEntry.Value, txtBoxSalary.Text, dateTimePickerBirthdate.Value, DateTime.MinValue, comboBoxGender.Text); }
 
-            string oldValue = Employee.GetEmployeeById(id).Vorname;
-
             if (Employee.validation(m))
             {
                 m.UpdateEmployee();
