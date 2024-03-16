@@ -304,7 +304,7 @@
             this.btnAddEmployee.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnAddEmployee.Image = ((System.Drawing.Image)(resources.GetObject("btnAddEmployee.Image")));
             this.btnAddEmployee.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAddEmployee.Location = new System.Drawing.Point(12, 62);
+            this.btnAddEmployee.Location = new System.Drawing.Point(426, 12);
             this.btnAddEmployee.Name = "btnAddEmployee";
             this.btnAddEmployee.Size = new System.Drawing.Size(169, 31);
             this.btnAddEmployee.TabIndex = 0;
@@ -317,7 +317,7 @@
             // 
             this.btnDelete.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(170, 109);
+            this.btnDelete.Location = new System.Drawing.Point(225, 83);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(90, 31);
             this.btnDelete.TabIndex = 7;
@@ -329,7 +329,7 @@
             // 
             this.btnEdit.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(225, 62);
+            this.btnEdit.Location = new System.Drawing.Point(129, 83);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(90, 31);
             this.btnEdit.TabIndex = 6;
@@ -341,7 +341,7 @@
             // 
             this.btnSearch.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(225, 12);
+            this.btnSearch.Location = new System.Drawing.Point(197, 12);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(90, 31);
             this.btnSearch.TabIndex = 5;
@@ -362,7 +362,7 @@
             // 
             this.btnReset.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.Location = new System.Drawing.Point(321, 14);
+            this.btnReset.Location = new System.Drawing.Point(293, 12);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(90, 31);
             this.btnReset.TabIndex = 4;
@@ -374,7 +374,7 @@
             // 
             this.btnExport.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnExport.Location = new System.Drawing.Point(814, 84);
+            this.btnExport.Location = new System.Drawing.Point(502, 83);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(70, 31);
             this.btnExport.TabIndex = 3;
@@ -386,7 +386,7 @@
             // 
             this.btnImport.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnImport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnImport.Location = new System.Drawing.Point(738, 84);
+            this.btnImport.Location = new System.Drawing.Point(426, 83);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(70, 31);
             this.btnImport.TabIndex = 2;

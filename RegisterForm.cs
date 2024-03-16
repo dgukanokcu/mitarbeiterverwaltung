@@ -23,7 +23,6 @@ namespace BTS_Mitarbeiterverwaltung
         }
         private void btnCreateUser_Click_1(object sender, EventArgs e)
         {
-            SqlVariable.connection.Open();
             try
             {
                 Account.CreateUser(txtBenutzername.Text, txtPasswort.Text, txtVerify.Text);
