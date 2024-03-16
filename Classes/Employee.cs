@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Windows.Forms;
 
 namespace BTS_Mitarbeiterverwaltung.Classes
@@ -9,29 +10,48 @@ namespace BTS_Mitarbeiterverwaltung.Classes
     {
         #region Properties
 
-        public int ID { get; set; }
-        public string Vorname { get; set; }
-        public string Nachname { get; set; }
-        internal string Adresse { get; set; }
+        internal int ID { get; private set; }
+        internal string Vorname { get; private set; }
+        internal string Nachname { get; private set; }
+        internal string Strasse { get; private set; }
+        internal string Nr { get; private set; }
+        internal string PLZ { get; private set; }
+        internal string Ort { get; private set; }
+        internal string Telefon { get; private set; }
+        internal string EMail { get; private set; }
+        internal string Position { get; private set; }
+        internal DateTime DatumEintritt { get; private set; }
+        internal string Gehalt { get; private set; }
+        internal DateTime DatumRentenBeginn { get; private set; }
+        internal DateTime Geburtsdatum { get; private set; }
+        internal string Geschlecht { get; private set; }
 
-        internal string Strasse { get; set; }
-        internal string Nr { get; set; }
-        internal string PLZ { get; set; }
-        internal string Ort { get; set; }
-        internal string Telefon { get; set; }
-        internal string EMail { get; set; }
-        internal string Position { get; set; }
-        internal DateTime DatumEintritt { get; set; }
-        internal string Gehalt { get; set; }
-        internal DateTime DatumRentenBeginn { get; set; }
-        internal DateTime Geburtsdatum { get; set; }
-        internal string Geschlecht { get; set; }
         internal static int TotalRowCount { get; private set; }
 
         #endregion
 
+        internal void SetData(int id, string vorname, string nachname, string strasse, string nr, string plz, string ort, string telefon, string email, string position, DateTime datumEintritt, string gehalt, DateTime datumRentenBeginn, DateTime geburtsdatum, string geschlecht)
+        {
+            ID = id;
+            Vorname = vorname;
+            Nachname = nachname;
+            Strasse = strasse;
+            Nr = nr;
+            PLZ = plz;
+            Ort = ort;
+            Telefon = telefon;
+            EMail = email;
+            Position = position;
+            DatumEintritt = datumEintritt;
+            Gehalt = gehalt;
+            DatumRentenBeginn = datumRentenBeginn;
+            Geburtsdatum = geburtsdatum;
+            Geschlecht = geschlecht;
+        }
+
+
         // nur Buchstaben, Leerzeichen und Steuerzeichen erlaubt
-        public static void AllowOnlyNumbersAndControlCharacters(object sender, KeyPressEventArgs e)
+        internal static void AllowOnlyNumbersAndControlCharacters(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
             {
@@ -90,7 +110,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
 
             return table;
         }
-        public static Employee getEmployeeById(int id)
+        internal static Employee getEmployeeById(int id)
         {
             Employee employee = null;
             SqlCommand commandStart = new SqlCommand("SELECT * FROM mitarbeiter WHERE ID = @id", SqlVariable.connection);
@@ -133,25 +153,25 @@ namespace BTS_Mitarbeiterverwaltung.Classes
             }
             return employee;
         }
-        public void updateEmployee()
+        internal void updateEmployee()
         {
             if (this.ID == 0)
             {
                 SqlCommand commandUpdate = new SqlCommand("Insert into mitarbeiter (Vorname, Nachname, Telefon, [E-Mail], Position, EintrittDatum, Gehalt, Geburtsdatum, Geschlecht, Strasse, Nr, PLZ, Ort) values (@Vorname, @Nachname, @Telefon, @EMail, @Position, @EintrittDatum, @Gehalt, @Geburtsdatum, @Geschlecht, @Strasse, @Nr, @PLZ, @Ort)", SqlVariable.connection);
                 SqlVariable.connection.Open();
-                commandUpdate.Parameters.AddWithValue("@Vorname", this.Vorname);
-                commandUpdate.Parameters.AddWithValue("@Nachname", this.Nachname);
-                commandUpdate.Parameters.AddWithValue("@Telefon", this.Telefon);
-                commandUpdate.Parameters.AddWithValue("@EMail", this.EMail);
-                commandUpdate.Parameters.AddWithValue("@Position", this.Position);
-                commandUpdate.Parameters.AddWithValue("@Eintrittdatum", this.DatumEintritt);
-                commandUpdate.Parameters.AddWithValue("@Gehalt", this.Gehalt);
-                commandUpdate.Parameters.AddWithValue("@Geburtsdatum", this.Geburtsdatum);
-                commandUpdate.Parameters.AddWithValue("@Geschlecht", this.Geschlecht);
-                commandUpdate.Parameters.AddWithValue("@Strasse", this.Strasse);
-                commandUpdate.Parameters.AddWithValue("@Nr", this.Nr);
-                commandUpdate.Parameters.AddWithValue("@PLZ", this.PLZ);
-                commandUpdate.Parameters.AddWithValue("@Ort", this.Ort);
+                commandUpdate.Parameters.AddWithValue("@Vorname", Vorname);
+                commandUpdate.Parameters.AddWithValue("@Nachname", Nachname);
+                commandUpdate.Parameters.AddWithValue("@Telefon", Telefon);
+                commandUpdate.Parameters.AddWithValue("@EMail",     EMail);
+                commandUpdate.Parameters.AddWithValue("@Position", Position);
+                commandUpdate.Parameters.AddWithValue("@Eintrittdatum", (DatumEintritt < SqlDateTime.MinValue.Value || DatumEintritt > SqlDateTime.MaxValue.Value) ? SqlDateTime.MaxValue.Value : DatumEintritt);
+                commandUpdate.Parameters.AddWithValue("@Gehalt",    Gehalt);
+                commandUpdate.Parameters.AddWithValue("@Geburtsdatum", (Geburtsdatum < SqlDateTime.MinValue.Value || Geburtsdatum > SqlDateTime.MaxValue.Value) ? SqlDateTime.MaxValue.Value : Geburtsdatum);
+                commandUpdate.Parameters.AddWithValue("@Geschlecht", Geschlecht);
+                commandUpdate.Parameters.AddWithValue("@Strasse", Strasse);
+                commandUpdate.Parameters.AddWithValue("@Nr",    Nr);
+                commandUpdate.Parameters.AddWithValue("@PLZ", PLZ);
+                commandUpdate.Parameters.AddWithValue("@Ort", Ort);
                 commandUpdate.ExecuteNonQuery();
                 SqlVariable.connection.Close();
             }
@@ -176,24 +196,25 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                     "WHERE ID = @id",
                     SqlVariable.connection);
                 SqlVariable.connection.Open();
-                commandUpdate.Parameters.AddWithValue("@id", this.ID);
-                commandUpdate.Parameters.AddWithValue("@Vorname", this.Vorname);
-                commandUpdate.Parameters.AddWithValue("@Nachname", this.Nachname);
-                commandUpdate.Parameters.AddWithValue("@Telefon", this.Telefon);
-                commandUpdate.Parameters.AddWithValue("@EMail", this.EMail);
-                commandUpdate.Parameters.AddWithValue("@Position", this.Position);
-                commandUpdate.Parameters.AddWithValue("@Eintrittdatum", this.DatumEintritt);
-                commandUpdate.Parameters.AddWithValue("@Gehalt", this.Gehalt);
-                commandUpdate.Parameters.AddWithValue("@Geburtsdatum", this.Geburtsdatum);
-                commandUpdate.Parameters.AddWithValue("@Strasse", this.Strasse);
-                commandUpdate.Parameters.AddWithValue("@Nr", this.Nr);
-                commandUpdate.Parameters.AddWithValue("@PLZ", this.PLZ);
-                commandUpdate.Parameters.AddWithValue("@Ort", this.Ort);
-                commandUpdate.Parameters.AddWithValue("@Geschlecht", this.Geschlecht);
+                commandUpdate.Parameters.AddWithValue("@id", ID);
+                commandUpdate.Parameters.AddWithValue("@Vorname", Vorname);
+                commandUpdate.Parameters.AddWithValue("@Nachname", Nachname);
+                commandUpdate.Parameters.AddWithValue("@Telefon", Telefon);
+                commandUpdate.Parameters.AddWithValue("@EMail", EMail);
+                commandUpdate.Parameters.AddWithValue("@Position", Position);
+                commandUpdate.Parameters.AddWithValue("@Eintrittdatum", (DatumEintritt < SqlDateTime.MinValue.Value || DatumEintritt > SqlDateTime.MaxValue.Value) ? SqlDateTime.MaxValue.Value : DatumEintritt);
+                commandUpdate.Parameters.AddWithValue("@Gehalt", Gehalt);
+                commandUpdate.Parameters.AddWithValue("@Geburtsdatum", (Geburtsdatum < SqlDateTime.MinValue.Value || Geburtsdatum > SqlDateTime.MaxValue.Value) ? SqlDateTime.MaxValue.Value : Geburtsdatum);
+                commandUpdate.Parameters.AddWithValue("@Strasse", Strasse);
+                commandUpdate.Parameters.AddWithValue("@Nr", Nr);
+                commandUpdate.Parameters.AddWithValue("@PLZ", PLZ);
+                commandUpdate.Parameters.AddWithValue("@Ort", Ort);
+                commandUpdate.Parameters.AddWithValue("@Geschlecht", Geschlecht);
                 commandUpdate.ExecuteNonQuery();
                 SqlVariable.connection.Close();
             }
         }
+
         internal static void deleteEmployee(int id)
         {
             try

@@ -17,25 +17,10 @@ namespace BTS_Mitarbeiterverwaltung
             this.mainForm = mainForm;
             id = ID;
         }
-
-
         private void btnSpeichern_Click(object sender, EventArgs e)
         {
             Employee m = new Employee();
-            if (id != 0) { m.ID = id; }
-            m.Vorname = txtBoxName.Text;
-            m.Nachname = txtBoxSurname.Text;
-            m.Position = comboBoxPosition.Text;
-            m.DatumEintritt = dateTimePickerEntry.Value;
-            m.EMail = txtBoxEmail.Text;
-            m.Gehalt = txtBoxSalary.Text;
-            m.Geburtsdatum = dateTimePickerBirthdate.Value;
-            m.Telefon = txtBoxTelefon.Text;
-            m.Geschlecht = comboBoxGender.Text;
-            m.Strasse = textBoxStreet.Text;
-            m.Nr = textBoxHouseNmbr.Text;
-            m.PLZ = textBoxZIP.Text;
-            m.Ort = textBoxCity.Text;
+            if (id != 0) { m.SetData(id, txtBoxName.Text, txtBoxSurname.Text, textBoxStreet.Text, textBoxHouseNmbr.Text, textBoxZIP.Text, textBoxCity.Text, txtBoxTelefon.Text, txtBoxEmail.Text, comboBoxPosition.Text, dateTimePickerEntry.Value, txtBoxSalary.Text, dateTimePickerBirthdate.Value, DateTime.MinValue, comboBoxGender.Text); }
 
             string oldValue = Employee.getEmployeeById(id).Vorname;
 
@@ -73,6 +58,7 @@ namespace BTS_Mitarbeiterverwaltung
                 textBoxCity.Text = m.Ort;
             }
         }
+
 
         #region validation
 
