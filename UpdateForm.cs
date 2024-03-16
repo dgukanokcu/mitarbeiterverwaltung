@@ -1,8 +1,6 @@
 ﻿using BTS_Mitarbeiterverwaltung.Classes;
 using System;
 using System.Data;
-using System.Drawing;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BTS_Mitarbeiterverwaltung
@@ -55,9 +53,6 @@ namespace BTS_Mitarbeiterverwaltung
                 MessageBox.Show("Überprüfen Sie bitte Ihre Angaben!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
-
-
         private void UpdateForm_Load(object sender, EventArgs e)
         {
             if (id != 0)
@@ -129,7 +124,6 @@ namespace BTS_Mitarbeiterverwaltung
 
         private void txtBoxName_TextChanged(object sender, EventArgs e)
         {
-
         }
     }
 

@@ -6,12 +6,12 @@ namespace BTS_Mitarbeiterverwaltung.Utils
 {
     internal class PasswortUtility
     {
-        internal static string HashPasswort(string password, string salt)
+        internal static string HashPassword(string password, string salt)
         {
             using (SHA256 sha256 = SHA256.Create())
             {
-                byte[] saltedPasswortBytes = Encoding.UTF8.GetBytes(password + salt);
-                byte[] hashedBytes = sha256.ComputeHash(saltedPasswortBytes);
+                byte[] saltedPasswordBytes = Encoding.UTF8.GetBytes(password + salt);
+                byte[] hashedBytes = sha256.ComputeHash(saltedPasswordBytes);
 
                 StringBuilder builder = new StringBuilder();
                 foreach (byte b in hashedBytes)

@@ -15,13 +15,9 @@ namespace BTS_Mitarbeiterverwaltung.Classes
         internal string Adresse { get; set; }
 
         internal string Strasse { get; set; }
-
         internal string Nr { get; set; }
-
         internal string PLZ { get; set; }
-
         internal string Ort { get; set; }
-
         internal string Telefon { get; set; }
         internal string EMail { get; set; }
         internal string Position { get; set; }
@@ -29,11 +25,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
         internal string Gehalt { get; set; }
         internal DateTime DatumRentenBeginn { get; set; }
         internal DateTime Geburtsdatum { get; set; }
-
-        //internal int Alter { get; set; }
-
         internal string Geschlecht { get; set; }
-
         internal static int TotalRowCount { get; private set; }
 
         #endregion

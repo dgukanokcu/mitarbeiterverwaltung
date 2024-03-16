@@ -18,8 +18,8 @@ namespace BTS_Mitarbeiterverwaltung
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            txtPasswort.UseSystemPasswordChar = !chkShowPasswort.Checked;
-            txtVerify.UseSystemPasswordChar = !chkShowPasswort.Checked;
+            txtPasswort.UseSystemPasswordChar = !ckShowPasswort.Checked;
+            txtVerify.UseSystemPasswordChar = !ckShowPasswort.Checked;
         }
         private void btnCreateUser_Click_1(object sender, EventArgs e)
         {

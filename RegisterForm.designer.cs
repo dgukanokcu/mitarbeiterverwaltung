@@ -35,7 +35,7 @@
             this.btnCreateUser = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtVerify = new System.Windows.Forms.TextBox();
-            this.chkShowPasswort = new System.Windows.Forms.CheckBox();
+            this.ckShowPasswort = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // txtBenutzername
@@ -82,7 +82,7 @@
             this.btnCreateUser.Name = "btnCreateUser";
             this.btnCreateUser.Size = new System.Drawing.Size(101, 25);
             this.btnCreateUser.TabIndex = 3;
-            this.btnCreateUser.Text = "Bestätigen";
+            this.btnCreateUser.Text = "Erstellen";
             this.btnCreateUser.UseVisualStyleBackColor = true;
             this.btnCreateUser.Click += new System.EventHandler(this.btnCreateUser_Click_1);
             // 
@@ -104,17 +104,17 @@
             this.txtVerify.Size = new System.Drawing.Size(100, 21);
             this.txtVerify.TabIndex = 2;
             // 
-            // chkShowPasswort
+            // ckShowPasswort
             // 
-            this.chkShowPasswort.AutoSize = true;
-            this.chkShowPasswort.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.chkShowPasswort.Location = new System.Drawing.Point(268, 69);
-            this.chkShowPasswort.Name = "chkShowPasswort";
-            this.chkShowPasswort.Size = new System.Drawing.Size(70, 17);
-            this.chkShowPasswort.TabIndex = 7;
-            this.chkShowPasswort.Text = "Show pw";
-            this.chkShowPasswort.UseVisualStyleBackColor = true;
-            this.chkShowPasswort.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.ckShowPasswort.AutoSize = true;
+            this.ckShowPasswort.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.ckShowPasswort.Location = new System.Drawing.Point(268, 69);
+            this.ckShowPasswort.Name = "ckShowPasswort";
+            this.ckShowPasswort.Size = new System.Drawing.Size(115, 17);
+            this.ckShowPasswort.TabIndex = 7;
+            this.ckShowPasswort.Text = "Passwort anzeigen";
+            this.ckShowPasswort.UseVisualStyleBackColor = true;
+            this.ckShowPasswort.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // RegisterForm
             // 
@@ -122,7 +122,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(438, 205);
-            this.Controls.Add(this.chkShowPasswort);
+            this.Controls.Add(this.ckShowPasswort);
             this.Controls.Add(this.txtVerify);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnCreateUser);
@@ -149,6 +149,6 @@
         private System.Windows.Forms.Button btnCreateUser;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtVerify;
-        private System.Windows.Forms.CheckBox chkShowPasswort;
+        private System.Windows.Forms.CheckBox ckShowPasswort;
     }
 }

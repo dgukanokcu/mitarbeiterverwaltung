@@ -49,7 +49,7 @@
     <Compile Include="Classes\Account.cs" />
     <Compile Include="Classes\Tools.cs" />
     <Compile Include="Classes\Employee.cs" />
-    <Compile Include="Classes\PasswortUtility.cs" />
+    <Compile Include="Classes\PasswordUtility.cs" />
     <Compile Include="Classes\SqlVariable.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>

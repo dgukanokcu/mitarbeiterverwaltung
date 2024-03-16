@@ -40,13 +40,13 @@ internal class Account
 
             // Überprüfen, ob das Passwort sicher genug ist (z.B. Mindestlänge, enthält Buchstaben und Zahlen)
             string errorMessage;
-            if (!IsPasswordSafe(password, out errorMessage))
+            if (!CheckPassword(password, out errorMessage))
             {
                 throw new Exception($"Dein Passwort erfüllt nicht die Sicherheitsanforderungen. \n{errorMessage}");
             }
 
 
-            string salt = PasswortUtility.GenerateRandomSalt();           // zusätzliche Verschlüsselung mit Salt
+            string salt = PasswortUtility.GenerateRandomSalt();     
 
             string insertQuery = "INSERT INTO Benutzer (Benutzername, PasswortHash, Salt) VALUES (@Benutzername, @PasswortHash, @Salt)";
 
@@ -54,7 +54,7 @@ internal class Account
             {
                 // Setze Parameter für Benutzername, PasswortHash und Salt
                 command.Parameters.AddWithValue("@Benutzername", username);    
-                command.Parameters.AddWithValue("@PasswortHash", PasswortUtility.HashPasswort(password, salt));
+                command.Parameters.AddWithValue("@PasswortHash", PasswortUtility.HashPassword(password, salt));
                 command.Parameters.AddWithValue("@Salt", salt);
                 command.ExecuteNonQuery();
             }
@@ -73,7 +73,7 @@ internal class Account
             }
         }
     }
-    private static bool IsPasswordSafe(string password, out string errorMessage)
+    private static bool CheckPassword(string password, out string errorMessage)
     {
         errorMessage = null;
 
@@ -102,7 +102,7 @@ internal class Account
     { 
         return "!@#$%^&*()-_=+[]{}|;:'\"<>,.?/~`".Contains(c); 
     }
-    public static bool DoUsernameExist(string benutzername)
+    internal static bool DoUsernameExist(string benutzername)
     {
         string query = "SELECT COUNT(*) FROM Benutzer WHERE Benutzername = @Benutzername";
 
@@ -137,8 +137,7 @@ internal class Account
                         string storedPasswortHash = reader["PasswortHash"].ToString();     // Benutzer gefunden, überprüfe das Passwort
                         string salt = reader["Salt"].ToString();
 
-                        // Verwende HashPasswort-Methode aus der PasswortUtility
-                        string inputPasswortHash = PasswortUtility.HashPasswort(passwort, salt);
+                        string inputPasswortHash = PasswortUtility.HashPassword(passwort, salt);
 
                         return storedPasswortHash == inputPasswortHash;
                     }
@@ -148,7 +147,7 @@ internal class Account
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Fehler beim Überprüfen des Logins: {ex.Message}");
+            Console.WriteLine($"Login war nicht erfolgreich. {ex.Message}");
             return false;
         }
         finally

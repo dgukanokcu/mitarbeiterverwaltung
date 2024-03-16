@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Drawing;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BTS_Mitarbeiterverwaltung.Classes;
 
@@ -13,7 +9,7 @@ namespace BTS_Mitarbeiterverwaltung
     public partial class MainForm : Form
     {
         private Tools tools;
-        public int selectedRowID { get; set; }
+        internal int selectedRowID { get; set; }
 
         internal MainForm()
         {
@@ -95,9 +91,6 @@ namespace BTS_Mitarbeiterverwaltung
             Tools.DeleteRows(dataGridViewEmployee);
             btnReset.PerformClick();
         }
-
-
-
         internal void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             int totalRowCount = dataGridViewEmployee.RowCount;
@@ -116,7 +109,6 @@ namespace BTS_Mitarbeiterverwaltung
                 selectedRowID = 0; // keine Zeile ausgewählt
             }
         }
-
         private void btnBearbeiten_Click(object sender, EventArgs e)
         {
             if (selectedRowID != 0)
@@ -129,7 +121,6 @@ namespace BTS_Mitarbeiterverwaltung
                 MessageBox.Show("Wählen Sie bitte ein Mitarbeiter aus.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
         internal void txtBoxName_KeyPress(object sender, KeyPressEventArgs e)
         {
             dataGridViewEmployee.DataSource = Employee.getEmployeeByName(txtBoxName.Text, txtBoxName.Text);
@@ -148,5 +139,9 @@ namespace BTS_Mitarbeiterverwaltung
         {}
         private void lblSelectedRows_Click_1(object sender, EventArgs e)
         {}
+        private void dataGridViewEmployee_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
