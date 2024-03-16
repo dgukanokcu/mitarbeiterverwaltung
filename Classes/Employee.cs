@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Data.SqlTypes;
 using System.Windows.Forms;
 
 namespace BTS_Mitarbeiterverwaltung.Classes
@@ -48,8 +48,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
             Geburtsdatum = geburtsdatum;
             Geschlecht = geschlecht;
         }
-
-
+        
         // nur Buchstaben, Leerzeichen und Steuerzeichen erlaubt
         internal static void AllowOnlyNumbersAndControlCharacters(object sender, KeyPressEventArgs e)
         {
@@ -74,17 +73,16 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                     SqlVariable.connection.Open();
                 }
 
-                using (SqlCommand commandStart = new SqlCommand("SELECT * FROM mitarbeiter", SqlVariable.connection))
+                string query = "SELECT ID, Vorname, Nachname, Strasse, Nr, PLZ, Ort, Telefon, [E-Mail], Position, EintrittDatum, Gehalt, Rentenbeginn, Geburtsdatum, [Alter], Geschlecht FROM mitarbeiter";
+
+                using (SqlCommand commandStart = new SqlCommand(query, SqlVariable.connection))
                 {
                     using (SqlDataAdapter adapter = new SqlDataAdapter(commandStart))
                     {
                         adapter.Fill(table);
                     }
                 }
-                using (SqlCommand countCommand = new SqlCommand("SELECT COUNT(*) FROM mitarbeiter", SqlVariable.connection))
-                {
-                    TotalRowCount = (int)countCommand.ExecuteScalar();
-                }
+                TotalRowCount = table.Rows.Count;
             }
             finally
             {
@@ -96,6 +94,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
 
             return table;
         }
+
         internal static DataTable getEmployeeByName(string vorname, string nachname)
         {
             SqlCommand commandStart = new SqlCommand("SELECT * FROM mitarbeiter WHERE Vorname LIKE @Vorname OR Nachname LIKE @Nachname", SqlVariable.connection);
@@ -110,111 +109,224 @@ namespace BTS_Mitarbeiterverwaltung.Classes
 
             return table;
         }
-        internal static Employee getEmployeeById(int id)
+        internal static Employee GetEmployeeById(int id)
         {
             Employee employee = null;
-            SqlCommand commandStart = new SqlCommand("SELECT * FROM mitarbeiter WHERE ID = @id", SqlVariable.connection);
-            commandStart.Parameters.AddWithValue("@id", id);
+            string query = "SELECT * FROM mitarbeiter WHERE ID = @id";
+
             try
             {
-                SqlVariable.connection.Open();
-                SqlDataReader reader = commandStart.ExecuteReader();
-
-                if (reader.Read())
+                using (SqlCommand command = new SqlCommand(query, SqlVariable.connection))
                 {
-                    employee = new Employee
+                    command.Parameters.AddWithValue("@id", id);
+                    SqlVariable.connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.Read())
                     {
-                        ID = Convert.ToInt32(reader["ID"]),
-                        Vorname = reader["Vorname"].ToString(),
-                        Nachname = reader["Nachname"].ToString(),
-                        Position = reader["Position"].ToString(),
-                        DatumEintritt = Convert.ToDateTime(reader["EintrittDatum"]),
-                        DatumRentenBeginn = Convert.ToDateTime(reader["Rentenbeginn"]),
-                        EMail = reader["E-Mail"].ToString(),
-                        Gehalt = reader["Gehalt"].ToString(),
-                        Geburtsdatum = Convert.ToDateTime(reader["Geburtsdatum"]),
-                        Telefon = reader["Telefon"].ToString(),
-                        Geschlecht = reader["Geschlecht"].ToString(),
-                        Strasse = reader["Strasse"].ToString(),
-                        Nr = reader["Nr"].ToString(),
-                        PLZ = reader["PLZ"].ToString(),
-                        Ort = reader["Ort"].ToString(),
-                    };
+                        employee = new Employee
+                        {
+                            ID = (int)reader["ID"],
+                            Vorname = reader["Vorname"].ToString(),
+                            Nachname = reader["Nachname"].ToString(),
+                            Position = reader["Position"].ToString(),
+                            DatumEintritt = (DateTime)reader["EintrittDatum"],
+                            DatumRentenBeginn = (DateTime)reader["Rentenbeginn"],
+                            EMail = reader["E-Mail"].ToString(),
+                            Gehalt = reader["Gehalt"].ToString(),
+                            Geburtsdatum = (DateTime)reader["Geburtsdatum"],
+                            Telefon = reader["Telefon"].ToString(),
+                            Geschlecht = reader["Geschlecht"].ToString(),
+                            Strasse = reader["Strasse"].ToString(),
+                            Nr = reader["Nr"].ToString(),
+                            PLZ = reader["PLZ"].ToString(),
+                            Ort = reader["Ort"].ToString(),
+                        };
+                    }
+                    reader.Close();
                 }
-                reader.Close();
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Hata: " + ex.Message);
+                Console.WriteLine("Fehler: " + ex.Message);
             }
             finally
             {
-                SqlVariable.connection.Close();
+                if (SqlVariable.connection.State == ConnectionState.Open)
+                {
+                    SqlVariable.connection.Close();
+                }
             }
             return employee;
         }
-        internal void updateEmployee()
+        internal void UpdateEmployee()
         {
-            if (this.ID == 0)
+            try
             {
-                SqlCommand commandUpdate = new SqlCommand("Insert into mitarbeiter (Vorname, Nachname, Telefon, [E-Mail], Position, EintrittDatum, Gehalt, Geburtsdatum, Geschlecht, Strasse, Nr, PLZ, Ort) values (@Vorname, @Nachname, @Telefon, @EMail, @Position, @EintrittDatum, @Gehalt, @Geburtsdatum, @Geschlecht, @Strasse, @Nr, @PLZ, @Ort)", SqlVariable.connection);
-                SqlVariable.connection.Open();
-                commandUpdate.Parameters.AddWithValue("@Vorname", Vorname);
-                commandUpdate.Parameters.AddWithValue("@Nachname", Nachname);
-                commandUpdate.Parameters.AddWithValue("@Telefon", Telefon);
-                commandUpdate.Parameters.AddWithValue("@EMail",     EMail);
-                commandUpdate.Parameters.AddWithValue("@Position", Position);
-                commandUpdate.Parameters.AddWithValue("@Eintrittdatum", (DatumEintritt < SqlDateTime.MinValue.Value || DatumEintritt > SqlDateTime.MaxValue.Value) ? SqlDateTime.MaxValue.Value : DatumEintritt);
-                commandUpdate.Parameters.AddWithValue("@Gehalt",    Gehalt);
-                commandUpdate.Parameters.AddWithValue("@Geburtsdatum", (Geburtsdatum < SqlDateTime.MinValue.Value || Geburtsdatum > SqlDateTime.MaxValue.Value) ? SqlDateTime.MaxValue.Value : Geburtsdatum);
-                commandUpdate.Parameters.AddWithValue("@Geschlecht", Geschlecht);
-                commandUpdate.Parameters.AddWithValue("@Strasse", Strasse);
-                commandUpdate.Parameters.AddWithValue("@Nr",    Nr);
-                commandUpdate.Parameters.AddWithValue("@PLZ", PLZ);
-                commandUpdate.Parameters.AddWithValue("@Ort", Ort);
-                commandUpdate.ExecuteNonQuery();
-                SqlVariable.connection.Close();
+                using (SqlConnection connection = new SqlConnection(SqlVariable.connection.ConnectionString))
+                {
+                    connection.Open();
+
+                    string query;
+                    List<string> updatedColumns = new List<string>();
+
+                    if (ID == 0)
+                    {
+                        query = "INSERT INTO mitarbeiter (Vorname, Nachname, Telefon, [E-Mail], Position, EintrittDatum, Gehalt, Geburtsdatum, Geschlecht, Strasse, Nr, PLZ, Ort) " +
+                                "VALUES (@Vorname, @Nachname, @Telefon, @EMail, @Position, @EintrittDatum, @Gehalt, @Geburtsdatum, @Geschlecht, @Strasse, @Nr, @PLZ, @Ort)";
+                        updatedColumns.AddRange(new[] { "Vorname", "Nachname", "Telefon", "EMail", "Position", "EintrittDatum", "Gehalt", "Geburtsdatum", "Geschlecht", "Strasse", "Nr", "PLZ", "Ort" });
+                    }
+                    else
+                    {
+                        query = "UPDATE mitarbeiter SET ";
+
+                        if (!string.IsNullOrEmpty(Vorname))
+                        {
+                            query += "Vorname = @Vorname, ";
+                            updatedColumns.Add("Vorname");
+                        }
+
+                        if (!string.IsNullOrEmpty(Nachname))
+                        {
+                            query += "Nachname = @Nachname, ";
+                            updatedColumns.Add("Nachname");
+                        }
+
+                        if (!string.IsNullOrEmpty(Strasse))
+                        {
+                            query += "Strasse = @Strasse, ";
+                            updatedColumns.Add("Strasse");
+                        }
+
+                        if (!string.IsNullOrEmpty(Nr))
+                        {
+                            query += "Nr = @Nr, ";
+                            updatedColumns.Add("Nr");
+                        }
+
+                        if (!string.IsNullOrEmpty(PLZ))
+                        {
+                            query += "PLZ = @PLZ, ";
+                            updatedColumns.Add("PLZ");
+                        }
+
+                        if (!string.IsNullOrEmpty(Ort))
+                        {
+                            query += "Ort = @Ort, ";
+                            updatedColumns.Add("Ort");
+                        }
+
+                        if (!string.IsNullOrEmpty(Telefon))
+                        {
+                            query += "Telefon = @Telefon, ";
+                            updatedColumns.Add("Telefon");
+                        }
+
+                        if (!string.IsNullOrEmpty(EMail))
+                        {
+                            query += "[E-Mail] = @EMail, ";
+                            updatedColumns.Add("EMail");
+                        }
+
+                        if (!string.IsNullOrEmpty(Position))
+                        {
+                            query += "Position = @Position, ";
+                            updatedColumns.Add("Position");
+                        }
+
+                        if (DatumEintritt != DateTime.MinValue)
+                        {
+                            query += "EintrittDatum = @EintrittDatum, ";
+                            updatedColumns.Add("EintrittDatum");
+                        }
+
+                        if (!string.IsNullOrEmpty(Gehalt))
+                        {
+                            query += "Gehalt = @Gehalt, ";
+                            updatedColumns.Add("Gehalt");
+                        }
+
+                        if (Geburtsdatum != DateTime.MinValue)
+                        {
+                            query += "Geburtsdatum = @Geburtsdatum, ";
+                            updatedColumns.Add("Geburtsdatum");
+                        }
+
+                        if (!string.IsNullOrEmpty(Geschlecht))
+                        {
+                            query += "Geschlecht = @Geschlecht, ";
+                            updatedColumns.Add("Geschlecht");
+                        }
+
+                        query = query.TrimEnd(',', ' ') + " WHERE ID = @ID";
+                    }
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@ID", ID);
+                        if (!string.IsNullOrEmpty(Vorname))
+                        {
+                            command.Parameters.AddWithValue("@Vorname", Vorname);
+                        }
+                        if (!string.IsNullOrEmpty(Nachname))
+                        {
+                            command.Parameters.AddWithValue("@Nachname", Nachname);
+                        }
+                        if (!string.IsNullOrEmpty(Strasse))
+                        {
+                            command.Parameters.AddWithValue("@Strasse", Strasse);
+                        }
+                        if (!string.IsNullOrEmpty(Nr))
+                        {
+                            command.Parameters.AddWithValue("@Nr", Nr);
+                        }
+                        if (!string.IsNullOrEmpty(PLZ))
+                        {
+                            command.Parameters.AddWithValue("@PLZ", PLZ);
+                        }
+                        if (!string.IsNullOrEmpty(Ort))
+                        {
+                            command.Parameters.AddWithValue("@Ort", Ort);
+                        }
+                        if (!string.IsNullOrEmpty(Telefon))
+                        {
+                            command.Parameters.AddWithValue("@Telefon", Telefon);
+                        }
+                        if (!string.IsNullOrEmpty(EMail))
+                        {
+                            command.Parameters.AddWithValue("@EMail", EMail);
+                        }
+                        if (!string.IsNullOrEmpty(Position))
+                        {
+                            command.Parameters.AddWithValue("@Position", Position);
+                        }
+                        if (DatumEintritt != DateTime.MinValue)
+                        {
+                            command.Parameters.AddWithValue("@EintrittDatum", DatumEintritt);
+                        }
+                        if (!string.IsNullOrEmpty(Gehalt))
+                        {
+                            command.Parameters.AddWithValue("@Gehalt", Gehalt);
+                        }
+                        if (Geburtsdatum != DateTime.MinValue)
+                        {
+                            command.Parameters.AddWithValue("@Geburtsdatum", Geburtsdatum);
+                        }
+                        if (!string.IsNullOrEmpty(Geschlecht))
+                        {
+                            command.Parameters.AddWithValue("@Geschlecht", Geschlecht);
+                        }
+
+                        command.ExecuteNonQuery();
+                    }
+                }
             }
-            else
+            catch (Exception ex)
             {
-                SqlCommand commandUpdate = new SqlCommand(
-                    "UPDATE mitarbeiter " +
-                    "SET " +
-                    "Vorname = @Vorname, " +
-                    "Nachname = @Nachname, " +
-                    "Telefon = @Telefon, " +
-                    "[E-Mail] = @EMail, " +
-                    "Position = @Position, " +
-                    "EintrittDatum = @EintrittDatum, " +
-                    "Gehalt = @Gehalt, " +
-                    "Geburtsdatum = @Geburtsdatum, " +
-                    "Geschlecht = @Geschlecht, " +
-                    "Strasse = @Strasse, " +
-                    "Nr = @Nr, " +
-                    "PLZ = @PLZ, " +
-                    "Ort = @Ort " +
-                    "WHERE ID = @id",
-                    SqlVariable.connection);
-                SqlVariable.connection.Open();
-                commandUpdate.Parameters.AddWithValue("@id", ID);
-                commandUpdate.Parameters.AddWithValue("@Vorname", Vorname);
-                commandUpdate.Parameters.AddWithValue("@Nachname", Nachname);
-                commandUpdate.Parameters.AddWithValue("@Telefon", Telefon);
-                commandUpdate.Parameters.AddWithValue("@EMail", EMail);
-                commandUpdate.Parameters.AddWithValue("@Position", Position);
-                commandUpdate.Parameters.AddWithValue("@Eintrittdatum", (DatumEintritt < SqlDateTime.MinValue.Value || DatumEintritt > SqlDateTime.MaxValue.Value) ? SqlDateTime.MaxValue.Value : DatumEintritt);
-                commandUpdate.Parameters.AddWithValue("@Gehalt", Gehalt);
-                commandUpdate.Parameters.AddWithValue("@Geburtsdatum", (Geburtsdatum < SqlDateTime.MinValue.Value || Geburtsdatum > SqlDateTime.MaxValue.Value) ? SqlDateTime.MaxValue.Value : Geburtsdatum);
-                commandUpdate.Parameters.AddWithValue("@Strasse", Strasse);
-                commandUpdate.Parameters.AddWithValue("@Nr", Nr);
-                commandUpdate.Parameters.AddWithValue("@PLZ", PLZ);
-                commandUpdate.Parameters.AddWithValue("@Ort", Ort);
-                commandUpdate.Parameters.AddWithValue("@Geschlecht", Geschlecht);
-                commandUpdate.ExecuteNonQuery();
-                SqlVariable.connection.Close();
+                Console.WriteLine("Fehler beim Aktualisieren des Mitarbeiters: " + ex.Message);
+                throw; // optional: Fehler weiter nach oben werfen
             }
         }
-
         internal static void deleteEmployee(int id)
         {
             try

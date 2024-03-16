@@ -9,7 +9,7 @@ namespace BTS_Mitarbeiterverwaltung
     public partial class UpdateForm : Form
     {
         private MainForm mainForm;
-        private int id;
+        private readonly int id;
 
         public UpdateForm(MainForm mainForm, int ID)
         {
@@ -22,16 +22,16 @@ namespace BTS_Mitarbeiterverwaltung
             Employee m = new Employee();
             if (id != 0) { m.SetData(id, txtBoxName.Text, txtBoxSurname.Text, textBoxStreet.Text, textBoxHouseNmbr.Text, textBoxZIP.Text, textBoxCity.Text, txtBoxTelefon.Text, txtBoxEmail.Text, comboBoxPosition.Text, dateTimePickerEntry.Value, txtBoxSalary.Text, dateTimePickerBirthdate.Value, DateTime.MinValue, comboBoxGender.Text); }
 
-            string oldValue = Employee.getEmployeeById(id).Vorname;
+            string oldValue = Employee.GetEmployeeById(id).Vorname;
 
             if (Employee.validation(m))
             {
-                m.updateEmployee();
-                mainForm.UpdateRowCount();
+                m.UpdateEmployee();
                 this.Close();
-                MessageBox.Show(m.ID == 0 ? "Mitarbeiter wurde erfolgreich hinzugefügt!" : "Mitarbeiter wurde erfolgreich aktualisiert!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(m.ID == 0 ? "Mitarbeiter erfolgreich hinzugefügt!" : "Mitarbeiter erfolgreich aktualisiert!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DataTable table = Employee.GetAllEmployees();
                 mainForm.dataGridViewEmployee.DataSource = table;
+                mainForm.UpdateRowCount();
             }
             else
             {
@@ -42,7 +42,7 @@ namespace BTS_Mitarbeiterverwaltung
         {
             if (id != 0)
             {
-                Employee m = Employee.getEmployeeById(id);
+                Employee m = Employee.GetEmployeeById(id);
                 txtBoxName.Text = m.Vorname;
                 txtBoxSurname.Text = m.Nachname;
                 comboBoxPosition.Text = m.Position;
@@ -58,7 +58,6 @@ namespace BTS_Mitarbeiterverwaltung
                 textBoxCity.Text = m.Ort;
             }
         }
-
 
         #region validation
 
@@ -107,8 +106,10 @@ namespace BTS_Mitarbeiterverwaltung
 
         private void groupBox2_Enter(object sender, EventArgs e)
         {}
-
         private void txtBoxName_TextChanged(object sender, EventArgs e)
+        {
+        }
+        private void dateTimePickerBirthdate_ValueChanged(object sender, EventArgs e)
         {
         }
     }

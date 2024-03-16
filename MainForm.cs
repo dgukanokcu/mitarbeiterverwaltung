@@ -16,16 +16,14 @@ namespace BTS_Mitarbeiterverwaltung
             InitializeComponent();
             tools = new Tools();
         }
-
         internal void MainForm_Load(object sender, EventArgs e)
         {
             DataTable table = Employee.GetAllEmployees();
             dataGridViewEmployee.DataSource = table;
-            UpdateRowCount();
-
             SetColumnWidths(dataGridViewEmployee);
-        }
 
+            UpdateRowCount();
+        }
         private void SetColumnWidths(DataGridView dataGridView)
         {
             foreach (DataGridViewColumn column in dataGridView.Columns)
@@ -79,6 +77,7 @@ namespace BTS_Mitarbeiterverwaltung
         {
             DataTable table = Employee.GetAllEmployees();
             dataGridViewEmployee.DataSource = table;
+
             UpdateRowCount();
         }
         internal void btnHinzufügen_Click(object sender, EventArgs e)

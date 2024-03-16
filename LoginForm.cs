@@ -19,28 +19,28 @@ namespace BTS_Mitarbeiterverwaltung
         }
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            System.Threading.Timer timer = new System.Threading.Timer(TimerCallback, null, 3000, Timeout.Infinite);
-
             if (!SqlVariable.connection.State.Equals(System.Data.ConnectionState.Open))
             {
                 try
                 {
-                    // Öffnen der Datenbankverbindung
                     SqlVariable.connection.Open();
-
                 }
                 catch
                 {
+                    System.Threading.Timer timer = new System.Threading.Timer(TimerCallback, null, 2000, Timeout.Infinite);
                     return;
                 }
             }
+        }
+        internal void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
         static void TimerCallback(object state)
         {
             MessageBox.Show("Keine Verbindung. Data Source überprüfen.");
             Environment.Exit(0);
         }
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string benutzername = txtBoxUsername.Text;

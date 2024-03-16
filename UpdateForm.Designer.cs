@@ -230,9 +230,13 @@
             this.dateTimePickerBirthdate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerBirthdate.Location = new System.Drawing.Point(151, 49);
             this.dateTimePickerBirthdate.Margin = new System.Windows.Forms.Padding(2);
+            this.dateTimePickerBirthdate.MaxDate = new System.DateTime(2999, 12, 31, 0, 0, 0, 0);
             this.dateTimePickerBirthdate.Name = "dateTimePickerBirthdate";
+            this.dateTimePickerBirthdate.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dateTimePickerBirthdate.Size = new System.Drawing.Size(120, 20);
             this.dateTimePickerBirthdate.TabIndex = 4;
+            this.dateTimePickerBirthdate.Value = new System.DateTime(1996, 6, 9, 0, 0, 0, 0);
+            this.dateTimePickerBirthdate.ValueChanged += new System.EventHandler(this.dateTimePickerBirthdate_ValueChanged);
             // 
             // label2
             // 

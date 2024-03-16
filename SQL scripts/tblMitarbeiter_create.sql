@@ -17,3 +17,10 @@ CREATE TABLE Mitarbeiter
     [Alter] INT,
     Geschlecht NVARCHAR(15)
 );
+CREATE TABLE Benutzer
+(
+    ID INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+    Benutzername NVARCHAR(50) NOT NULL,
+    PasswortHash NVARCHAR(MAX) NOT NULL,
+    Salt NVARCHAR(20) NOT NULL
+);
