@@ -330,6 +330,7 @@
             this.textBoxHouseNmbr.Name = "textBoxHouseNmbr";
             this.textBoxHouseNmbr.Size = new System.Drawing.Size(120, 20);
             this.textBoxHouseNmbr.TabIndex = 16;
+            this.textBoxHouseNmbr.TextChanged += new System.EventHandler(this.textBoxHouseNmbr_TextChanged);
             this.textBoxHouseNmbr.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxHouseNmbr_KeyPress);
             // 
             // label9

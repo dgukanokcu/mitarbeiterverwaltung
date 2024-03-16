@@ -84,24 +84,16 @@ namespace BTS_Mitarbeiterverwaltung
         }
 
         private void textBoxZIP_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Employee.AllowOnlyNumbersAndControlCharacters(sender, e);
-        }
+        {}
 
         private void textBoxHouseNmbr_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Employee.AllowOnlyNumbersAndControlCharacters(sender, e);
-        }
+        {}
 
         private void txtBoxTelefon_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Employee.AllowOnlyNumbersAndControlCharacters(sender, e);
-        }
+        {}
 
         private void txtBoxSalary_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Employee.AllowOnlyNumbersAndControlCharacters(sender, e);
-        }
+        {}
         #endregion
 
         private void groupBox2_Enter(object sender, EventArgs e)
@@ -111,6 +103,11 @@ namespace BTS_Mitarbeiterverwaltung
         }
         private void dateTimePickerBirthdate_ValueChanged(object sender, EventArgs e)
         {
+        }
+
+        private void textBoxHouseNmbr_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 
