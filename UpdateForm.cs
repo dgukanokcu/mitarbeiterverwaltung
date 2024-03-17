@@ -20,7 +20,13 @@ namespace BTS_Mitarbeiterverwaltung
         private void btnSpeichern_Click(object sender, EventArgs e)
         {
             Employee m = new Employee();
-            if (id != 0) { m.SetData(id, txtBoxName.Text, txtBoxSurname.Text, textBoxStreet.Text, textBoxHouseNmbr.Text, textBoxZIP.Text, textBoxCity.Text, txtBoxTelefon.Text, txtBoxEmail.Text, comboBoxPosition.Text, dateTimePickerEntry.Value, txtBoxSalary.Text, dateTimePickerBirthdate.Value, DateTime.MinValue, comboBoxGender.Text); }
+            if (id != 0)
+            {
+                m.SetData(id, txtBoxName.Text, txtBoxSurname.Text, textBoxStreet.Text, textBoxHouseNmbr.Text, textBoxZIP.Text, textBoxCity.Text, txtBoxTelefon.Text, txtBoxEmail.Text, comboBoxPosition.Text, dateTimePickerEntry.Value, txtBoxSalary.Text, dateTimePickerBirthdate.Value, DateTime.MinValue, comboBoxGender.Text);
+            }
+
+            // Setzen Sie das Geburtsdatum aus dem dateTimePickerBirthdate-Steuerelement
+            m.Geburtsdatum = dateTimePickerBirthdate.Value;
 
             if (Employee.validation(m))
             {
@@ -36,7 +42,8 @@ namespace BTS_Mitarbeiterverwaltung
                 MessageBox.Show("Überprüfen Sie bitte Ihre Angaben!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private void UpdateForm_Load(object sender, EventArgs e)
+
+        internal void UpdateForm_Load(object sender, EventArgs e)
         {
             if (id != 0)
             {

@@ -1,10 +1,11 @@
 CREATE TRIGGER tr_calcAgeAndRetirement
 ON dbo.Mitarbeiter
-AFTER INSERT
+AFTER INSERT, UPDATE
 AS
 BEGIN
     SET NOCOUNT ON;
 
+    -- Aktualisierung des Alters und des Rentenbeginns basierend auf den geänderten Geburtsdaten
     UPDATE m
     SET
         [Alter] = DATEDIFF(YEAR, i.Geburtsdatum, GETDATE()) - 

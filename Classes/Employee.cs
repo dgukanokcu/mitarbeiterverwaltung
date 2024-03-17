@@ -23,7 +23,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
         internal DateTime DatumEintritt { get; private set; }
         internal string Gehalt { get; private set; }
         internal DateTime DatumRentenBeginn { get; private set; }
-        internal DateTime Geburtsdatum { get; private set; }
+        internal DateTime Geburtsdatum { get; set; }
         internal string Geschlecht { get; private set; }
 
         internal static int TotalRowCount { get; private set; }
