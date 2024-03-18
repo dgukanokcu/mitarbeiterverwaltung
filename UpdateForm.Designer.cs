@@ -86,7 +86,6 @@
             this.txtBoxName.Name = "txtBoxName";
             this.txtBoxName.Size = new System.Drawing.Size(120, 20);
             this.txtBoxName.TabIndex = 0;
-            this.txtBoxName.TextChanged += new System.EventHandler(this.txtBoxName_TextChanged);
             this.txtBoxName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxName_KeyPress);
             // 
             // btnSave
@@ -236,7 +235,6 @@
             this.dateTimePickerBirthdate.Size = new System.Drawing.Size(120, 20);
             this.dateTimePickerBirthdate.TabIndex = 4;
             this.dateTimePickerBirthdate.Value = new System.DateTime(1996, 6, 9, 0, 0, 0, 0);
-            this.dateTimePickerBirthdate.ValueChanged += new System.EventHandler(this.dateTimePickerBirthdate_ValueChanged);
             // 
             // label2
             // 
@@ -470,7 +468,6 @@
             this.groupBox2.TabIndex = 27;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Adresse";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // errCty
             // 

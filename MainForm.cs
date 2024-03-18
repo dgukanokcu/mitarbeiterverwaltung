@@ -134,13 +134,5 @@ namespace BTS_Mitarbeiterverwaltung
             tools.FileImport();
             btnReset.PerformClick();
         }
-        private void lblSelectedRows_Click(object sender, EventArgs e)
-        {}
-        private void lblSelectedRows_Click_1(object sender, EventArgs e)
-        {}
-        private void dataGridViewEmployee_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }

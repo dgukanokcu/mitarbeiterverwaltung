@@ -48,11 +48,36 @@ namespace BTS_Mitarbeiterverwaltung.Classes
             Geburtsdatum = geburtsdatum;
             Geschlecht = geschlecht;
         }
-        
+        internal void SetDataNewEmployee(string vorname, string nachname, string strasse, string nr, string plz, string ort, string telefon, string email, string position, DateTime datumEintritt, string gehalt, DateTime datumRentenBeginn, DateTime geburtsdatum, string geschlecht)
+        {
+            Vorname = vorname;
+            Nachname = nachname;
+            Strasse = strasse;
+            Nr = nr;
+            PLZ = plz;
+            Ort = ort;
+            Telefon = telefon;
+            EMail = email;
+            Position = position;
+            DatumEintritt = datumEintritt;
+            Gehalt = gehalt;
+            DatumRentenBeginn = datumRentenBeginn;
+            Geburtsdatum = geburtsdatum;
+            Geschlecht = geschlecht;
+        }
+
         // nur Buchstaben, Leerzeichen und Steuerzeichen erlaubt
-        internal static void AllowOnlyNumbersAndControlCharacters(object sender, KeyPressEventArgs e)
+        internal static void AllowOnlyLettersAndControlCharacters(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        internal static void AllowOnlyNumbersAndControlCharacters(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
             {
                 e.Handled = true;
             }

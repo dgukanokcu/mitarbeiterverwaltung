@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace BTS_Mitarbeiterverwaltung
 {
@@ -20,21 +21,81 @@ namespace BTS_Mitarbeiterverwaltung
         private void btnSpeichern_Click(object sender, EventArgs e)
         {
             Employee m = new Employee();
-            if (id != 0) { m.SetData(id, txtBoxName.Text, txtBoxSurname.Text, textBoxStreet.Text, textBoxHouseNmbr.Text, textBoxZIP.Text, textBoxCity.Text, txtBoxTelefon.Text, txtBoxEmail.Text, comboBoxPosition.Text, dateTimePickerEntry.Value, txtBoxSalary.Text, dateTimePickerBirthdate.Value, DateTime.MinValue, comboBoxGender.Text); }
-
-            string oldValue = Employee.GetEmployeeById(id).Vorname;
+            if (id != 0) { m.SetData(id, txtBoxName.Text, txtBoxSurname.Text, textBoxStreet.Text, textBoxHouseNmbr.Text, textBoxZIP.Text, textBoxCity.Text, txtBoxTelefon.Text, txtBoxEmail.Text, comboBoxPosition.Text, dateTimePickerEntry.Value, txtBoxSalary.Text, dateTimePickerEntry.Value.Date, dateTimePickerBirthdate.Value.Date, comboBoxGender.Text); }
+            else { m.SetDataNewEmployee( txtBoxName.Text, txtBoxSurname.Text, textBoxStreet.Text, textBoxHouseNmbr.Text, textBoxZIP.Text, textBoxCity.Text, txtBoxTelefon.Text, txtBoxEmail.Text, comboBoxPosition.Text, dateTimePickerEntry.Value, txtBoxSalary.Text, dateTimePickerEntry.Value.Date, dateTimePickerBirthdate.Value.Date, comboBoxGender.Text); 
+        }
+            //string oldValue = Employee.GetEmployeeById(id).Vorname;
 
             if (Employee.validation(m))
             {
                 m.UpdateEmployee();
-                this.Close();
-                MessageBox.Show(m.ID == 0 ? "Mitarbeiter erfolgreich hinzugefügt!" : "Mitarbeiter erfolgreich aktualisiert!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();             
                 DataTable table = Employee.GetAllEmployees();
                 mainForm.dataGridViewEmployee.DataSource = table;
                 mainForm.UpdateRowCount();
+                MessageBox.Show(m.ID == 0 ? "Mitarbeiter erfolgreich hinzugefügt!" : "Mitarbeiter erfolgreich aktualisiert!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
+                if (string.IsNullOrEmpty(txtBoxName.Text))
+                {
+                    errName.Visible = true;
+                }
+
+                if (string.IsNullOrEmpty(txtBoxSurname.Text))
+                {
+                    errSurname.Visible = true;
+                }
+
+                if (string.IsNullOrEmpty(textBoxCity.Text))
+                {
+                    errCty.Visible = true;
+                }
+
+                if (string.IsNullOrEmpty(textBoxStreet.Text))
+                {
+                    errStrt.Visible = true;
+                }
+
+                if (string.IsNullOrEmpty(textBoxHouseNmbr.Text))
+                {
+                    errHausNmbr.Visible = true;
+                }
+
+                if (string.IsNullOrEmpty(textBoxZIP.Text))
+                {
+                    errZip.Visible = true;
+                }
+
+                if (string.IsNullOrEmpty(textBoxCity.Text))
+                {
+                    errCty.Visible = true;
+                }
+
+                if (string.IsNullOrEmpty(txtBoxTelefon.Text))
+                {
+                    errTlfn.Visible = true;
+                }
+
+                if (string.IsNullOrEmpty(txtBoxEmail.Text))
+                {
+                    errMail.Visible = true;
+                }
+
+                if (string.IsNullOrEmpty(comboBoxPosition.Text))
+                {
+                    errPstn.Visible = true;
+                }
+
+                if (string.IsNullOrEmpty(txtBoxSalary.Text))
+                {
+                    errSlry.Visible = true;
+                }
+
+                if (string.IsNullOrEmpty(comboBoxGender.Text))
+                {
+                    errGndr.Visible = true;
+                }
                 MessageBox.Show("Überprüfen Sie bitte Ihre Angaben!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -63,24 +124,21 @@ namespace BTS_Mitarbeiterverwaltung
 
         private void txtBoxName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
-            {
-                e.Handled = true;
-            }
+            Employee.AllowOnlyLettersAndControlCharacters(sender, e);
         }
         private void txtBoxSurname_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Employee.AllowOnlyNumbersAndControlCharacters(sender, e);
+            Employee.AllowOnlyLettersAndControlCharacters(sender, e);
         }
 
         private void textBoxCity_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Employee.AllowOnlyNumbersAndControlCharacters(sender, e);
+            Employee.AllowOnlyLettersAndControlCharacters(sender, e);
         }
 
         private void textBoxStreet_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Employee.AllowOnlyNumbersAndControlCharacters(sender, e);
+            Employee.AllowOnlyLettersAndControlCharacters(sender, e);
         }
 
         private void textBoxZIP_KeyPress(object sender, KeyPressEventArgs e)
@@ -103,15 +161,6 @@ namespace BTS_Mitarbeiterverwaltung
             Employee.AllowOnlyNumbersAndControlCharacters(sender, e);
         }
         #endregion
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {}
-        private void txtBoxName_TextChanged(object sender, EventArgs e)
-        {
-        }
-        private void dateTimePickerBirthdate_ValueChanged(object sender, EventArgs e)
-        {
-        }
     }
 
 }

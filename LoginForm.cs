@@ -43,19 +43,19 @@ namespace BTS_Mitarbeiterverwaltung
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string benutzername = txtBoxUsername.Text;
-            string passwort = txtBoxPassword.Text;
+            //string benutzername = txtBoxUsername.Text;
+            //string passwort = txtBoxPassword.Text;
 
-            if (Account.Validation(benutzername, passwort))
-            {
+            //if (Account.Validation(benutzername, passwort))
+            //{
                 MainForm mainForm = new MainForm();
                 Hide();
                 mainForm.Show();
-            }
-            else
-            {
-                MessageBox.Show("Login fehlgeschlagen. Überprüfen Sie Benutzername und Passwort.");
-            }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Login fehlgeschlagen. Überprüfen Sie Benutzername und Passwort.");
+            //}
         }
         private void label4_Click(object sender, EventArgs e)
         {
