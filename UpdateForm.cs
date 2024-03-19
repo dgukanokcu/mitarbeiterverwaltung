@@ -131,52 +131,44 @@ namespace BTS_Mitarbeiterverwaltung
 
         private void txtBoxName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
-            {
-                e.Handled = true;
-            }
+            Employee.AllowOnlyLettersAndControlCharacters(sender, e);
         }
         private void txtBoxSurname_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Employee.AllowOnlyNumbersAndControlCharacters(sender, e);
+            Employee.AllowOnlyLettersAndControlCharacters(sender, e);
         }
 
         private void textBoxCity_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Employee.AllowOnlyNumbersAndControlCharacters(sender, e);
+            Employee.AllowOnlyLettersAndControlCharacters(sender, e);
         }
 
         private void textBoxStreet_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Employee.AllowOnlyNumbersAndControlCharacters(sender, e);
+            Employee.AllowOnlyLettersAndControlCharacters(sender, e);
         }
 
         private void textBoxZIP_KeyPress(object sender, KeyPressEventArgs e)
-        {}
+        {
+            Employee.AllowOnlyNumbersAndControlCharacters(sender, e);
+        }
 
         private void textBoxHouseNmbr_KeyPress(object sender, KeyPressEventArgs e)
-        {}
+        {
+            Employee.AllowOnlyNumbersAndControlCharacters(sender, e);
+        }
 
         private void txtBoxTelefon_KeyPress(object sender, KeyPressEventArgs e)
-        {}
+        {
+            Employee.AllowOnlyNumbersAndControlCharacters(sender, e);
+        }
 
         private void txtBoxSalary_KeyPress(object sender, KeyPressEventArgs e)
-        {}
+        {
+            Employee.AllowOnlyNumbersAndControlCharacters(sender, e);
+        }
+
         #endregion
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {}
-        private void txtBoxName_TextChanged(object sender, EventArgs e)
-        {
-        }
-        private void dateTimePickerBirthdate_ValueChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void textBoxHouseNmbr_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 
 }

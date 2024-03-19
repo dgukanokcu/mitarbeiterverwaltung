@@ -65,8 +65,15 @@ namespace BTS_Mitarbeiterverwaltung.Classes
             Geschlecht = geschlecht;
         }
 
-        // nur Buchstaben, Leerzeichen und Steuerzeichen erlaubt
         internal static void AllowOnlyNumbersAndControlCharacters(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        internal static void AllowOnlyLettersAndControlCharacters(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
             {
