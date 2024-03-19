@@ -113,8 +113,9 @@
             this.dataGridViewEmployee.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridViewEmployee.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataGridViewEmployee.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewEmployee.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewEmployee.ShowEditingIcon = false;
-            this.dataGridViewEmployee.Size = new System.Drawing.Size(1234, 317);
+            this.dataGridViewEmployee.Size = new System.Drawing.Size(1259, 321);
             this.dataGridViewEmployee.StandardTab = true;
             this.dataGridViewEmployee.TabIndex = 0;
             this.dataGridViewEmployee.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
@@ -386,7 +387,7 @@
             this.lblTotalRows.AutoSize = true;
             this.lblTotalRows.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.lblTotalRows.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.lblTotalRows.Location = new System.Drawing.Point(10, 483);
+            this.lblTotalRows.Location = new System.Drawing.Point(10, 484);
             this.lblTotalRows.Name = "lblTotalRows";
             this.lblTotalRows.Size = new System.Drawing.Size(112, 18);
             this.lblTotalRows.TabIndex = 9;
@@ -410,7 +411,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1268, 516);
+            this.ClientSize = new System.Drawing.Size(1315, 519);
             this.Controls.Add(this.lblSelectedRows);
             this.Controls.Add(this.lblTotalRows);
             this.Controls.Add(this.btnImport);

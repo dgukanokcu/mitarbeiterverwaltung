@@ -203,6 +203,8 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                     {
                         query = "UPDATE mitarbeiter SET ";
 
+                        Employee originalEmployee = GetEmployeeById(ID);
+
                         if (!string.IsNullOrEmpty(Vorname))
                         {
                             query += "Vorname = @Vorname, ";
@@ -281,7 +283,12 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                             updatedColumns.Add("Geschlecht");
                         }
 
-                        query = query.TrimEnd(',', ' ') + " WHERE ID = @ID";
+                        // Entferne das letzte Komma und Leerzeichen
+                        query = query.TrimEnd(',', ' ');
+
+                        // Füge die Bedingung für die WHERE-Klausel hinzu
+                        query += " WHERE ID = @ID";
+
                     }
 
                     using (SqlCommand command = new SqlCommand(query, connection))

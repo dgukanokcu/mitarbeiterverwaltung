@@ -29,9 +29,6 @@ namespace BTS_Mitarbeiterverwaltung
                 m.SetDataNewEmployee(txtBoxName.Text, txtBoxSurname.Text, textBoxStreet.Text, textBoxHouseNmbr.Text, textBoxZIP.Text, textBoxCity.Text, txtBoxTelefon.Text, txtBoxEmail.Text, comboBoxPosition.Text, dateTimePickerEntry.Value, txtBoxSalary.Text, dateTimePickerBirthdate.Value, comboBoxGender.Text);
             }
 
-            // Setzen Sie das Geburtsdatum aus dem dateTimePickerBirthdate-Steuerelement
-            m.Geburtsdatum = dateTimePickerBirthdate.Value;
-
             if (Employee.validation(m))
             {
                 m.UpdateEmployee();
@@ -105,7 +102,6 @@ namespace BTS_Mitarbeiterverwaltung
                 MessageBox.Show("Überprüfen Sie bitte Ihre Angaben!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
         internal void UpdateForm_Load(object sender, EventArgs e)
         {
             if (id != 0)
@@ -124,7 +120,30 @@ namespace BTS_Mitarbeiterverwaltung
                 textBoxHouseNmbr.Text = m.Nr;
                 textBoxZIP.Text = m.PLZ;
                 textBoxCity.Text = m.Ort;
+
+                // Überprüfen, ob Änderungen an den Parametern vorgenommen wurden
+                if (HasChanged(txtBoxName.Text, m.Vorname) ||
+                    HasChanged(txtBoxSurname.Text, m.Nachname) ||
+                    HasChanged(comboBoxPosition.Text, m.Position) ||
+                    HasChanged(dateTimePickerEntry.Value.ToString(), m.DatumEintritt.ToString()) ||
+                    HasChanged(txtBoxEmail.Text, m.EMail) ||
+                    HasChanged(txtBoxSalary.Text, m.Gehalt) ||
+                    HasChanged(dateTimePickerBirthdate.Value.ToString(), m.Geburtsdatum.ToString()) ||
+                    HasChanged(txtBoxTelefon.Text, m.Telefon) ||
+                    HasChanged(comboBoxGender.Text, m.Geschlecht) ||
+                    HasChanged(textBoxStreet.Text, m.Strasse) ||
+                    HasChanged(textBoxHouseNmbr.Text, m.Nr) ||
+                    HasChanged(textBoxZIP.Text, m.PLZ) ||
+                    HasChanged(textBoxCity.Text, m.Ort))
+                {
+                }
             }
+        }
+
+        // Methode zur Überprüfung, ob sich der Wert eines Parameters geändert hat
+        private bool HasChanged(string currentValue, string originalValue)
+        {
+            return !string.Equals(currentValue, originalValue);
         }
 
         #region validation
