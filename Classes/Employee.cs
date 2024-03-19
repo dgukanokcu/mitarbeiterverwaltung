@@ -30,7 +30,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
 
         #endregion
 
-        internal void SetData(int id, string vorname, string nachname, string strasse, string nr, string plz, string ort, string telefon, string email, string position, DateTime datumEintritt, string gehalt, DateTime datumRentenBeginn, DateTime geburtsdatum, string geschlecht)
+        internal void SetData(int id, string vorname, string nachname, string strasse, string nr, string plz, string ort, string telefon, string email, string position, DateTime datumEintritt, string gehalt, DateTime geburtsdatum, string geschlecht)
         {
             ID = id;
             Vorname = vorname;
@@ -44,11 +44,27 @@ namespace BTS_Mitarbeiterverwaltung.Classes
             Position = position;
             DatumEintritt = datumEintritt;
             Gehalt = gehalt;
-            DatumRentenBeginn = datumRentenBeginn;
             Geburtsdatum = geburtsdatum;
             Geschlecht = geschlecht;
         }
-        
+
+        internal void SetDataNewEmployee(string vorname, string nachname, string strasse, string nr, string plz, string ort, string telefon, string email, string position, DateTime datumEintritt, string gehalt, DateTime geburtsdatum, string geschlecht)
+        {
+            Vorname = vorname;
+            Nachname = nachname;
+            Strasse = strasse;
+            Nr = nr;
+            PLZ = plz;
+            Ort = ort;
+            Telefon = telefon;
+            EMail = email;
+            Position = position;
+            DatumEintritt = datumEintritt;
+            Gehalt = gehalt;
+            Geburtsdatum = geburtsdatum;
+            Geschlecht = geschlecht;
+        }
+
         // nur Buchstaben, Leerzeichen und Steuerzeichen erlaubt
         internal static void AllowOnlyNumbersAndControlCharacters(object sender, KeyPressEventArgs e)
         {

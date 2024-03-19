@@ -76,7 +76,6 @@
             // dataGridViewEmployee
             // 
             this.dataGridViewEmployee.AllowUserToAddRows = false;
-            this.dataGridViewEmployee.AllowUserToDeleteRows = false;
             this.dataGridViewEmployee.AllowUserToOrderColumns = true;
             this.dataGridViewEmployee.AllowUserToResizeColumns = false;
             this.dataGridViewEmployee.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
