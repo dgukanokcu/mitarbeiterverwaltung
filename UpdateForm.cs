@@ -21,8 +21,8 @@ namespace BTS_Mitarbeiterverwaltung
         private void btnSpeichern_Click(object sender, EventArgs e)
         {
             Employee m = new Employee();
-            if (id != 0) { m.SetData(id, txtBoxName.Text, txtBoxSurname.Text, textBoxStreet.Text, textBoxHouseNmbr.Text, textBoxZIP.Text, textBoxCity.Text, txtBoxTelefon.Text, txtBoxEmail.Text, comboBoxPosition.Text, dateTimePickerEntry.Value, txtBoxSalary.Text, dateTimePickerEntry.Value.Date, dateTimePickerBirthdate.Value.Date, comboBoxGender.Text); }
-            else { m.SetDataNewEmployee( txtBoxName.Text, txtBoxSurname.Text, textBoxStreet.Text, textBoxHouseNmbr.Text, textBoxZIP.Text, textBoxCity.Text, txtBoxTelefon.Text, txtBoxEmail.Text, comboBoxPosition.Text, dateTimePickerEntry.Value, txtBoxSalary.Text, dateTimePickerEntry.Value.Date, dateTimePickerBirthdate.Value.Date, comboBoxGender.Text); 
+            if (id != 0) { m.SetData(id, txtBoxName.Text, txtBoxSurname.Text, textBoxStreet.Text, textBoxHouseNmbr.Text, textBoxZIP.Text, textBoxCity.Text, txtBoxTelefon.Text, txtBoxEmail.Text, comboBoxPosition.Text, dateTimePickerEntry.Value, txtBoxSalary.Text, dateTimePickerEntry.Value.Date, comboBoxGender.Text); }
+            else { m.SetDataNewEmployee( txtBoxName.Text, txtBoxSurname.Text, textBoxStreet.Text, textBoxHouseNmbr.Text, textBoxZIP.Text, textBoxCity.Text, txtBoxTelefon.Text, txtBoxEmail.Text, comboBoxPosition.Text, dateTimePickerEntry.Value, txtBoxSalary.Text, dateTimePickerEntry.Value.Date, comboBoxGender.Text); 
         }
             //string oldValue = Employee.GetEmployeeById(id).Vorname;
 

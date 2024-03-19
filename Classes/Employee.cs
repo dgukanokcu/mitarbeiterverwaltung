@@ -22,7 +22,6 @@ namespace BTS_Mitarbeiterverwaltung.Classes
         internal string Position { get; private set; }
         internal DateTime DatumEintritt { get; private set; }
         internal string Gehalt { get; private set; }
-        internal DateTime DatumRentenBeginn { get; private set; }
         internal DateTime Geburtsdatum { get; private set; }
         internal string Geschlecht { get; private set; }
 
@@ -30,7 +29,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
 
         #endregion
 
-        internal void SetData(int id, string vorname, string nachname, string strasse, string nr, string plz, string ort, string telefon, string email, string position, DateTime datumEintritt, string gehalt, DateTime datumRentenBeginn, DateTime geburtsdatum, string geschlecht)
+        internal void SetData(int id, string vorname, string nachname, string strasse, string nr, string plz, string ort, string telefon, string email, string position, DateTime datumEintritt, string gehalt, DateTime geburtsdatum, string geschlecht)
         {
             ID = id;
             Vorname = vorname;
@@ -44,11 +43,10 @@ namespace BTS_Mitarbeiterverwaltung.Classes
             Position = position;
             DatumEintritt = datumEintritt;
             Gehalt = gehalt;
-            DatumRentenBeginn = datumRentenBeginn;
             Geburtsdatum = geburtsdatum;
             Geschlecht = geschlecht;
         }
-        internal void SetDataNewEmployee(string vorname, string nachname, string strasse, string nr, string plz, string ort, string telefon, string email, string position, DateTime datumEintritt, string gehalt, DateTime datumRentenBeginn, DateTime geburtsdatum, string geschlecht)
+        internal void SetDataNewEmployee(string vorname, string nachname, string strasse, string nr, string plz, string ort, string telefon, string email, string position, DateTime datumEintritt, string gehalt, DateTime geburtsdatum, string geschlecht)
         {
             Vorname = vorname;
             Nachname = nachname;
@@ -61,7 +59,6 @@ namespace BTS_Mitarbeiterverwaltung.Classes
             Position = position;
             DatumEintritt = datumEintritt;
             Gehalt = gehalt;
-            DatumRentenBeginn = datumRentenBeginn;
             Geburtsdatum = geburtsdatum;
             Geschlecht = geschlecht;
         }
@@ -156,7 +153,6 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                             Nachname = reader["Nachname"].ToString(),
                             Position = reader["Position"].ToString(),
                             DatumEintritt = (DateTime)reader["EintrittDatum"],
-                            DatumRentenBeginn = (DateTime)reader["Rentenbeginn"],
                             EMail = reader["E-Mail"].ToString(),
                             Gehalt = reader["Gehalt"].ToString(),
                             Geburtsdatum = (DateTime)reader["Geburtsdatum"],
