@@ -75,6 +75,7 @@ namespace BTS_Mitarbeiterverwaltung
         }
         public void btnReset_Click(object sender, EventArgs e)
         {
+            txtBoxName.Text = "";
             DataTable table = Employee.GetAllEmployees();
             dataGridViewEmployee.DataSource = table;
 
