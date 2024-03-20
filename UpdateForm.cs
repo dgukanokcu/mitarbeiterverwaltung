@@ -31,7 +31,8 @@ namespace BTS_Mitarbeiterverwaltung
 
             if (Employee.validation(m))
             {
-                m.UpdateEmployee();
+                Employee oldValue = Employee.GetEmployeeById(id);
+                m.UpdateEmployee(oldValue);
                 this.Close();
                 DataTable table = Employee.GetAllEmployees();
                 mainForm.dataGridViewEmployee.DataSource = table;

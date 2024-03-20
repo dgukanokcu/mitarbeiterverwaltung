@@ -182,7 +182,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
             }
             return employee;
         }
-        internal void UpdateEmployee()
+        internal void UpdateEmployee(Employee oldValue)
         {
             try
             {
@@ -203,81 +203,80 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                     {
                         query = "UPDATE mitarbeiter SET ";
 
-                        Employee originalEmployee = GetEmployeeById(ID);
 
-                        if (!string.IsNullOrEmpty(Vorname))
+                        if (oldValue.Vorname != Vorname)
                         {
                             query += "Vorname = @Vorname, ";
                             updatedColumns.Add("Vorname");
                         }
 
-                        if (!string.IsNullOrEmpty(Nachname))
+                        if (oldValue.Nachname != Nachname)
                         {
                             query += "Nachname = @Nachname, ";
                             updatedColumns.Add("Nachname");
                         }
 
-                        if (!string.IsNullOrEmpty(Strasse))
+                        if (oldValue.Strasse != Strasse)
                         {
                             query += "Strasse = @Strasse, ";
                             updatedColumns.Add("Strasse");
                         }
 
-                        if (!string.IsNullOrEmpty(Nr))
+                        if (oldValue.Nr != Nr)
                         {
                             query += "Nr = @Nr, ";
                             updatedColumns.Add("Nr");
                         }
 
-                        if (!string.IsNullOrEmpty(PLZ))
+                        if (oldValue.PLZ != PLZ)
                         {
                             query += "PLZ = @PLZ, ";
                             updatedColumns.Add("PLZ");
                         }
 
-                        if (!string.IsNullOrEmpty(Ort))
+                        if (oldValue.Ort != Ort)
                         {
                             query += "Ort = @Ort, ";
                             updatedColumns.Add("Ort");
                         }
 
-                        if (!string.IsNullOrEmpty(Telefon))
+                        if (oldValue.Telefon != Telefon)
                         {
                             query += "Telefon = @Telefon, ";
                             updatedColumns.Add("Telefon");
                         }
 
-                        if (!string.IsNullOrEmpty(EMail))
+                        if (oldValue.EMail != EMail)
                         {
                             query += "[E-Mail] = @EMail, ";
                             updatedColumns.Add("EMail");
                         }
 
-                        if (!string.IsNullOrEmpty(Position))
+                        if (oldValue.Position != Position)
                         {
                             query += "Position = @Position, ";
                             updatedColumns.Add("Position");
                         }
 
-                        if (DatumEintritt != DateTime.MinValue)
+                        if (oldValue.DatumEintritt != DatumEintritt)
                         {
                             query += "EintrittDatum = @EintrittDatum, ";
                             updatedColumns.Add("EintrittDatum");
                         }
 
-                        if (!string.IsNullOrEmpty(Gehalt))
+                        if (oldValue.Gehalt != Gehalt)
                         {
                             query += "Gehalt = @Gehalt, ";
                             updatedColumns.Add("Gehalt");
                         }
 
-                        if (Geburtsdatum != DateTime.MinValue)
+                        if (oldValue.Geburtsdatum != Geburtsdatum)
                         {
                             query += "Geburtsdatum = @Geburtsdatum, ";
                             updatedColumns.Add("Geburtsdatum");
                         }
 
-                        if (!string.IsNullOrEmpty(Geschlecht))
+                        if (oldValue.Geschlecht != Geschlecht)
                         {
                             query += "Geschlecht = @Geschlecht, ";
                             updatedColumns.Add("Geschlecht");
@@ -294,58 +293,32 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@ID", ID);
-                        if (!string.IsNullOrEmpty(Vorname))
-                        {
-                            command.Parameters.AddWithValue("@Vorname", Vorname);
-                        }
-                        if (!string.IsNullOrEmpty(Nachname))
-                        {
-                            command.Parameters.AddWithValue("@Nachname", Nachname);
-                        }
-                        if (!string.IsNullOrEmpty(Strasse))
-                        {
-                            command.Parameters.AddWithValue("@Strasse", Strasse);
-                        }
-                        if (!string.IsNullOrEmpty(Nr))
-                        {
-                            command.Parameters.AddWithValue("@Nr", Nr);
-                        }
-                        if (!string.IsNullOrEmpty(PLZ))
-                        {
-                            command.Parameters.AddWithValue("@PLZ", PLZ);
-                        }
-                        if (!string.IsNullOrEmpty(Ort))
-                        {
-                            command.Parameters.AddWithValue("@Ort", Ort);
-                        }
-                        if (!string.IsNullOrEmpty(Telefon))
-                        {
-                            command.Parameters.AddWithValue("@Telefon", Telefon);
-                        }
-                        if (!string.IsNullOrEmpty(EMail))
-                        {
-                            command.Parameters.AddWithValue("@EMail", EMail);
-                        }
-                        if (!string.IsNullOrEmpty(Position))
-                        {
-                            command.Parameters.AddWithValue("@Position", Position);
-                        }
-                        if (DatumEintritt != DateTime.MinValue)
-                        {
-                            command.Parameters.AddWithValue("@EintrittDatum", DatumEintritt);
-                        }
-                        if (!string.IsNullOrEmpty(Gehalt))
-                        {
-                            command.Parameters.AddWithValue("@Gehalt", Gehalt);
-                        }
-                        if (Geburtsdatum != DateTime.MinValue)
-                        {
-                            command.Parameters.AddWithValue("@Geburtsdatum", Geburtsdatum);
-                        }
-                        if (!string.IsNullOrEmpty(Geschlecht))
-                        {
-                            command.Parameters.AddWithValue("@Geschlecht", Geschlecht);
-                        }
+
+                        command.Parameters.AddWithValue("@Vorname", Vorname);
+
+                        command.Parameters.AddWithValue("@Nachname", Nachname);
+
+                        command.Parameters.AddWithValue("@Strasse", Strasse);
+
+                        command.Parameters.AddWithValue("@Nr", Nr);
+
+                        command.Parameters.AddWithValue("@PLZ", PLZ);
+
+                        command.Parameters.AddWithValue("@Ort", Ort);
+
+                        command.Parameters.AddWithValue("@Telefon", Telefon);
+
+                        command.Parameters.AddWithValue("@EMail", EMail);
+
+                        command.Parameters.AddWithValue("@Position", Position);
+
+                        command.Parameters.AddWithValue("@EintrittDatum", DatumEintritt);
+
+                        command.Parameters.AddWithValue("@Gehalt", Gehalt);
+
+                        command.Parameters.AddWithValue("@Geburtsdatum", Geburtsdatum);
+
+                        command.Parameters.AddWithValue("@Geschlecht", Geschlecht);
 
                         command.ExecuteNonQuery();
                     }

@@ -101,7 +101,7 @@
             this.dataGridViewEmployee.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridViewEmployee.GridColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridViewEmployee.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.dataGridViewEmployee.Location = new System.Drawing.Point(6, 160);
+            this.dataGridViewEmployee.Location = new System.Drawing.Point(6, 92);
             this.dataGridViewEmployee.Name = "dataGridViewEmployee";
             this.dataGridViewEmployee.ReadOnly = true;
             this.dataGridViewEmployee.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -302,9 +302,9 @@
             this.btnAddEmployee.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnAddEmployee.Image = ((System.Drawing.Image)(resources.GetObject("btnAddEmployee.Image")));
             this.btnAddEmployee.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAddEmployee.Location = new System.Drawing.Point(6, 91);
+            this.btnAddEmployee.Location = new System.Drawing.Point(1096, 47);
             this.btnAddEmployee.Name = "btnAddEmployee";
-            this.btnAddEmployee.Size = new System.Drawing.Size(169, 31);
+            this.btnAddEmployee.Size = new System.Drawing.Size(169, 39);
             this.btnAddEmployee.TabIndex = 0;
             this.btnAddEmployee.Text = "Mitarbeiter hinzufügen";
             this.btnAddEmployee.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -315,11 +315,14 @@
             // 
             this.btnDelete.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(411, 15);
+            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
+            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDelete.Location = new System.Drawing.Point(883, 47);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(90, 31);
+            this.btnDelete.Size = new System.Drawing.Size(95, 39);
             this.btnDelete.TabIndex = 7;
             this.btnDelete.Text = "Entfernen";
+            this.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -327,11 +330,14 @@
             // 
             this.btnEdit.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(315, 17);
+            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
+            this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEdit.Location = new System.Drawing.Point(984, 47);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(90, 31);
+            this.btnEdit.Size = new System.Drawing.Size(106, 39);
             this.btnEdit.TabIndex = 6;
             this.btnEdit.Text = "Bearbeiten";
+            this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.btnBearbeiten_Click);
             // 
@@ -361,7 +367,7 @@
             // 
             this.btnExport.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnExport.Location = new System.Drawing.Point(431, 91);
+            this.btnExport.Location = new System.Drawing.Point(1195, 8);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(70, 31);
             this.btnExport.TabIndex = 3;
@@ -373,7 +379,7 @@
             // 
             this.btnImport.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnImport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnImport.Location = new System.Drawing.Point(315, 91);
+            this.btnImport.Location = new System.Drawing.Point(1119, 8);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(70, 31);
             this.btnImport.TabIndex = 2;
@@ -387,7 +393,7 @@
             this.lblTotalRows.AutoSize = true;
             this.lblTotalRows.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.lblTotalRows.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.lblTotalRows.Location = new System.Drawing.Point(10, 484);
+            this.lblTotalRows.Location = new System.Drawing.Point(6, 433);
             this.lblTotalRows.Name = "lblTotalRows";
             this.lblTotalRows.Size = new System.Drawing.Size(112, 18);
             this.lblTotalRows.TabIndex = 9;
@@ -398,7 +404,7 @@
             // 
             this.lblSelectedRows.AutoSize = true;
             this.lblSelectedRows.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelectedRows.Location = new System.Drawing.Point(9, 139);
+            this.lblSelectedRows.Location = new System.Drawing.Point(9, 71);
             this.lblSelectedRows.Name = "lblSelectedRows";
             this.lblSelectedRows.Size = new System.Drawing.Size(66, 17);
             this.lblSelectedRows.TabIndex = 10;
@@ -411,7 +417,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1315, 519);
+            this.ClientSize = new System.Drawing.Size(1315, 460);
             this.Controls.Add(this.lblSelectedRows);
             this.Controls.Add(this.lblTotalRows);
             this.Controls.Add(this.btnImport);
