@@ -191,13 +191,11 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                     connection.Open();
 
                     string query;
-                    List<string> updatedColumns = new List<string>();
 
                     if (ID == 0)
                     {
                         query = "INSERT INTO mitarbeiter (Vorname, Nachname, Telefon, [E-Mail], Position, EintrittDatum, Gehalt, Geburtsdatum, Geschlecht, Strasse, Nr, PLZ, Ort) " +
-                                "VALUES (@Vorname, @Nachname, @Telefon, @EMail, @Position, @EintrittDatum, @Gehalt, @Geburtsdatum, @Geschlecht, @Strasse, @Nr, @PLZ, @Ort)";
-                        updatedColumns.AddRange(new[] { "Vorname", "Nachname", "Telefon", "EMail", "Position", "EintrittDatum", "Gehalt", "Geburtsdatum", "Geschlecht", "Strasse", "Nr", "PLZ", "Ort" });
+                                "VALUES (@Vorname, @Nachname, @Telefon, @EMail, @Position, @EintrittDatum, @Gehalt, @Geburtsdatum, @Geschlecht, @Strasse, @Nr, @PLZ, @Ort)";                       
                     }
                     else
                     {
@@ -207,79 +205,66 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                         if (oldValue.Vorname != Vorname)
                         {
                             query += "Vorname = @Vorname, ";
-                            updatedColumns.Add("Vorname");
                         }
 
                         if (oldValue.Nachname != Nachname)
                         {
                             query += "Nachname = @Nachname, ";
-                            updatedColumns.Add("Nachname");
                         }
 
                         if (oldValue.Strasse != Strasse)
                         {
                             query += "Strasse = @Strasse, ";
-                            updatedColumns.Add("Strasse");
                         }
 
                         if (oldValue.Nr != Nr)
                         {
                             query += "Nr = @Nr, ";
-                            updatedColumns.Add("Nr");
                         }
 
                         if (oldValue.PLZ != PLZ)
                         {
                             query += "PLZ = @PLZ, ";
-                            updatedColumns.Add("PLZ");
                         }
 
                         if (oldValue.Ort != Ort)
                         {
                             query += "Ort = @Ort, ";
-                            updatedColumns.Add("Ort");
                         }
 
                         if (oldValue.Telefon != Telefon)
                         {
                             query += "Telefon = @Telefon, ";
-                            updatedColumns.Add("Telefon");
                         }
 
                         if (oldValue.EMail != EMail)
                         {
                             query += "[E-Mail] = @EMail, ";
-                            updatedColumns.Add("EMail");
                         }
 
                         if (oldValue.Position != Position)
                         {
                             query += "Position = @Position, ";
-                            updatedColumns.Add("Position");
                         }
 
                         if (oldValue.DatumEintritt != DatumEintritt)
                         {
                             query += "EintrittDatum = @EintrittDatum, ";
-                            updatedColumns.Add("EintrittDatum");
                         }
 
                         if (oldValue.Gehalt != Gehalt)
                         {
                             query += "Gehalt = @Gehalt, ";
-                            updatedColumns.Add("Gehalt");
                         }
 
                         if (oldValue.Geburtsdatum != Geburtsdatum)
                         {
                             query += "Geburtsdatum = @Geburtsdatum, ";
-                            updatedColumns.Add("Geburtsdatum");
                         }
 
                         if (oldValue.Geschlecht != Geschlecht)
                         {
                             query += "Geschlecht = @Geschlecht, ";
-                            updatedColumns.Add("Geschlecht");
                         }
 
                         // Entferne das letzte Komma und Leerzeichen
