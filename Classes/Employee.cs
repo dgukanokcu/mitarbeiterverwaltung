@@ -7,7 +7,7 @@ using System.Windows.Forms;
 namespace BTS_Mitarbeiterverwaltung.Classes
 {
     internal class Employee
-    {   //DO
+    {   
         #region Properties
 
         internal int ID { get; private set; }
@@ -48,7 +48,23 @@ namespace BTS_Mitarbeiterverwaltung.Classes
             Geschlecht = geschlecht;
         }
 
-        //DO
+        /// <summary>
+        /// Set the employee informations 
+        /// </summary>
+        /// <param name="vorname"></param>
+        /// <param name="nachname"></param>
+        /// <param name="strasse"></param>
+        /// <param name="nr"></param>
+        /// <param name="plz"></param>
+        /// <param name="ort"></param>
+        /// <param name="telefon"></param>
+        /// <param name="email"></param>
+        /// <param name="position"></param>
+        /// <param name="datumEintritt"></param>
+        /// <param name="gehalt"></param>
+        /// <param name="geburtsdatum"></param>
+        /// <param name="geschlecht"></param>
+        /// Autor: Okcu, Dogukan
         internal void SetDataNewEmployee(string vorname, string nachname, string strasse, string nr, string plz, string ort, string telefon, string email, string position, DateTime datumEintritt, string gehalt, DateTime geburtsdatum, string geschlecht)
         {
             Vorname = vorname;
@@ -65,7 +81,12 @@ namespace BTS_Mitarbeiterverwaltung.Classes
             Geburtsdatum = geburtsdatum;
             Geschlecht = geschlecht;
         }
-        //DO
+        /// <summary>
+        /// Allows only the number and control characters
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// Autor: Okcu, Dogukan
         internal static void AllowOnlyNumbersAndControlCharacters(object sender, KeyPressEventArgs e)
         {
             if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
@@ -73,7 +94,12 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                 e.Handled = true;
             }
         }
-        //DO
+        /// <summary>
+        /// Allows only the letter and control characters
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// Autor: Okcu, Dogukan
         internal static void AllowOnlyLettersAndControlCharacters(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
@@ -83,11 +109,10 @@ namespace BTS_Mitarbeiterverwaltung.Classes
         }
 
         /// <summary>
-        /// Get all Mitarbeiter as DataTable
+        /// Get all Employees as DataTable
         /// </summary>
         /// <returns></returns>
-        
-        //DO
+        /// Autor: Okcu, Dogukan
         internal static DataTable GetAllEmployees()
         {
             DataTable table = new DataTable();
@@ -120,7 +145,14 @@ namespace BTS_Mitarbeiterverwaltung.Classes
 
             return table;
         }
-        //DO
+
+        /// <summary>
+        /// Search employee by name
+        /// </summary>
+        /// <param name="vorname"></param>
+        /// <param name="nachname"></param>
+        /// Autor: Okcu, Dogukan
+        /// <returns></returns>
         internal static DataTable getEmployeeByName(string vorname, string nachname)
         {
             SqlCommand commandStart = new SqlCommand("SELECT * FROM mitarbeiter WHERE Vorname LIKE @Vorname OR Nachname LIKE @Nachname", SqlVariable.connection);
@@ -135,7 +167,13 @@ namespace BTS_Mitarbeiterverwaltung.Classes
 
             return table;
         }
-        //DO
+
+        /// <summary>
+        /// Get employee by ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// Autor: Okcu, Dogukan
+        /// <returns></returns>
         internal static Employee GetEmployeeById(int id)
         {
             Employee employee = null;
@@ -186,7 +224,12 @@ namespace BTS_Mitarbeiterverwaltung.Classes
             }
             return employee;
         }
-        //DO
+
+        /// <summary>
+        /// Update the employee
+        /// </summary>
+        /// Autor: Okcu, Dogukan
+        /// <param name="oldValue"></param>
         internal void UpdateEmployee(Employee oldValue)
         {
             try
@@ -348,7 +391,12 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                 }
             }
         }
-        //DO
+        /// <summary>
+        /// Validate the informations if they are empty
+        /// </summary>
+        /// <param name="m"></param>
+        /// Autor: Okcu, Dogukan
+        /// <returns></returns>
         internal static bool validation(Employee m)
         {
             if (string.IsNullOrWhiteSpace(m.Nachname) ||

@@ -17,6 +17,13 @@ namespace BTS_Mitarbeiterverwaltung
             this.mainForm = mainForm;
             id = ID;
         }
+
+        /// <summary>
+        /// If id is 0, add employee, if not, update
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// Autor: Okcu, Dogukan
         private void btnSpeichern_Click(object sender, EventArgs e)
         {
             Employee m = new Employee();
@@ -103,6 +110,13 @@ namespace BTS_Mitarbeiterverwaltung
                 MessageBox.Show("Überprüfen Sie bitte Ihre Angaben!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        /// <summary>
+        /// gets the employee informations for edit interface
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// Autor: Okcu, Dogukan
         internal void UpdateForm_Load(object sender, EventArgs e)
         {
             if (id != 0)

@@ -55,7 +55,7 @@ namespace BTS_Mitarbeiterverwaltung
                 column.Width = maxWidth + 20; // 20 Pixel Puffer für Ausrichtung und Lesbarkeit
             }
         }
-        //DO
+        //Autor: Okcu, Dogukan
         internal void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {   Application.Exit();     }
 
@@ -75,7 +75,12 @@ namespace BTS_Mitarbeiterverwaltung
                 lblSelectedRows.Text = "";
             }
         }
-        //DO
+        /// <summary>
+        /// Reset the table and delete the text from search textbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// Autor: Okcu, Dogukan
         public void btnReset_Click(object sender, EventArgs e)
         {
             txtBoxName.Text = "";
@@ -84,7 +89,12 @@ namespace BTS_Mitarbeiterverwaltung
 
             UpdateRowCount();
         }
-        //DO
+        /// <summary>
+        /// Opens the employee-add interface
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// Autor: Okcu, Dogukan
         internal void btnHinzufügen_Click(object sender, EventArgs e)
         {
             UpdateForm updateForm = new UpdateForm(this, 0);
@@ -113,7 +123,12 @@ namespace BTS_Mitarbeiterverwaltung
                 selectedRowID = 0; // keine Zeile ausgewählt
             }
         }
-        //DO
+        /// <summary>
+        /// Opens the employee-edit interface
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// Autor: Okcu, Dogukan
         private void btnBearbeiten_Click(object sender, EventArgs e)
         {
             if (selectedRowID != 0)
@@ -126,7 +141,12 @@ namespace BTS_Mitarbeiterverwaltung
                 MessageBox.Show("Wählen Sie bitte ein Mitarbeiter aus.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        //DO
+        /// <summary>
+        /// search the employee that in the textbox given
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// Autor: Okcu, Dogukan
         internal void txtBoxName_KeyPress(object sender, KeyPressEventArgs e)
         {
             dataGridViewEmployee.DataSource = Employee.getEmployeeByName(txtBoxName.Text, txtBoxName.Text);
