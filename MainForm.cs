@@ -159,7 +159,7 @@ namespace BTS_Mitarbeiterverwaltung
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// Autor: Okcu, Dogukan
-        internal void txtBoxName_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtBoxName_TextChanged(object sender, EventArgs e)
         {
             dataGridViewEmployee.DataSource = Employee.getEmployeeByName(txtBoxName.Text, txtBoxName.Text);
         }
@@ -174,5 +174,7 @@ namespace BTS_Mitarbeiterverwaltung
             tools.FileImport();
             btnReset.PerformClick();
         }
+
+
     }
 }
