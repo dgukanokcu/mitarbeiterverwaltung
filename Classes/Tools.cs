@@ -178,7 +178,7 @@ namespace BTS_Mitarbeiterverwaltung
                 commandUpdate.Parameters.AddWithValue("@Geburtsdatum", Convert.ToDateTime(attributeValues[12]));
 
                 string geschlecht = attributeValues[13].Trim().ToLower();
-                if (geschlecht == "männlich" || geschlecht == "weiblich")
+                if (geschlecht == "männlich" || geschlecht == "weiblich" || geschlecht == "divers")
                 {
                     commandUpdate.Parameters.AddWithValue("@Geschlecht", geschlecht);
                 }
