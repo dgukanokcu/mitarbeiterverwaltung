@@ -30,7 +30,6 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -45,16 +44,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.dataGridViewEmployee = new System.Windows.Forms.DataGridView();
-            this.btnAddEmployee = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.txtBoxName = new System.Windows.Forms.TextBox();
-            this.btnReset = new System.Windows.Forms.Button();
-            this.btnExport = new System.Windows.Forms.Button();
-            this.btnImport = new System.Windows.Forms.Button();
-            this.lblTotalRows = new System.Windows.Forms.Label();
-            this.lblSelectedRows = new System.Windows.Forms.Label();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Vorname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nachname = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,6 +60,15 @@
             this.RentenBeginn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Geburtsdatum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Alter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAddEmployee = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.txtBoxName = new System.Windows.Forms.TextBox();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.btnImport = new System.Windows.Forms.Button();
+            this.lblTotalRows = new System.Windows.Forms.Label();
+            this.lblSelectedRows = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployee)).BeginInit();
             this.SuspendLayout();
             // 
@@ -101,8 +101,7 @@
             this.dataGridViewEmployee.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridViewEmployee.GridColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridViewEmployee.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.dataGridViewEmployee.Location = new System.Drawing.Point(8, 113);
-            this.dataGridViewEmployee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridViewEmployee.Location = new System.Drawing.Point(6, 92);
             this.dataGridViewEmployee.Name = "dataGridViewEmployee";
             this.dataGridViewEmployee.ReadOnly = true;
             this.dataGridViewEmployee.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -117,136 +116,10 @@
             this.dataGridViewEmployee.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewEmployee.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewEmployee.ShowEditingIcon = false;
-            this.dataGridViewEmployee.Size = new System.Drawing.Size(1729, 395);
+            this.dataGridViewEmployee.Size = new System.Drawing.Size(1297, 321);
             this.dataGridViewEmployee.StandardTab = true;
             this.dataGridViewEmployee.TabIndex = 0;
             this.dataGridViewEmployee.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
-            // 
-            // btnAddEmployee
-            // 
-            this.btnAddEmployee.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnAddEmployee.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnAddEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddEmployee.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnAddEmployee.Image = ((System.Drawing.Image)(resources.GetObject("btnAddEmployee.Image")));
-            this.btnAddEmployee.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAddEmployee.Location = new System.Drawing.Point(1471, 58);
-            this.btnAddEmployee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnAddEmployee.Name = "btnAddEmployee";
-            this.btnAddEmployee.Size = new System.Drawing.Size(267, 48);
-            this.btnAddEmployee.TabIndex = 0;
-            this.btnAddEmployee.Text = "Mitarbeiter hinzufügen";
-            this.btnAddEmployee.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddEmployee.UseVisualStyleBackColor = false;
-            this.btnAddEmployee.Click += new System.EventHandler(this.btnHinzufügen_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
-            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDelete.Location = new System.Drawing.Point(1133, 58);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(156, 48);
-            this.btnDelete.TabIndex = 7;
-            this.btnDelete.Text = "Entfernen";
-            this.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDelete.UseVisualStyleBackColor = false;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
-            this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEdit.Location = new System.Drawing.Point(1297, 58);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(165, 48);
-            this.btnEdit.TabIndex = 6;
-            this.btnEdit.Text = "Bearbeiten";
-            this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEdit.UseVisualStyleBackColor = false;
-            this.btnEdit.Click += new System.EventHandler(this.btnBearbeiten_Click);
-            // 
-            // txtBoxName
-            // 
-            this.txtBoxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxName.Location = new System.Drawing.Point(21, 17);
-            this.txtBoxName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtBoxName.Multiline = true;
-            this.txtBoxName.Name = "txtBoxName";
-            this.txtBoxName.Size = new System.Drawing.Size(219, 38);
-            this.txtBoxName.TabIndex = 5;
-            this.txtBoxName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxName_KeyPress);
-            // 
-            // btnReset
-            // 
-            this.btnReset.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.Location = new System.Drawing.Point(248, 21);
-            this.btnReset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(120, 38);
-            this.btnReset.TabIndex = 4;
-            this.btnReset.Text = "Refresh";
-            this.btnReset.UseVisualStyleBackColor = false;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
-            // btnExport
-            // 
-            this.btnExport.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExport.Location = new System.Drawing.Point(1644, 10);
-            this.btnExport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(93, 38);
-            this.btnExport.TabIndex = 3;
-            this.btnExport.Text = "Export";
-            this.btnExport.UseVisualStyleBackColor = false;
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
-            // 
-            // btnImport
-            // 
-            this.btnImport.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnImport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImport.Location = new System.Drawing.Point(1543, 10);
-            this.btnImport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(93, 38);
-            this.btnImport.TabIndex = 2;
-            this.btnImport.Text = "Import";
-            this.btnImport.UseVisualStyleBackColor = false;
-            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
-            // 
-            // lblTotalRows
-            // 
-            this.lblTotalRows.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lblTotalRows.AutoSize = true;
-            this.lblTotalRows.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblTotalRows.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.lblTotalRows.Location = new System.Drawing.Point(8, 533);
-            this.lblTotalRows.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTotalRows.Name = "lblTotalRows";
-            this.lblTotalRows.Size = new System.Drawing.Size(135, 21);
-            this.lblTotalRows.TabIndex = 9;
-            this.lblTotalRows.Text = "Anzahl Datensätze:";
-            this.lblTotalRows.UseCompatibleTextRendering = true;
-            // 
-            // lblSelectedRows
-            // 
-            this.lblSelectedRows.AutoSize = true;
-            this.lblSelectedRows.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelectedRows.Location = new System.Drawing.Point(12, 87);
-            this.lblSelectedRows.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSelectedRows.Name = "lblSelectedRows";
-            this.lblSelectedRows.Size = new System.Drawing.Size(82, 21);
-            this.lblSelectedRows.TabIndex = 10;
-            this.lblSelectedRows.Text = "Ausgewählt:";
-            this.lblSelectedRows.UseCompatibleTextRendering = true;
             // 
             // ID
             // 
@@ -262,7 +135,7 @@
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
             this.ID.ToolTipText = "Mitarbeiterkennung";
-            this.ID.Width = 49;
+            this.ID.Width = 43;
             // 
             // Vorname
             // 
@@ -275,7 +148,7 @@
             this.Vorname.MinimumWidth = 6;
             this.Vorname.Name = "Vorname";
             this.Vorname.ReadOnly = true;
-            this.Vorname.Width = 91;
+            this.Vorname.Width = 74;
             // 
             // Nachname
             // 
@@ -288,7 +161,7 @@
             this.Nachname.MinimumWidth = 6;
             this.Nachname.Name = "Nachname";
             this.Nachname.ReadOnly = true;
-            this.Nachname.Width = 102;
+            this.Nachname.Width = 84;
             // 
             // Geschlecht
             // 
@@ -301,7 +174,7 @@
             this.Geschlecht.Name = "Geschlecht";
             this.Geschlecht.ReadOnly = true;
             this.Geschlecht.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Geschlecht.Width = 80;
+            this.Geschlecht.Width = 67;
             // 
             // Telefon
             // 
@@ -313,7 +186,7 @@
             this.Telefon.MinimumWidth = 6;
             this.Telefon.Name = "Telefon";
             this.Telefon.ReadOnly = true;
-            this.Telefon.Width = 82;
+            this.Telefon.Width = 68;
             // 
             // Emailadresse
             // 
@@ -325,7 +198,7 @@
             this.Emailadresse.MinimumWidth = 6;
             this.Emailadresse.Name = "Emailadresse";
             this.Emailadresse.ReadOnly = true;
-            this.Emailadresse.Width = 70;
+            this.Emailadresse.Width = 57;
             // 
             // Nr
             // 
@@ -337,7 +210,7 @@
             this.Nr.MinimumWidth = 6;
             this.Nr.Name = "Nr";
             this.Nr.ReadOnly = true;
-            this.Nr.Width = 50;
+            this.Nr.Width = 43;
             // 
             // PLZ
             // 
@@ -349,7 +222,7 @@
             this.PLZ.MinimumWidth = 6;
             this.PLZ.Name = "PLZ";
             this.PLZ.ReadOnly = true;
-            this.PLZ.Width = 60;
+            this.PLZ.Width = 52;
             // 
             // Position
             // 
@@ -361,7 +234,7 @@
             this.Position.MinimumWidth = 6;
             this.Position.Name = "Position";
             this.Position.ReadOnly = true;
-            this.Position.Width = 84;
+            this.Position.Width = 69;
             // 
             // Eintrittsdatum
             // 
@@ -373,7 +246,7 @@
             this.Eintrittsdatum.MinimumWidth = 6;
             this.Eintrittsdatum.Name = "Eintrittsdatum";
             this.Eintrittsdatum.ReadOnly = true;
-            this.Eintrittsdatum.Width = 115;
+            this.Eintrittsdatum.Width = 95;
             // 
             // Gehalt
             // 
@@ -385,7 +258,7 @@
             this.Gehalt.MinimumWidth = 6;
             this.Gehalt.Name = "Gehalt";
             this.Gehalt.ReadOnly = true;
-            this.Gehalt.Width = 75;
+            this.Gehalt.Width = 63;
             // 
             // RentenBeginn
             // 
@@ -397,7 +270,7 @@
             this.RentenBeginn.MinimumWidth = 6;
             this.RentenBeginn.Name = "RentenBeginn";
             this.RentenBeginn.ReadOnly = true;
-            this.RentenBeginn.Width = 120;
+            this.RentenBeginn.Width = 99;
             // 
             // Geburtsdatum
             // 
@@ -410,7 +283,7 @@
             this.Geburtsdatum.Name = "Geburtsdatum";
             this.Geburtsdatum.ReadOnly = true;
             this.Geburtsdatum.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Geburtsdatum.Width = 97;
+            this.Geburtsdatum.Width = 79;
             // 
             // Alter
             // 
@@ -423,15 +296,133 @@
             this.Alter.MinimumWidth = 6;
             this.Alter.Name = "Alter";
             this.Alter.ReadOnly = true;
-            this.Alter.Width = 63;
+            this.Alter.Width = 53;
+            // 
+            // btnAddEmployee
+            // 
+            this.btnAddEmployee.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnAddEmployee.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnAddEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddEmployee.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnAddEmployee.Image = ((System.Drawing.Image)(resources.GetObject("btnAddEmployee.Image")));
+            this.btnAddEmployee.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddEmployee.Location = new System.Drawing.Point(1103, 47);
+            this.btnAddEmployee.Name = "btnAddEmployee";
+            this.btnAddEmployee.Size = new System.Drawing.Size(200, 39);
+            this.btnAddEmployee.TabIndex = 0;
+            this.btnAddEmployee.Text = "Mitarbeiter hinzufügen";
+            this.btnAddEmployee.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddEmployee.UseVisualStyleBackColor = false;
+            this.btnAddEmployee.Click += new System.EventHandler(this.btnHinzufügen_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
+            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDelete.Location = new System.Drawing.Point(850, 47);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(117, 39);
+            this.btnDelete.TabIndex = 7;
+            this.btnDelete.Text = "Entfernen";
+            this.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
+            this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEdit.Location = new System.Drawing.Point(973, 47);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(124, 39);
+            this.btnEdit.TabIndex = 6;
+            this.btnEdit.Text = "Bearbeiten";
+            this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnBearbeiten_Click);
+            // 
+            // txtBoxName
+            // 
+            this.txtBoxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxName.Location = new System.Drawing.Point(9, 24);
+            this.txtBoxName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBoxName.Multiline = true;
+            this.txtBoxName.Name = "txtBoxName";
+            this.txtBoxName.Size = new System.Drawing.Size(165, 32);
+            this.txtBoxName.TabIndex = 5;
+            this.txtBoxName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxName_KeyPress);
+            // 
+            // btnReset
+            // 
+            this.btnReset.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.Location = new System.Drawing.Point(179, 27);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(90, 31);
+            this.btnReset.TabIndex = 4;
+            this.btnReset.Text = "Refresh";
+            this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // btnExport
+            // 
+            this.btnExport.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExport.Location = new System.Drawing.Point(1233, 8);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(70, 31);
+            this.btnExport.TabIndex = 3;
+            this.btnExport.Text = "Export";
+            this.btnExport.UseVisualStyleBackColor = false;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // btnImport
+            // 
+            this.btnImport.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnImport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImport.Location = new System.Drawing.Point(1157, 8);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(70, 31);
+            this.btnImport.TabIndex = 2;
+            this.btnImport.Text = "Import";
+            this.btnImport.UseVisualStyleBackColor = false;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+            // 
+            // lblTotalRows
+            // 
+            this.lblTotalRows.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblTotalRows.AutoSize = true;
+            this.lblTotalRows.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.lblTotalRows.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.lblTotalRows.Location = new System.Drawing.Point(6, 433);
+            this.lblTotalRows.Name = "lblTotalRows";
+            this.lblTotalRows.Size = new System.Drawing.Size(112, 18);
+            this.lblTotalRows.TabIndex = 9;
+            this.lblTotalRows.Text = "Anzahl Datensätze:";
+            this.lblTotalRows.UseCompatibleTextRendering = true;
+            // 
+            // lblSelectedRows
+            // 
+            this.lblSelectedRows.AutoSize = true;
+            this.lblSelectedRows.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSelectedRows.Location = new System.Drawing.Point(9, 71);
+            this.lblSelectedRows.Name = "lblSelectedRows";
+            this.lblSelectedRows.Size = new System.Drawing.Size(66, 17);
+            this.lblSelectedRows.TabIndex = 10;
+            this.lblSelectedRows.Text = "Ausgewählt:";
+            this.lblSelectedRows.UseCompatibleTextRendering = true;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1753, 566);
+            this.ClientSize = new System.Drawing.Size(1315, 460);
             this.Controls.Add(this.lblSelectedRows);
             this.Controls.Add(this.lblTotalRows);
             this.Controls.Add(this.btnImport);
@@ -443,7 +434,6 @@
             this.Controls.Add(this.btnAddEmployee);
             this.Controls.Add(this.dataGridViewEmployee);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Liste aller Mitarbeiter - Firma Pfusch";
