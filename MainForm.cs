@@ -24,6 +24,12 @@ namespace BTS_Mitarbeiterverwaltung
 
             UpdateRowCount();
         }
+
+        // Passt die Breite der Spalten in der DataGrid an.
+        // Durchläuft jede Spalte des DataGridViews.
+        // Berechnet die maximale Breite für jede Spalte basierend auf den Zellwerten und der Spaltenüberschrift.
+        // Berücksichtigt spezielle Breiten für Spalten mit Datentyp "date" (Uhrzeit wird gefiltert).
+        // Setzt die Breite jeder Spalte entsprechend der berechneten maximalen Breite plus einem Puffer von 20 Pixeln für Ausrichtung und Lesbarkeit.
         private void SetColumnWidths(DataGridView dataGridView)
         {
             foreach (DataGridViewColumn column in dataGridView.Columns)
@@ -34,7 +40,6 @@ namespace BTS_Mitarbeiterverwaltung
                 {
                     if (row.Cells[column.Index].Value != null)
                     {
-                        // Berücksichtige spezielle Breiten für die Spalten die den Datentyp "date" verwenden (Uhrzeit wird gefiltert)
                         if (column.Name == "Eintrittsdatum" || column.Name == "RentenBeginn" || column.Name == "Geburtsdatum")
                         {
                             maxWidth = Math.Max(maxWidth, 40);
@@ -46,19 +51,20 @@ namespace BTS_Mitarbeiterverwaltung
                         }
                     }
                 }
-
-                // Berücksichtige die Breite der Spaltenüberschrift
                 int headerWidth = TextRenderer.MeasureText(column.HeaderText, dataGridView.Font).Width;
                 maxWidth = Math.Max(maxWidth, headerWidth);
 
-                // Setze die Breite der Spalte
-                column.Width = maxWidth + 20; // 20 Pixel Puffer für Ausrichtung und Lesbarkeit
+                column.Width = maxWidth + 20;
             }
         }
+
         //Autor: Okcu, Dogukan
         internal void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {   Application.Exit();     }
 
+        // Aktualisiert die Anzeige der Gesamtzahl der Datensätze und der ausgewählten Zeilen im DataGrid.
+        // Ermittelt die Gesamtzahl der Zeilen im DataGrid und die Anzahl der ausgewählten Zeilen.
+        // Aktualisiert die entsprechenden Anzeige-Labels mit den ermittelten Werten.
         internal void UpdateRowCount()
         {
             int totalRowCount = dataGridViewEmployee.RowCount;
@@ -75,6 +81,7 @@ namespace BTS_Mitarbeiterverwaltung
                 lblSelectedRows.Text = "";
             }
         }
+
         /// <summary>
         /// Reset the table and delete the text from search textbox
         /// </summary>
@@ -89,6 +96,7 @@ namespace BTS_Mitarbeiterverwaltung
 
             UpdateRowCount();
         }
+
         /// <summary>
         /// Opens the employee-add interface
         /// </summary>
@@ -100,11 +108,13 @@ namespace BTS_Mitarbeiterverwaltung
             UpdateForm updateForm = new UpdateForm(this, 0);
             updateForm.Show();
         }
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
             Tools.DeleteRows(dataGridViewEmployee);
             btnReset.PerformClick();
         }
+
         internal void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             int totalRowCount = dataGridViewEmployee.RowCount;
@@ -123,6 +133,7 @@ namespace BTS_Mitarbeiterverwaltung
                 selectedRowID = 0; // keine Zeile ausgewählt
             }
         }
+
         /// <summary>
         /// Opens the employee-edit interface
         /// </summary>
@@ -141,6 +152,7 @@ namespace BTS_Mitarbeiterverwaltung
                 MessageBox.Show("Wählen Sie bitte ein Mitarbeiter aus.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
         /// <summary>
         /// search the employee that in the textbox given
         /// </summary>
@@ -151,6 +163,7 @@ namespace BTS_Mitarbeiterverwaltung
         {
             dataGridViewEmployee.DataSource = Employee.getEmployeeByName(txtBoxName.Text, txtBoxName.Text);
         }
+
         internal void btnExport_Click(object sender, EventArgs e)
         {
             Tools function = new Tools();

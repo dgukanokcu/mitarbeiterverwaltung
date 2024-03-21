@@ -8,6 +8,19 @@ using System.Windows.Forms;
 
 internal class Account
 {
+    // Erstellt einen neuen Benutzer mit den angegebenen Anmeldeinformationen.
+    // Parameter:
+    //   username: Der Benutzername des neuen Benutzers.
+    //   password: Das Passwort des neuen Benutzers.
+    //   confirmPassword: Die Bestätigung des Passworts.
+    // Ausnahmen:
+    //   Exception: Wird ausgelöst, wenn bereits ein Benutzer mit dem angegebenen Benutzernamen existiert.
+    //   Exception: Wird ausgelöst, wenn der Benutzername oder das Passwort leer sind.
+    //   Exception: Wird ausgelöst, wenn das Passwort und die Passwortbestätigung nicht übereinstimmen.
+    //   Exception: Wird ausgelöst, wenn das Passwort Leerzeichen enthält.
+    //   Exception: Wird ausgelöst, wenn das Passwort dem Benutzernamen ähnelt.
+    //   Exception: Wird ausgelöst, wenn das Passwort die Sicherheitsanforderungen nicht erfüllt.
+    //   Exception: Wird ausgelöst, wenn ein Fehler beim Erstellen des Benutzers auftritt.
     internal static void CreateUser(string username, string password, string confirmPassword)
     {
         try
@@ -73,6 +86,13 @@ internal class Account
             }
         }
     }
+
+    // Überprüft die Gültigkeit eines Passworts anhand verschiedener Sicherheitskriterien.
+    // Parameter:
+    //   password: Das zu überprüfende Passwort.
+    //   errorMessage: Die Fehlermeldung, die eine ungültige Bedingung beschreibt (Rückgabewert).
+    // Rückgabewert:
+    //   True, wenn das Passwort die Sicherheitsanforderungen erfüllt, andernfalls False.
     private static bool CheckPassword(string password, out string errorMessage)
     {
         errorMessage = null;
@@ -98,10 +118,22 @@ internal class Account
         errorMessage = null;         //Passwort erfüllt alle Sicherheitsanforderungen
         return true;
     }
+
+    // Überprüft, ob das gegebene Zeichen ein Sonderzeichen ist.
+    // Parameter:
+    //   c: Das zu überprüfende Zeichen.
+    // Rückgabewert:
+    //   True, wenn das Zeichen ein Sonderzeichen ist, andernfalls False.
     internal static bool IsSpecialCharacter(char c)
     { 
         return "!@#$%^&*()-_=+[]{}|;:'\"<>,.?/~`".Contains(c); 
     }
+
+    // Überprüft, ob ein Benutzername bereits in der Datenbank vorhanden ist.
+    // Parameter:
+    //   benutzername: Der Benutzername, der überprüft werden soll.
+    // Rückgabewert:
+    //   True, wenn der Benutzername bereits existiert, andernfalls False.
     internal static bool DoUsernameExist(string benutzername)
     {
         string query = "SELECT COUNT(*) FROM Benutzer WHERE Benutzername = @Benutzername";
@@ -115,6 +147,13 @@ internal class Account
             return benutzerCount > 0;
         }
     }
+
+    // Überprüft die Gültigkeit der Anmeldeinformationen (Benutzername und Passwort) anhand der Datenbank.
+    // Parameter:
+    //   benutzername: Der Benutzername, der überprüft werden soll.
+    //   passwort: Das Passwort, das überprüft werden soll.
+    // Rückgabewert:
+    //   True, wenn die Anmeldeinformationen gültig sind, andernfalls False.
     internal static bool Validation(string benutzername, string passwort)
     {
         try
@@ -129,7 +168,6 @@ internal class Account
                 {
                     SqlVariable.connection.Open();
                 }
-
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())

@@ -17,6 +17,11 @@ namespace BTS_Mitarbeiterverwaltung
             label4.ForeColor = Color.Blue;                          // Setze Hintergrundfarbe auf Blau
             label4.Font = new Font(label4.Font, FontStyle.Bold);    // Schrift: Fett
         }
+
+        // Event-Handler, der beim Laden des Login-Formulars aufgerufen wird.
+        // Überprüft den Zustand der SQL-Verbindung.
+        // Öffnet die Verbindung, wenn sie nicht bereits geöffnet ist.
+        // Wenn ein Fehler beim Öffnen der Verbindung auftritt, wird ein Timer erstellt, um die Anwendung korrekt zu beenden
         private void LoginForm_Load(object sender, EventArgs e)
         {
             if (!SqlVariable.connection.State.Equals(System.Data.ConnectionState.Open))
@@ -32,15 +37,23 @@ namespace BTS_Mitarbeiterverwaltung
                 }
             }
         }
+
         internal void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
+
         static void TimerCallback(object state)
         {
             MessageBox.Show("Keine Verbindung. Data Source überprüfen.");
             Environment.Exit(0);
         }
+
+        // Event-Handler, der aufgerufen wird, wenn der Anmelde-Button geklickt wird.
+        // Extrahiert Benutzername und Passwort aus den entsprechenden Textfeldern.
+        // Überprüft die Anmeldeinformationen mithilfe der Validierungsmethode des Account-Objekts.
+        // Bei erfolgreicher Validierung öffnet das Hauptformular und versteckt das aktuelle Anmeldeformular.
+        // Bei fehlgeschlagener Validierung wird eine Fehlermeldung angezeigt.
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string benutzername = txtBoxUsername.Text;
@@ -57,6 +70,11 @@ namespace BTS_Mitarbeiterverwaltung
                 MessageBox.Show("Login fehlgeschlagen. Überprüfen Sie Benutzername und Passwort.");
             }
         }
+
+        // Event-Handler, der aufgerufen wird, wenn auf das Label für die Benutzerregistrierung geklickt wird.
+        // Öffnet das Registrierungsformular für die Benutzererstellung.
+        // Setzt die Startposition des Registrierungsformulars auf die Bildschirmmitte.
+        // Wartet, bis das Registrierungsformular geschlossen wird.
         private void label4_Click(object sender, EventArgs e)
         {
             using (RegisterForm createUserForm = new RegisterForm())

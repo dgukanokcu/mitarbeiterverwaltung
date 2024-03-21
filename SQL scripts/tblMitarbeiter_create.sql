@@ -7,7 +7,7 @@ CREATE TABLE Mitarbeiter
     Nr NVARCHAR(5),
     PLZ NVARCHAR(10),
     Ort NVARCHAR(20),
-    Telefon NVARCHAR(10),
+    Telefon NVARCHAR(50),
     [E-Mail] NVARCHAR(50),
     Position NVARCHAR(50),
     EintrittDatum DATE,

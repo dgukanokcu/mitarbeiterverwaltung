@@ -16,6 +16,11 @@ namespace BTS_Mitarbeiterverwaltung
     {
         internal Tools()
         {}
+
+        // Importiert Daten aus einer Textdatei in die Anwendung.
+        // Öffnet einen Dateiauswahldialog, um die zu importierende Datei auszuwählen.
+        // Liest die Daten aus der ausgewählten Datei und fügt sie in die Anwendung ein.
+        // Bei erfolgreicher Ausführung wird eine Erfolgsmeldung angezeigt, andernfalls eine Fehlermeldung.
         internal void FileImport()
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -46,6 +51,11 @@ namespace BTS_Mitarbeiterverwaltung
                 }
             }
         }
+
+        // ermöglicht Benutzer, Daten aus der Anwendung in eine Textdatei zu exportieren
+        // öffnet Dateiauswahldialog, um Speicherort und Dateinamen für exportierte Datei auszuwählen (.csv und .txt)
+        // Anschließend werden die Daten aus der Anwendung in den ausgewählten Dateipfad abgelegt 
+        // Bei erfolgreicher Ausführung -> Erfolgsmeldung an, andernfalls -> Fehlermeldung
         internal void FileExport(Tools function)
         {
             try
@@ -120,6 +130,11 @@ namespace BTS_Mitarbeiterverwaltung
                 Console.WriteLine($"Fehler beim Exportieren der Daten: {ex.Message}");
             }
         }
+
+        // Diese Methode fügt Daten aus einer Textdatei in die Datenbanktabelle "Mitarbeiter" ein
+        // nimmt ein Array von Attributwerten entgegen
+        // Trim: entfernt unerwünschte Leerzeichen und formatiert die Daten für die Weiterverarbeitung
+        // nach Validierung: SQL-Befehl für das Einfügen von Datensätzen in die Datenbank
         private bool InsertFromFile(string[] attributeValues)
         {
             try
@@ -184,6 +199,14 @@ namespace BTS_Mitarbeiterverwaltung
                 return false;
             }
         }
+
+        // exportiert Daten aus einer DataTable in eine Text- und CSV-Datei.
+        // akzeptiert die DataTable 'dataTable', den Dateipfad 'filePath' und den Trennzeichen 'delimiter' als Parameter.
+        // Verwendung von StreamWriter um Datei zu erstellen und zu beschreiben
+        // Es wird eine Headerzeile mit den Spaltenüberschriften und dem angegebenen Trennzeichen geschrieben.
+        // Eine Trennlinie wird mit dem Trennzeichen entsprechend der Breiten der Spaltenüberschriften geschrieben.
+        // Die Datenzeilen werden nacheinander geschrieben, wobei jedes Datenfeld entsprechend seiner maximalen Breite formatiert wird.
+        // Fehler während des Exportvorgangs werden abgefangen und ausgegeben.
         internal void ExportDataTableToFile(DataTable dataTable, string filePath, string delimiter)
         {
             try
@@ -222,6 +245,14 @@ namespace BTS_Mitarbeiterverwaltung
                 Console.WriteLine($"Fehler beim Exportieren der Daten: {ex.Message}");
             }
         }
+
+        // Löscht ausgewählte Zeilen aus der DataGrid + Datenbank.
+        // Überprüft, ob mindestens eine Zeile ausgewählt wurde.
+        // Zeigt eine Warnmeldung an, wenn keine Zeile ausgewählt wurde, und beendet die Methode.
+        // Zeigt eine Bestätigungsmeldung an, um das Löschen der ausgewählten Zeilen zu bestätigen.
+        // Wenn der Benutzer bestätigt, entfernt die Methode die ausgewählten Mitarbeiter aus der Datenbank.
+        // Zählt die Anzahl der gelöschten Mitarbeiter und zeigt eine Erfolgsmeldung an.
+        // Bei einem Fehler wird eine entsprechende Fehlermeldung ausgegeben.
         internal static void DeleteRows(DataGridView dataGridView)
         {
             int selectedRowsCount = dataGridView.SelectedRows.Count;

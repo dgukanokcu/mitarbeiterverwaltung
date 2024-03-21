@@ -6,6 +6,12 @@ namespace BTS_Mitarbeiterverwaltung.Utils
 {
     internal class PasswortUtility
     {
+        // Hashed das angegebene Passwort unter Verwendung des SHA256-Hash-Algorithmus in Kombination mit einem Salt.
+        // Parameter:
+        //   password: Das zu hashende Passwort.
+        //   salt: Saltwert, der mit dem Passwort kombiniert wird.
+        // Rückgabe:
+        //   Ein String, der das gehashte Passwort repräsentiert.
         internal static string HashPassword(string password, string salt)
         {
             using (SHA256 sha256 = SHA256.Create())
@@ -21,6 +27,12 @@ namespace BTS_Mitarbeiterverwaltung.Utils
                 return builder.ToString();
             }
         }
+
+        // Generiert eine zufällige Salt-Zeichenfolge mit der angegebenen Länge.
+        // Parameter:
+        //   length (optional): Die Länge der generierten Salt-Zeichenfolge (Standardwert ist 16).
+        // Rückgabe:
+        //   Eine zufällig generierte Salt-Zeichenfolge.
         internal static string GenerateRandomSalt(int length = 16)
         {
             const string allowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-+=<>?";
