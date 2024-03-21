@@ -121,30 +121,7 @@ namespace BTS_Mitarbeiterverwaltung
                 textBoxHouseNmbr.Text = m.Nr;
                 textBoxZIP.Text = m.PLZ;
                 textBoxCity.Text = m.Ort;
-
-                // Überprüfen, ob Änderungen an den Parametern vorgenommen wurden
-                if (HasChanged(txtBoxName.Text, m.Vorname) ||
-                    HasChanged(txtBoxSurname.Text, m.Nachname) ||
-                    HasChanged(comboBoxPosition.Text, m.Position) ||
-                    HasChanged(dateTimePickerEntry.Value.ToString(), m.DatumEintritt.ToString()) ||
-                    HasChanged(txtBoxEmail.Text, m.EMail) ||
-                    HasChanged(txtBoxSalary.Text, m.Gehalt) ||
-                    HasChanged(dateTimePickerBirthdate.Value.ToString(), m.Geburtsdatum.ToString()) ||
-                    HasChanged(txtBoxTelefon.Text, m.Telefon) ||
-                    HasChanged(comboBoxGender.Text, m.Geschlecht) ||
-                    HasChanged(textBoxStreet.Text, m.Strasse) ||
-                    HasChanged(textBoxHouseNmbr.Text, m.Nr) ||
-                    HasChanged(textBoxZIP.Text, m.PLZ) ||
-                    HasChanged(textBoxCity.Text, m.Ort))
-                {
-                }
             }
-        }
-
-        // Methode zur Überprüfung, ob sich der Wert eines Parameters geändert hat
-        private bool HasChanged(string currentValue, string originalValue)
-        {
-            return !string.Equals(currentValue, originalValue);
         }
 
         #region validation
