@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -81,6 +80,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
             Geburtsdatum = geburtsdatum;
             Geschlecht = geschlecht;
         }
+        
         /// <summary>
         /// Allows only the number and control characters
         /// </summary>
@@ -94,6 +94,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                 e.Handled = true;
             }
         }
+
         /// <summary>
         /// Allows only the letter and control characters
         /// </summary>
@@ -394,6 +395,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                 }
             }
         }
+
         /// <summary>
         /// Validate the informations if they are empty
         /// </summary>
