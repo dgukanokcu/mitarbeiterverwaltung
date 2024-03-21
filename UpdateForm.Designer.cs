@@ -147,7 +147,7 @@
             // Nachname
             // 
             this.Nachname.AutoSize = true;
-            this.Nachname.Location = new System.Drawing.Point(11, 76);
+            this.Nachname.Location = new System.Drawing.Point(3, 77);
             this.Nachname.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Nachname.Name = "Nachname";
             this.Nachname.Size = new System.Drawing.Size(59, 13);
@@ -167,7 +167,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 123);
+            this.label5.Location = new System.Drawing.Point(5, 123);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(36, 13);
