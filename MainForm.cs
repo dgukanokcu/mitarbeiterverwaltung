@@ -55,8 +55,10 @@ namespace BTS_Mitarbeiterverwaltung
                 column.Width = maxWidth + 20; // 20 Pixel Puffer für Ausrichtung und Lesbarkeit
             }
         }
+        //DO
         internal void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {   Application.Exit();     }
+
         internal void UpdateRowCount()
         {
             int totalRowCount = dataGridViewEmployee.RowCount;
@@ -73,6 +75,7 @@ namespace BTS_Mitarbeiterverwaltung
                 lblSelectedRows.Text = "";
             }
         }
+        //DO
         public void btnReset_Click(object sender, EventArgs e)
         {
             txtBoxName.Text = "";
@@ -81,6 +84,7 @@ namespace BTS_Mitarbeiterverwaltung
 
             UpdateRowCount();
         }
+        //DO
         internal void btnHinzufügen_Click(object sender, EventArgs e)
         {
             UpdateForm updateForm = new UpdateForm(this, 0);
@@ -109,6 +113,7 @@ namespace BTS_Mitarbeiterverwaltung
                 selectedRowID = 0; // keine Zeile ausgewählt
             }
         }
+        //DO
         private void btnBearbeiten_Click(object sender, EventArgs e)
         {
             if (selectedRowID != 0)
@@ -121,6 +126,7 @@ namespace BTS_Mitarbeiterverwaltung
                 MessageBox.Show("Wählen Sie bitte ein Mitarbeiter aus.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+        //DO
         internal void txtBoxName_KeyPress(object sender, KeyPressEventArgs e)
         {
             dataGridViewEmployee.DataSource = Employee.getEmployeeByName(txtBoxName.Text, txtBoxName.Text);

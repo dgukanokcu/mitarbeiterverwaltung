@@ -7,7 +7,7 @@ using System.Windows.Forms;
 namespace BTS_Mitarbeiterverwaltung.Classes
 {
     internal class Employee
-    {
+    {   //DO
         #region Properties
 
         internal int ID { get; private set; }
@@ -48,6 +48,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
             Geschlecht = geschlecht;
         }
 
+        //DO
         internal void SetDataNewEmployee(string vorname, string nachname, string strasse, string nr, string plz, string ort, string telefon, string email, string position, DateTime datumEintritt, string gehalt, DateTime geburtsdatum, string geschlecht)
         {
             Vorname = vorname;
@@ -64,7 +65,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
             Geburtsdatum = geburtsdatum;
             Geschlecht = geschlecht;
         }
-
+        //DO
         internal static void AllowOnlyNumbersAndControlCharacters(object sender, KeyPressEventArgs e)
         {
             if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
@@ -72,7 +73,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                 e.Handled = true;
             }
         }
-
+        //DO
         internal static void AllowOnlyLettersAndControlCharacters(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
@@ -85,6 +86,8 @@ namespace BTS_Mitarbeiterverwaltung.Classes
         /// Get all Mitarbeiter as DataTable
         /// </summary>
         /// <returns></returns>
+        
+        //DO
         internal static DataTable GetAllEmployees()
         {
             DataTable table = new DataTable();
@@ -117,7 +120,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
 
             return table;
         }
-
+        //DO
         internal static DataTable getEmployeeByName(string vorname, string nachname)
         {
             SqlCommand commandStart = new SqlCommand("SELECT * FROM mitarbeiter WHERE Vorname LIKE @Vorname OR Nachname LIKE @Nachname", SqlVariable.connection);
@@ -132,6 +135,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
 
             return table;
         }
+        //DO
         internal static Employee GetEmployeeById(int id)
         {
             Employee employee = null;
@@ -182,6 +186,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
             }
             return employee;
         }
+        //DO
         internal void UpdateEmployee(Employee oldValue)
         {
             try
@@ -315,6 +320,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                 throw; // optional: Fehler weiter nach oben werfen
             }
         }
+
         internal static void deleteEmployee(int id)
         {
             try
@@ -342,6 +348,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                 }
             }
         }
+        //DO
         internal static bool validation(Employee m)
         {
             if (string.IsNullOrWhiteSpace(m.Nachname) ||
