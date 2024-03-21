@@ -7,7 +7,7 @@ using System.Windows.Forms;
 namespace BTS_Mitarbeiterverwaltung.Classes
 {
     internal class Employee
-    {   
+    {
         #region Properties
 
         internal int ID { get; private set; }
@@ -243,7 +243,7 @@ namespace BTS_Mitarbeiterverwaltung.Classes
                     if (ID == 0)
                     {
                         query = "INSERT INTO mitarbeiter (Vorname, Nachname, Telefon, [E-Mail], Position, EintrittDatum, Gehalt, Geburtsdatum, Geschlecht, Strasse, Nr, PLZ, Ort) " +
-                                "VALUES (@Vorname, @Nachname, @Telefon, @EMail, @Position, @EintrittDatum, @Gehalt, @Geburtsdatum, @Geschlecht, @Strasse, @Nr, @PLZ, @Ort)";                       
+                                "VALUES (@Vorname, @Nachname, @Telefon, @EMail, @Position, @EintrittDatum, @Gehalt, @Geburtsdatum, @Geschlecht, @Strasse, @Nr, @PLZ, @Ort)";
                     }
                     else
                     {
@@ -323,37 +323,40 @@ namespace BTS_Mitarbeiterverwaltung.Classes
 
                     }
 
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    if (query != "UPDATE mitarbeiter SET WHERE ID = @ID")
                     {
-                        command.Parameters.AddWithValue("@ID", ID);
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@ID", ID);
 
-                        command.Parameters.AddWithValue("@Vorname", Vorname);
+                            command.Parameters.AddWithValue("@Vorname", Vorname);
 
-                        command.Parameters.AddWithValue("@Nachname", Nachname);
+                            command.Parameters.AddWithValue("@Nachname", Nachname);
 
-                        command.Parameters.AddWithValue("@Strasse", Strasse);
+                            command.Parameters.AddWithValue("@Strasse", Strasse);
 
-                        command.Parameters.AddWithValue("@Nr", Nr);
+                            command.Parameters.AddWithValue("@Nr", Nr);
 
-                        command.Parameters.AddWithValue("@PLZ", PLZ);
+                            command.Parameters.AddWithValue("@PLZ", PLZ);
 
-                        command.Parameters.AddWithValue("@Ort", Ort);
+                            command.Parameters.AddWithValue("@Ort", Ort);
 
-                        command.Parameters.AddWithValue("@Telefon", Telefon);
+                            command.Parameters.AddWithValue("@Telefon", Telefon);
 
-                        command.Parameters.AddWithValue("@EMail", EMail);
+                            command.Parameters.AddWithValue("@EMail", EMail);
 
-                        command.Parameters.AddWithValue("@Position", Position);
+                            command.Parameters.AddWithValue("@Position", Position);
 
-                        command.Parameters.AddWithValue("@EintrittDatum", DatumEintritt);
+                            command.Parameters.AddWithValue("@EintrittDatum", DatumEintritt);
 
-                        command.Parameters.AddWithValue("@Gehalt", Gehalt);
+                            command.Parameters.AddWithValue("@Gehalt", Gehalt);
 
-                        command.Parameters.AddWithValue("@Geburtsdatum", Geburtsdatum);
+                            command.Parameters.AddWithValue("@Geburtsdatum", Geburtsdatum);
 
-                        command.Parameters.AddWithValue("@Geschlecht", Geschlecht);
+                            command.Parameters.AddWithValue("@Geschlecht", Geschlecht);
 
-                        command.ExecuteNonQuery();
+                            command.ExecuteNonQuery();
+                        }
                     }
                 }
             }
